@@ -1,0 +1,137 @@
+.sliderRelative {
+  position: relative;
+  width: 100%;
+}
+
+.wholeSlider {
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.mainSlider {
+  display: flex;
+  min-width: 500%;
+  width: 500%;
+  transition: 2s;
+}
+
+.one {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  /* height: 46rem; */
+}
+
+.sliderImg {
+  width: 100%;
+  height: 23rem;
+  /* max-height: 20rem; */
+}
+
+.sliderImg > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.sliderRight {
+  width: 100%;
+  padding: 0 30px;
+  padding-top: 30px;
+  background-color: #f8f9fa;
+  height: fit-content;
+}
+
+.arrow {
+  position: absolute;
+  top: 25%;
+  z-index: 50;
+  font-size: 1.2rem;
+}
+
+.back {
+  left: 1rem;
+}
+
+.next {
+  right: 1rem;
+  transform: rotate(180deg);
+}
+
+.sliderRight > h4 {
+  color: #808080;
+  font-size: 1rem;
+  letter-spacing: 1.6px;
+  line-height: 24.48px;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+
+.sliderRight > h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.sliderRight > p,
+.sliderRight > h6 > span,
+.sliderRight > .date {
+  color: rgb(128, 128, 128);
+  font-size: 1rem;
+}
+
+.sliderRight > p {
+  margin-bottom: 10px;
+}
+
+.sliderRight h6 {
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.boxContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.box {
+  width: 1.2rem;
+  height: 0.2rem;
+  background-color: rgba(128, 128, 128, 0.5);
+  margin-right: 0.4rem;
+  cursor: pointer;
+}
+.active {
+  background-color: rgb(100, 145, 48);
+}
+
+@media screen and (min-width: 700px) {
+  .arrow {
+    top: 50%;
+  }
+  .one {
+    flex-direction: row;
+  }
+
+  .sliderImg {
+    width: 50%;
+    height: 23rem;
+  }
+
+  .sliderRight {
+    width: 50%;
+    height: 23rem;
+  }
+
+  .back {
+    left: 2rem;
+  }
+
+  .next {
+    right: 2rem;
+  }
+}

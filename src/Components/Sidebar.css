@@ -1,0 +1,55 @@
+.wholeSidebar {
+  display: none;
+}
+
+@media screen and (max-width: 991px) {
+  .wholeSidebar {
+    display: block;
+    position: fixed;
+    height: 100vh;
+    width: 19rem;
+    z-index: 50;
+    right: 0;
+    top: 0;
+    background-color: rgba(255, 255, 255);
+    z-index: 50;
+    box-shadow: -3px 0 10px 1px rgba(76, 76, 78, 0.3);
+  }
+
+  .close {
+    /* transform: translateX(100%); */
+    display: none;
+  }
+
+  .cancel {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1.3rem;
+    padding-top: 2rem;
+    padding-bottom: 1.3rem;
+    font-size: 2rem;
+    color: rgba(76, 76, 78, 0.5);
+  }
+  .sidebarOptions > ul {
+    list-style-type: none;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* height: 65vh; */
+    /* justify-content: space-between; */
+    padding-left: 2rem;
+  }
+
+  .sidebarOptions > ul > li {
+    margin-bottom: 3rem;
+  }
+  .sidebarOptions > ul > li > a > button {
+    font-family: "B612 Mono", monospace;
+    font-size: 1.3rem;
+    line-height: 21.76px;
+    letter-spacing: 0.8px;
+    font-weight: 400;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+}

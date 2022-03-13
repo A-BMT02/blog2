@@ -1,0 +1,68 @@
+.mediumCard {
+  width: 100%;
+  max-width: 500px;
+}
+
+.mediumCard > .imageContainer {
+  height: 16rem;
+}
+
+.mediumCard > .imageContainer > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.mediumCard > .imageDetails {
+  width: 100%;
+  height: 16rem;
+  padding-top: 1.5rem;
+}
+
+@media screen and (min-width: 871px) {
+  .mediumCard {
+    width: 20.6rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .mediumCard {
+    width: 18.1rem;
+  }
+}
+
+.imageDetails > h4 {
+  color: #808080;
+  font-family: "Cabin, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+  font-size: 1rem;
+  letter-spacing: 1.6px;
+  line-height: 24.48px;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+
+.imageDetails > h3 {
+  font-family: "Cabin, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 13px;
+}
+
+.imageDetails > p,
+.imageDetails > h6 > span,
+.imageDetails > .date {
+  color: rgb(128, 128, 128);
+  font-size: 1rem;
+  font-family: "Cabin, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+}
+
+.imageDetails > p {
+  margin-bottom: 13px;
+}
+
+.imageDetails h6 {
+  font-size: 0.8rem;
+  font-family: "Cabin, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+  font-weight: 300;
+}

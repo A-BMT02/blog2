@@ -7,11 +7,12 @@ import Home from "./Components/Home" ;
 import Login  from './Pages/Login'; 
 import { UserProvider } from './Components/Context/UserContext';
 import { Signup } from './Pages/Signup';
+import Page from './Pages/Page';
 function App() {
   return (
     <DataContextProvider>
       <UserProvider>
-      <Router>
+      <Router basename="/blog2">
         <div className="App">
           <Routes>
                 <Route path="/" element={<Home/>}/>
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/blog" element={<><Post/></>}/>
                 <Route path="/read" element={<p>Under Construction</p>}/>
                 <Route path="*" element={<p>Under Construction</p>}/>
+                <Route path="page" element={<Page/>}/>
           </Routes>
         </div>
       </Router>

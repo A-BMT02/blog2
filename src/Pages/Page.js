@@ -43,7 +43,7 @@ I think it’s pretty nice to use this wherever possible. Any thoughts on this?
             <div className="commentCount">
                 <p>2 comments</p>
             </div>
-
+                 {/* First comment */}
             <div className='commentBox'>
                 <div className="readInfoHead ">
                     <div className="profilePic">

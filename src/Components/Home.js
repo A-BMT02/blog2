@@ -7,6 +7,7 @@ import  Medium  from "./Medium" ;
 import Small from "./Small" ; 
 import Subscribe from "./Subscribe" ; 
 import { useData } from './Context/DataContext';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
  const { data } = useData() ; 
@@ -24,11 +25,17 @@ export default function Home() {
 
                 <div className="editorsContainer">
                     <div className="lefteditor">
-                        <Medium details={data[0]}/>
+                        <Link to={`/page/${data[0].id}`}>
+                           <Medium details={data[0]}/>
+                        </Link>
                     </div>
                     <div className="righteditor">
                         { data.map( (item , index) => (
-                            index!==0 && <Small details={item}/> 
+                            index!==0 && 
+                        <Link to={`/page/${item.id}`}>
+                            <Small details={item}/> 
+                        </Link>
+
                         )) }
                         
                     </div>
@@ -42,7 +49,12 @@ export default function Home() {
 
                 <div className="trendingContainer">
                     { data.map( (item , index) => (
-                            index!==0 && <Small details={item}/> 
+                        
+                            index!==0 && 
+                        <Link to={`/page/${item.id}`}>
+                            <Small details={item}/> 
+                        </Link>
+
                         )) }
                 </div>
             </div>

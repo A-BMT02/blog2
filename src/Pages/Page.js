@@ -1,11 +1,24 @@
-import React from 'react'
+import React , { useEffect, useState } from 'react'
 import "./page.css"; 
+import { useParams } from "react-router-dom" ;
+import { useData } from '../Components/Context/DataContext';
 
 export default function Page() {
 
-    const commentBox = () => {
+    const [ target , setTarget] = useState({}) ; 
+  const { id } = useParams() ; 
+  const { data } = useData() ;
+    useEffect(() => {
+        data.map(item => {
+        if(item.id === id) {
+          setTarget(item) ; 
+        }
+    })
 
-    }
+    } , [])
+  
+    console.log(target) ; 
+  //console.log(id) ;
 
   return (
     <div className='wholePagePage'>
@@ -16,22 +29,22 @@ export default function Page() {
             </div>
             <div className='readInfo'>
                 <div className='line1'>
-                    <p>Ahmad Tahir</p>
+                    <p>{target.author}</p>
                     <button>Follow</button>
                 </div>
                 <div className='line2'>
-                <p>Programming</p>
-                <p>Oct 22, 2021</p>
+                <p>{target.category}</p>
+                <p>{target.date}</p>
                 </div>
             </div>
         </div>
 
         <div className='pageTitle container'>
-            <h2>Stop Using Conditional Statements Everywhere in JavaScript, Use an Object Literal instead</h2>
+            <h2>{target.title}</h2>
         </div>
 
         <div className='pagePic container'>
-            <img src="https://images.pexels.com/photos/1416736/pexels-photo-1416736.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'"/>
+            <img src={target.img}/>
         </div>
 
         <div className="blog container">

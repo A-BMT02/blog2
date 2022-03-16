@@ -51,11 +51,11 @@
     width: 100%;
   }
 
-  .righteditor > .smallCard {
+  .righteditor .smallCard {
     width: 20.6rem;
   }
 
-  .trendingContainer > .smallCard {
+  .trendingContainer .smallCard {
     width: 40rem;
     background-color: white;
   }
@@ -74,8 +74,8 @@
   .trendingContainer {
     margin-top: 2rem;
   }
-  .righteditor > .smallCard,
-  .trendingContainer > .smallCard {
+  .righteditor .smallCard,
+  .trendingContainer .smallCard {
     width: 18.1rem;
     height: 8rem;
   }

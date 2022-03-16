@@ -2,6 +2,11 @@ import React from 'react'
 import "./page.css"; 
 
 export default function Page() {
+
+    const commentBox = () => {
+
+    }
+
   return (
     <div className='wholePagePage'>
         <div className='pagePosition'>
@@ -39,53 +44,7 @@ Now, this code works exactly same as the above two codes do. But the difference 
 I think it’s pretty nice to use this wherever possible. Any thoughts on this?
         </div>
 
-        <div className='commentSection container'>
-            <div className="commentCount">
-                <p>2 comments</p>
-            </div>
-                 {/* First comment */}
-            <div className='commentBox'>
-                <div className="readInfoHead ">
-                    <div className="profilePic">
-                        <img src='https://images.pexels.com/photos/1416736/pexels-photo-1416736.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'/>
-                    </div>
-                <div className='readInfo'>
-                    <div className='line1'>
-                        <p>Ahmad Tahir</p>
-                    </div>
-                    <div className='line2'>
-                        <p>JANUARY 9, 2018 AT 2:21PM</p>
-                    </div>
-                    <div className='comment'>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?
-                    </div>
-                    <button>REPLY</button>
-
-                </div>
-                
-                </div>
-                    {/* Second comment */}
-                <div className="readInfoHead ">
-                    <div className="profilePic">
-                        <img src='https://images.pexels.com/photos/1416736/pexels-photo-1416736.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'/>
-                    </div>
-                <div className='readInfo'>
-                    <div className='line1'>
-                        <h2>Ahmad Tahir</h2>
-                    </div>
-                    <div className='line2'>
-                        <p>JANUARY 9, 2018 AT 2:21PM</p>
-                    </div>
-                    <div className='comment'>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?
-                    </div>
-                    <button>REPLY</button>
-
-                </div>
-                
-                </div>
-            </div>
-        </div>
+    
         </div>
     </div>
   )

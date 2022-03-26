@@ -48,16 +48,12 @@ export default function Page() {
         </div>
 
         <div className="blog container">
-        <h3>Object Literals</h3>
-        An Object Literal is one of the most popular and widely used pattern to define objects in JavaScript. It is a collection of key-value pairs. JavaScript being powerful, adds some additional functionalities to the simple objects through object literals.
-        <h3>How can we use Object Literal as a replacement to Conditional Statements?</h3>
-Let us consider an example scenario to understand this.
-A user enters an animal, we need to return the name of its baby (what is is called).
-Now, this code works exactly same as the above two codes do. But the difference is that it looks neater and has lesser conditions to check thereby reducing the load time.
-I think it’s pretty nice to use this wherever possible. Any thoughts on this?
+        <h3></h3>
+        
+        <h3></h3>
+            
         </div>
-
-    
+            {target.wholeBlog}
         </div>
     </div>
   )

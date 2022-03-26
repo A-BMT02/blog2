@@ -56,7 +56,8 @@ export function Post() {
             author : "Ahamad Tahir" , 
             category : "Programming"  ,
             date : `${months[today.getMonth()]} ${today.getDate()}` , 
-            header : "EDITOR'S CHOICE"
+            header : "EDITOR'S CHOICE" , 
+            wholeBlog: `${blog}`
         })
 
         console.log("done" , docRef );

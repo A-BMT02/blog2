@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 
 export default function Home() {
  const { data } = useData() ; 
+ //console.log(data) ; 
   
   return (
     <>

@@ -5,11 +5,14 @@ import { collection , addDoc } from "firebase/firestore";
 import { db } from "../Components/Context/Firebase";
 import "./Post.css" ;
 import { AiOutlineCamera } from "react-icons/ai" ; 
+import axios from "axios";
+import { useData } from "../Components/Context/DataContext";
 
 
 
 export function Post() {
 
+    const {data}  = useData() ; 
     const months = {
         0 : "Jan" , 
         1 : "Feb" , 
@@ -48,8 +51,9 @@ export function Post() {
     }
 
     const postBlog = async () => {
-        let today = new Date() ; 
-        const docRef = await addDoc(collection(db , "blogs") , {
+
+        let today = new Date() ;
+        axios.post("http://localhost:5000/post" , {
             img : `${preview}` ,  
             title : title, 
             sneak : `${blog.substring(0 , 250)}...` , 
@@ -57,11 +61,26 @@ export function Post() {
             category : "Programming"  ,
             date : `${months[today.getMonth()]} ${today.getDate()}` , 
             header : "EDITOR'S CHOICE" , 
-            wholeBlog: `${blog}`
+            wholeBlog: `${blog}` , 
+            id : `${data.length + 1}`
+        }).then(info => {
+            console.log(info.data) ; 
         })
 
-        console.log("done" , docRef );
-    }
+    //     let today = new Date() ; 
+    //     const docRef = await addDoc(collection(db , "blogs") , {
+    //         img : `${preview}` ,  
+    //         title : title, 
+    //         sneak : `${blog.substring(0 , 250)}...` , 
+    //         author : "Ahamad Tahir" , 
+    //         category : "Programming"  ,
+    //         date : `${months[today.getMonth()]} ${today.getDate()}` , 
+    //         header : "EDITOR'S CHOICE" , 
+    //         wholeBlog: `${blog}`
+    //     })
+
+    //     console.log("done" , docRef );
+     }
 
     const handleUpload = (e) => {
          console.log(e.target.files[0]);

@@ -10,14 +10,16 @@ export default function Page() {
   const { data } = useData() ;
     useEffect(() => {
         data.map(item => {
-        if(item.id === id) {
+        //console.log( id) ; 
+
+        if(item.id === parseInt(id)) {
           setTarget(item) ; 
         }
     })
 
     } , [])
   
-    console.log(target) ; 
+  
   //console.log(id) ;
 
   return (

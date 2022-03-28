@@ -1,5 +1,6 @@
 [
     {
+        "id" : 0 , 
         "author" : "Ahmad Tahir" , 
         "category" : "Programming" , 
         "date" : "Mar 20" , 
@@ -11,6 +12,7 @@
         "wholeBlog" : "This piece of code has been nostalgic for all fellow JS developers. But now it's 2022, let's make it a little handy and comfortable for our fingers.In this article, I have discussed a simple and common method that has rarely been used by developers.Let's get startedAs we know, we all use to log the date to console like this…console.log(\"I love js\") // I love jsconsole.log(4 + 4) // 8console.log(!true)  // falseLet's work a little smarter and more efficient 😎const log = (arg) => console.log(arg)Here, we have created a function with a shorter name — log relative to console.log(), you can even use a shorter name, Ummm 🤔 something like this…const l = (arg) => console.log(arg)So, you might be wondering what's the benefit of writing code like this? Let's discuss the benefits.BenefitsKeeps your code clean and slickImproves readabilityRelief to your fingers, don't have to write a long thingcomment more benefits if you can…" 
     } , 
     {
+        "id" : 1 , 
         "author" : "Ahmad Tahir" , 
         "category" : "Programming" , 
         "date" : "Mar 20" , 
@@ -22,6 +24,7 @@
         "wholeBlog" : "This piece of code has been nostalgic for all fellow JS developers. But now it's 2022, let's make it a little handy and comfortable for our fingers.In this article, I have discussed a simple and common method that has rarely been used by developers.Let's get startedAs we know, we all use to log the date to console like this…console.log(\"I love js\") // I love jsconsole.log(4 + 4) // 8console.log(!true)  // falseLet's work a little smarter and more efficient 😎const log = (arg) => console.log(arg)Here, we have created a function with a shorter name — log relative to console.log(), you can even use a shorter name, Ummm 🤔 something like this…const l = (arg) => console.log(arg)So, you might be wondering what's the benefit of writing code like this? Let's discuss the benefits.BenefitsKeeps your code clean and slickImproves readabilityRelief to your fingers, don't have to write a long thingcomment more benefits if you can…" 
     } , 
     {
+        "id" : 2 , 
         "author" : "Ahmad Tahir" , 
         "category" : "Programming" , 
         "date" : "Mar 20" , 
@@ -33,6 +36,7 @@
         "wholeBlog" : "This piece of code has been nostalgic for all fellow JS developers. But now it's 2022, let's make it a little handy and comfortable for our fingers.In this article, I have discussed a simple and common method that has rarely been used by developers.Let's get startedAs we know, we all use to log the date to console like this…console.log(\"I love js\") // I love jsconsole.log(4 + 4) // 8console.log(!true)  // falseLet's work a little smarter and more efficient 😎const log = (arg) => console.log(arg)Here, we have created a function with a shorter name — log relative to console.log(), you can even use a shorter name, Ummm 🤔 something like this…const l = (arg) => console.log(arg)So, you might be wondering what's the benefit of writing code like this? Let's discuss the benefits.BenefitsKeeps your code clean and slickImproves readabilityRelief to your fingers, don't have to write a long thingcomment more benefits if you can…" 
     } , 
     {
+        "id" : 3 , 
         "author" : "Ahmad Tahir" , 
         "category" : "Programming" , 
         "date" : "Mar 20" , 
@@ -44,6 +48,7 @@
         "wholeBlog" : "This piece of code has been nostalgic for all fellow JS developers. But now it's 2022, let's make it a little handy and comfortable for our fingers.In this article, I have discussed a simple and common method that has rarely been used by developers.Let's get startedAs we know, we all use to log the date to console like this…console.log(\"I love js\") // I love jsconsole.log(4 + 4) // 8console.log(!true)  // falseLet's work a little smarter and more efficient 😎const log = (arg) => console.log(arg)Here, we have created a function with a shorter name — log relative to console.log(), you can even use a shorter name, Ummm 🤔 something like this…const l = (arg) => console.log(arg)So, you might be wondering what's the benefit of writing code like this? Let's discuss the benefits.BenefitsKeeps your code clean and slickImproves readabilityRelief to your fingers, don't have to write a long thingcomment more benefits if you can…" 
     } , 
     {
+        "id" : 4 , 
         "author" : "Ahmad Tahir" , 
         "category" : "Programming" , 
         "date" : "Mar 20" , 

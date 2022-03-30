@@ -28,15 +28,7 @@ const addData = (req , res) => {
             })  
         }
     })
-    //  fs.writeFile("./data.json" , JSON.stringify(req.body)  ,(err) => {
-    //      if(err) {
-    //          console.log("error") ;
-    //      } else {
-    //          console.log("successfully added") ; 
-    //      }
-    //  })
-
-    //console.log(req.body) ; 
+ 
 }
 
 module.exports = {

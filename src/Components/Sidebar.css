@@ -1,5 +1,6 @@
 .wholeSidebar {
   display: none;
+  width: 0;
 }
 
 @media screen and (max-width: 991px) {
@@ -11,9 +12,11 @@
     z-index: 50;
     right: 0;
     top: 0;
-    background-color: rgba(255, 255, 255);
+    background-color: rgba(30, 28, 28, 0.9);
+    color: rgb(100, 145, 48);
     z-index: 50;
     box-shadow: -3px 0 10px 1px rgba(76, 76, 78, 0.3);
+    /* filter: blur(1px); */
   }
 
   .close {
@@ -28,7 +31,8 @@
     padding-top: 2rem;
     padding-bottom: 1.3rem;
     font-size: 2rem;
-    color: rgba(76, 76, 78, 0.5);
+    color: rgb(100, 145, 48);
+    /* color: rgba(76, 76, 78, 0.5); */
   }
   .sidebarOptions > ul {
     list-style-type: none;
@@ -51,5 +55,6 @@
     cursor: pointer;
     border: none;
     background: transparent;
+    color: rgb(100, 145, 48);
   }
 }

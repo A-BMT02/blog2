@@ -1,0 +1,12 @@
+.leftSide {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  top: 3.6rem;
+}
+
+.leftSide > ul > li {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  padding: 0 2rem;
+}

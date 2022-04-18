@@ -31,14 +31,14 @@ export const UserProvider = props => {
          topbar.length = 0  ; 
       if(user) {
          setUser(user) ;
-         topbar.push("Post a Blog")  ;
-         topbar.push("Read")
+         topbar.push("Home")  ;
+         topbar.push("Post")
          topbar.push("Log Out") ;
       } else {
         setUser(null) ;
         topbar.push("About Us")  ;
-        topbar.push("Log In")
-        topbar.push("Get Started") ;
+        topbar.push("Get Started")
+        topbar.push("Log In") ;
       }
 
     setLoading(false) ;

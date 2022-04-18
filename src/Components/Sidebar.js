@@ -15,7 +15,7 @@ export default function Sidebar({handleClose}) {
 
   const redirect = (e) => {
     switch(e.target.value){
-      case "Post a Blog" : 
+      case "Post" : 
         navigate("/blog") ;
         break;
 

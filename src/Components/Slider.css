@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
   /* height: 46rem; */
+  border: 2px outset white;
 }
 
 .sliderImg {
@@ -40,7 +41,6 @@
   width: 100%;
   padding: 0 30px;
   padding-top: 30px;
-  background-color: #f8f9fa;
   height: fit-content;
 }
 
@@ -61,7 +61,7 @@
 }
 
 .sliderRight > h4 {
-  color: #808080;
+  color: #ffffff;
   font-size: 1rem;
   letter-spacing: 1.6px;
   line-height: 24.48px;

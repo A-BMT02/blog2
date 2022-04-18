@@ -5,6 +5,7 @@
   position: sticky;
   z-index: 50;
   margin-top: 3rem;
+  color: rgb(100, 145, 48);
 }
 
 .nav-list {
@@ -53,6 +54,7 @@
   }
 
   .nav-list > ul > li a > button {
+    color: rgb(100, 145, 48);
     font-family: "B612 Mono", monospace;
     font-size: 1.3rem;
     line-height: 21.76px;
@@ -61,5 +63,9 @@
     cursor: pointer;
     border: none;
     background: transparent;
+  }
+
+  .nav-list > ul > li a > button:hover {
+    border-bottom: 1px solid rgb(100, 145, 48);
   }
 }

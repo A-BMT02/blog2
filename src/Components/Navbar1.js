@@ -21,7 +21,7 @@ export default function Navbar() {
   
   const redirect = (e) => {
     switch(e.target.value){
-      case "Post a Blog" : 
+      case "Post" : 
         navigate("/blog") ;
         break;
 

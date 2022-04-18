@@ -1,0 +1,38 @@
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+@media screen and (min-width: 1300px) {
+  .bottom {
+    display: none;
+  }
+}
+.posts {
+  align-items: center;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.MilestoneBox,
+.ChallengeBox,
+.buggedBox {
+  margin-bottom: 2rem;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.boxTitle {
+  color: rgb(100, 145, 48);
+  margin-bottom: 0.5rem;
+}
+
+.buggedBox > .boxTitle {
+  color: rgb(173, 40, 49);
+}

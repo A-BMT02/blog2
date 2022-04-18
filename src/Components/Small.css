@@ -1,8 +1,10 @@
 .smallCard {
   width: 100%;
   max-width: 31.8rem;
-  height: 7rem;
+  max-height: 8rem;
+  height: 8rem;
   display: flex;
+  border: 1px outset white;
 }
 
 .smallCard > .imageContainer {
@@ -17,14 +19,14 @@
   /* height: 9rem; */
 }
 .smallCard .imageDetails {
+  background-color: #1e1c1c;
   width: 65%;
   height: 100%;
-  background-color: #f8f9fa;
   padding: 1rem;
+  color: rgba(255, 255, 255, 1);
 }
 
-.smallCard .imageDetails > h4 {
-  color: #808080;
+/* .smallCard .imageDetails > h4 {
   font-family: "Cabin, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
   font-size: 1rem;
   letter-spacing: 1.6px;
@@ -32,30 +34,33 @@
   font-weight: 300;
   text-transform: uppercase;
   margin-bottom: 7px;
-}
+} */
 
 .smallCard .imageDetails > h3 {
   font-family: "Cabin, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
-  font-size: 0.94rem;
+  font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 13px;
+  /* margin-bottom: 10px; */
 }
 
-.smallCard .imageDetails > h6 > span,
+/* .smallCard .imageDetails > h6 > span,
 .smallCard .imageDetails > .date {
   color: rgb(128, 128, 128);
   font-size: 0.8rem;
   font-family: "Cabin, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
-}
+} */
 
 .smallCard .imageDetails > p {
-  margin-bottom: 13px;
+  /* margin-bottom: 13px; */
+  display: flex;
+  justify-content: flex-end;
 }
 
 .smallCard .imageDetails h6 {
   font-size: 0.8rem;
   font-family: "Cabin, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
   font-weight: 300;
+  margin-bottom: 0.2rem;
 }
 /* 
 @media screen and (min-width: 871px) {

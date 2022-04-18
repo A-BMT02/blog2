@@ -1,0 +1,49 @@
+.centuryBox {
+  margin-top: 2rem;
+}
+
+.form100 > label {
+  display: block;
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.form100 > .addPrior {
+  border: 3px solid white;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1rem;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.form100 input {
+  width: 85%;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.plusIcon {
+  font-size: 2rem;
+  color: rgb(100, 145, 48);
+}
+
+.priorSkills {
+  /* border: 1px solid red; */
+  display: flex;
+  max-width: 300px;
+  flex-wrap: wrap;
+}
+
+.priorSkills > p {
+  margin-right: 2rem;
+  background-color: rgb(100, 145, 48);
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 6px;
+}

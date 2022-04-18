@@ -8,13 +8,19 @@ import Small from "./Small" ;
 import Subscribe from "./Subscribe" ; 
 import { useData } from './Context/DataContext';
 import { Link } from 'react-router-dom';
+import LeftSide from './LeftSide';
 
 export default function Home() {
  const { data } = useData() ; 
  console.log(data) ; 
   
   return (
-    <>
+    <div className='wholeHome'>
+    
+    <div className='leftSideContainer'>
+        <LeftSide/>
+    </div>
+    <div className='rightHome'>
         <Navbar1/>
         <Search/>
         <Slider/>
@@ -62,6 +68,7 @@ export default function Home() {
         </div>
         
         <Subscribe/>
-    </>
+        </div>
+    </div>
   )
 }

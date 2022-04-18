@@ -7,6 +7,7 @@ import "./Post.css" ;
 import { AiOutlineCamera } from "react-icons/ai" ; 
 import axios from "axios";
 import { useData } from "../Components/Context/DataContext";
+import { findAllByDisplayValue } from "@testing-library/react";
 
 
 
@@ -62,7 +63,8 @@ export function Post() {
             date : `${months[today.getMonth()]} ${today.getDate()}` , 
             header : "EDITOR'S CHOICE" , 
             wholeBlog: `${blog}` , 
-            id : `${data.length + 1}`
+            id : `${data.length + 1}` , 
+            editorsPick : false 
         }).then(info => {
             console.log(info.data) ; 
         })

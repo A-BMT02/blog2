@@ -8,6 +8,10 @@ import Login  from './Pages/Login';
 import { UserProvider } from './Components/Context/UserContext';
 import { Signup } from './Pages/Signup';
 import Page from './Pages/Page';
+import First from './Pages/First';
+import Explore from "./Pages/Explore" ; 
+import Challenges from './Pages/Challenges';
+import CenturyOfCode from './Pages/CenturyOfCode';
 function App() {
   return (
     <DataContextProvider>
@@ -15,13 +19,16 @@ function App() {
       <Router basename="/blog2">
         <div className="App">
           <Routes>
-                <Route path="/" element={<Home/>}/>
+                <Route exact path="/" element={<Home/>}/>
                 <Route path="/login" element={<><Login/></>} />
                 <Route path="signup" element={<><Signup/></>}/>
                 <Route path="/blog" element={<><Post/></>}/>
                 <Route path="/read" element={<p>Under Construction</p>}/>
-                <Route path="*" element={<p>Under Construction</p>}/>
+                <Route path="/first" element={<First/>}/>
+                <Route path="/Home" element={<Explore/>}/>
                 <Route path="page/:id" element={<Page/>}/>
+                <Route path="/Challenges" element={<Challenges/>}/>
+                <Route path="/Challenges/centuryofchallenge" element={<CenturyOfCode/>}/>
           </Routes>
         </div>
       </Router>

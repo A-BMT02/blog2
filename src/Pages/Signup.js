@@ -143,7 +143,7 @@ export function Signup() {
             </div>
 
             <div className="loginBtnContainer">
-                <button type="submit" type="submit">SIGNUP</button>
+                <button type="submit">SIGNUP</button>
             </div>
 
             <div className="dontHave">

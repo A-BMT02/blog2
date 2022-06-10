@@ -16,6 +16,8 @@ export const DataContextProvider = (props) => {
   const [ loading , setLoading] = useState(true) ;
   const [data , setData] = useState([]) ;
   const [editorsPick , setEditorsPick]  = useState([]);
+  const [allTweets , setAllTweets] = useState([]) ;
+  const [allChallenges , setAllChallenges] = useState([]) ;
 
 //   useEffect(() => {
 //     setLoading(true);
@@ -58,13 +60,26 @@ useEffect(() => {
         setEditorsPick ( prev => [item , ...prev ] );
       }
      })
-    
-    setLoading(false) ; 
+
+        axios.get('http://localhost:5000/api/get/tweets')
+        .then(result => {
+          setAllTweets(result.data) ;
+
+          axios.get('http://localhost:5000/api/get/allchallenges')
+          .then(result2 => {
+            setAllChallenges(result2.data) ;
+            setLoading(false) ; 
+
+          })
+        })
+
   })
 } , [])
+
+
   
   return (
-    <dataContext.Provider value={{data , topbar , editorsPick }}>
+    <dataContext.Provider value={{data , allChallenges , topbar , editorsPick , allTweets}}>
         {!loading && props.children}
     </dataContext.Provider>
   )

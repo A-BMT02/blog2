@@ -7,10 +7,14 @@ import "./Post.css" ;
 import { AiOutlineCamera } from "react-icons/ai" ; 
 import axios from "axios";
 import { useData } from "../Components/Context/DataContext";
+import { findAllByDisplayValue } from "@testing-library/react";
+import { Navigate, useNavigate } from 'react-router-dom';
+import Preview from "./Preview";
 
 
 
 export function Post() {
+    const navigate = useNavigate() ;
 
     const {data}  = useData() ; 
     const months = {
@@ -35,10 +39,12 @@ export function Post() {
     const [blog , setBlog] = useState("") ;
     const [ image , setImage ] = useState(null);
     const [ preview , setPreview] = useState();
+    const [final , setFinal] = useState(false) ; 
+    
 
-    const autoheight = (e) => {
-        e.target.style.height = `${e.target.scrollHeight}px`;
-    }
+const autoheight = (e) => {
+    e.target.style.height = `${e.target.scrollHeight}px`;
+}
 
     const handleBlogChange = (e) => {
         autoheight(e) ; 
@@ -50,10 +56,28 @@ export function Post() {
         setTitle(e.target.value) ;
     }
 
-    const postBlog = async () => {
 
+    const postBlog = async () => {
+        setFinal(true) ; 
+        // let today = new Date() ;
+        // axios.post("http://localhost:5000/api/post/blog" , {
+        //     img : `${preview}` ,  
+        //     title : title, 
+        //     sneak : `${blog.substring(0 , 250)}...` , 
+        //     author : "Ahamad Tahir" , 
+        //     category : "Programming"  ,
+        //     date : `${months[today.getMonth()]} ${today.getDate()}` , 
+        //     header : "EDITOR'S CHOICE" , 
+        //     wholeBlog: `${blog}` , 
+        //     id : `${data.length + 1}` , 
+        //     editorsPick : false 
+        // }).then(info => {
+        //     console.log(info.data) ; 
+        // })
+     }
         let today = new Date() ;
-        axios.post("http://localhost:5000/post" , {
+
+     const finalData = {
             img : `${preview}` ,  
             title : title, 
             sneak : `${blog.substring(0 , 250)}...` , 
@@ -62,25 +86,10 @@ export function Post() {
             date : `${months[today.getMonth()]} ${today.getDate()}` , 
             header : "EDITOR'S CHOICE" , 
             wholeBlog: `${blog}` , 
-            id : `${data.length + 1}`
-        }).then(info => {
-            console.log(info.data) ; 
-        })
-
-    //     let today = new Date() ; 
-    //     const docRef = await addDoc(collection(db , "blogs") , {
-    //         img : `${preview}` ,  
-    //         title : title, 
-    //         sneak : `${blog.substring(0 , 250)}...` , 
-    //         author : "Ahamad Tahir" , 
-    //         category : "Programming"  ,
-    //         date : `${months[today.getMonth()]} ${today.getDate()}` , 
-    //         header : "EDITOR'S CHOICE" , 
-    //         wholeBlog: `${blog}`
-    //     })
-
-    //     console.log("done" , docRef );
+            id : `${data.length + 1}` , 
+            editorsPick : false 
      }
+
 
     const handleUpload = (e) => {
          console.log(e.target.files[0]);
@@ -98,7 +107,7 @@ export function Post() {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setPreview(reader.result);
-                console.log(preview);
+                // console.log(preview);
             }
             reader.readAsDataURL(image);
         } else {
@@ -109,10 +118,14 @@ export function Post() {
 
     return ( <div>
         {/* <Navbar1/> */}
+        <div className={final ? '' : "hide"}> 
+            <Preview data={finalData}/>
+        </div>
         <div className="postNav container">
             <button onClick={e => postBlog()}>Post</button>
         </div>
-        <div className="wholeBlogPage container" >
+        
+        <div className={ final ? 'hide' :  "wholeBlogPage container"} >
             <div className="addons container">
                 {image ? <img src={preview} ref={imgRef} style={{width : "100%" , height : "100%"}}></img> : (  <div> 
                 <label htmlFor="camera" >

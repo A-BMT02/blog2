@@ -1,0 +1,123 @@
+.h2Box > h2 {
+  font-size: 3rem;
+  border-bottom: 2px solid rgb(100, 145, 48);
+  padding-bottom: 1rem;
+
+  /* color: rgb(100, 145, 48); */
+}
+
+.trendingStories {
+  margin-bottom: 2rem;
+}
+/* .center {
+  margin-bottom: 6rem;
+} */
+
+/* .documentImage {
+  display: none;
+} */
+
+.desktopImage {
+  display: none;
+}
+
+.mobileImage {
+  display: inline;
+}
+@media screen and (min-width: 700px) {
+  .documentImage {
+    display: inline;
+    width: 50%;
+  }
+
+  .desktopImage {
+    display: inline;
+  }
+
+  .mobileImage {
+    display: none;
+  }
+
+  .centerBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* .center {
+    width: 50%;
+  } */
+}
+/* .center > img {
+  width: 50px;
+  height: 40px;
+} */
+
+.trendingStories > a > .smallCard,
+.buggedContainer > a > .smallCard {
+  margin-bottom: 1rem;
+}
+
+.h4Box > h4 {
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  max-width: 400px;
+}
+
+.trendingStories > h2,
+.buggedContainer > h2 {
+  margin-bottom: 1rem;
+  padding-bottom: 4px;
+  width: fit-content;
+  border-bottom: 1px solid rgb(100, 145, 48);
+}
+
+.h2Box {
+  margin-bottom: 1rem;
+}
+.h4Box {
+  margin-bottom: 2rem;
+}
+/* .capture {
+  padding-top: 2rem;
+} */
+
+.bigColoured {
+  color: rgb(100, 145, 48);
+}
+
+.firstHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.h2Box {
+  max-width: 400px;
+}
+
+.firstHeader > button,
+.center > button {
+  color: #1e1c1c;
+  background-color: white;
+  border-radius: 3rem;
+  padding: 0.5rem;
+  border: none;
+  border: 3px solid rgb(100, 145, 48);
+}
+
+.firstHeader > button:hover,
+.center > button:hover {
+  background-color: rgb(100, 145, 48);
+  color: white;
+}
+
+.capture > .wholeSubscribe > .background > .left > .title > h2 {
+  font-size: 1.9rem;
+}
+
+.capture > .wholeSubscribe > .background > .left > .content > p {
+  font-size: 1.2rem;
+}

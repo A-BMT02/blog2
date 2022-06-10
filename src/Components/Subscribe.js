@@ -10,7 +10,7 @@ export default function Subscribe() {
                 <h2>Newslettter Subscribe</h2>
             </div>
             <div className="content">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis aspernatur ut at quae omnis pariatur obcaecati possimus nisi ea iste!</p>
+                <p>Recive updates on peoples progress as they navigate into tech</p>
             </div>
         </div>
 

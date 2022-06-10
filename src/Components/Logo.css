@@ -8,8 +8,9 @@
   cursor: pointer;
   min-width: 8rem;
   min-height: 4rem;
+  color: white;
 }
 
 .logoContainer > a:hover {
-  color: rgb(100, 145, 48);
+  color:rgb(100, 145, 48) ;
 }

@@ -10,7 +10,8 @@
 
 .loginContainer {
   width: 25rem;
-  background-color: white;
+  background-color: #1e1c1c;
+
   padding: 2rem;
   height: fit-content;
   text-align: center;
@@ -71,6 +72,10 @@
 
 .dontHave {
   margin-bottom: 4rem;
+}
+
+.dontHave > p > a {
+  color: rgb(100, 145, 48);
 }
 
 .loginBtnContainer > button {

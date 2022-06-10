@@ -7,10 +7,10 @@ export default function Login() {
 
     const emailRef = useRef(null) ; 
     const passwordRef = useRef(null) ;
-
+    // const { user } = useAuth() ; 
     const [email , setEmail] = useState("") ; 
     const [ password , setPassword ] = useState("") ;
-     const [ error , setError ] = useState("") ;
+    const [ error , setError ] = useState("") ;
     const [ errorAnimate , setErrorAnimate] = useState(false) ;  
    
     const { login }   = useAuth() ; 
@@ -23,8 +23,7 @@ export default function Login() {
     const emailFocus = () => {
         const email = emailRef.current ; 
         email.style.top = "-40%" ; 
-        resetError()
-
+        resetError() ;
     }
 
     const passwordFocus = () => {
@@ -57,12 +56,17 @@ export default function Login() {
             setErrorAnimate(false) ;
         }
         try {
-            await login(email , password) ; 
-            setError("") ;
-            setErrorAnimate(false) ;
-            navigate("/") ; 
+            const res = await login(email , password) ;
+            if(res.access) {
+                setError("") ;
+                setErrorAnimate(false) ; 
+                navigate("/home") ; 
+            } else {
+                throw res.data
+            }
+            
         } catch(err) {
-            const errMsg = err.message
+            const errMsg = err
             setError(errMsg) ; 
             setErrorAnimate(true) ;
         }
@@ -116,7 +120,7 @@ export default function Login() {
             </div>
 
             <div className="dontHave">
-                <p>Don't have an account ? <Link to="/signup" style={{textDecoration : "none"}, {cursor : "pointer"}}>Sign up</Link></p>
+                <p>Don't have an account ? <Link to="/signup">Sign up</Link></p>
             </div>
         </form>
     </div>

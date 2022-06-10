@@ -50,12 +50,9 @@ export default function Page() {
         </div>
 
         <div className="blog container">
-        <h3></h3>
-        
-        <h3></h3>
-            
-        </div>
             {target.wholeBlog}
+
+        </div>
         </div>
     </div>
   )

@@ -14,6 +14,6 @@ export default function Logo() {
   // } , [])
 
   return <div className="logoContainer">
-      <a>Blogger</a>
+      <a>Bugger</a>
   </div>;
 };

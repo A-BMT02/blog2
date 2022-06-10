@@ -7,15 +7,15 @@
 .wholePagePage {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   color: rgba(41, 41, 41, 1);
   font-family: "Shizuru", cursive;
   /* word-spacing: 5; */
 }
 
-.pagePosition {
+/* .pagePosition {
   max-width: 783px;
-}
+} */
 
 .profilePic img {
   border-radius: 50%;
@@ -42,6 +42,10 @@
   align-items: center;
 }
 
+.readInfo > .line1 {
+  color: rgb(100, 145, 48);
+}
+
 .readInfo > .line2 > p {
   margin-top: 0.5rem;
   font-size: 0.8rem;
@@ -62,7 +66,9 @@
 }
 
 .pageTitle > h2 {
+  color: rgb(100, 145, 48);
   font-size: 2.1rem;
+  border-bottom: 2px outset white;
 }
 
 .pagePic {
@@ -77,10 +83,12 @@
   object-fit: cover;
   max-width: 600px;
   border: 1px solid rgba(100, 145, 48, 0.8);
+  border-radius: 1rem;
 }
 
 .blog {
   margin-top: 2rem;
+  color: rgb(255, 255, 255);
 }
 
 .blog > h3 {

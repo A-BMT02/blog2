@@ -9,6 +9,10 @@ import Subscribe from "./Subscribe" ;
 import { useData } from './Context/DataContext';
 import { Link } from 'react-router-dom';
 import LeftSide from './LeftSide';
+import { HiOutlineHome } from "react-icons/hi" ;
+import { AiOutlineSearch } from "react-icons/ai" ; 
+import { BiTargetLock } from "react-icons/bi" ; 
+import { VscAccount } from "react-icons/vsc" ; 
 
 export default function Home() {
  const { data } = useData() ; 
@@ -17,11 +21,32 @@ export default function Home() {
   return (
     <div className='wholeHome'>
     
-    <div className='leftSideContainer'>
+    {/* <div className='leftSideContainer'>
         <LeftSide/>
+    </div> */}
+
+    <div className="smallSide side">
+        <p><Link to='/profile'><VscAccount/></Link></p>
+        <p><Link to="/Home"><HiOutlineHome/></Link></p>
+        <p><Link to ="/"><AiOutlineSearch/></Link></p>
+        <p><Link to="/Challenges"><BiTargetLock/></Link></p>
     </div>
+
+    <div className="bigSide side">
+        <p><Link to='/profile'><VscAccount/>Profile</Link></p>
+        <p><Link to="/Home"><HiOutlineHome/>Home</Link></p>
+        <p><Link to ="/"><AiOutlineSearch/>Explore</Link></p>
+        <p><Link to="/Challenges"><BiTargetLock/>Challenges</Link></p>
+    </div>
+
+    <div className = "bottom">
+        <p><Link to="/Home"><HiOutlineHome/></Link></p>
+        <p><Link to ="/"><AiOutlineSearch/></Link></p>
+        <p><Link to="/Challenges"><BiTargetLock/></Link></p>
+    </div>
+
     <div className='rightHome'>
-        <Navbar1/>
+        {/* <Navbar1/> */}
         <Search/>
         <Slider/>
         <div className="container HomeSectionA">

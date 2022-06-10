@@ -7,8 +7,8 @@
 .myChallenges > h2,
 .joinChallenges > h2,
 .customChallenges > h2 {
-  color: rgb(100, 145, 48);
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid rgb(100, 145, 48);
+  color: white;
   padding-bottom: 0.5rem;
   font-size: 2rem;
 }
@@ -28,7 +28,10 @@
   flex-direction: column;
   border: 1px outset white;
   padding: 1rem;
-  border-radius: 20px;
+  /* border-radius: 20px; */
+  border-radius: 10px;
+  border-left: 0;
+  border-right: 0;
 }
 
 .myChallenge > h3,
@@ -44,5 +47,14 @@
   text-align: right;
 }
 
-.joinChallenges {
+@media screen and (min-width: 600px) {
+  .challengesBox {
+    margin-left: 82px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .challengesBox {
+    margin-left: 194px;
+  }
 }

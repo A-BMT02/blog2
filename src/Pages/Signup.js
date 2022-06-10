@@ -6,7 +6,6 @@ import { useAuth } from '../Components/Context/UserContext';
 
 
 export function Signup() {
-
     const emailRef = useRef(null) ; 
     const passwordRef = useRef(null) ;
     const password2Ref = useRef(null) ;
@@ -78,12 +77,23 @@ export function Signup() {
         } 
         e.preventDefault() ; 
         if( password ===  password2) {
+
             try{
-                await signup(email , password) ; 
-                setError("") ;
-                setErrorAnimate(false) ;
-                }catch(err) {
-                const errMsg = err.message
+                const token = await signup(email , password) ; 
+                // console.log(token) ;
+                if(token.access) {
+                    setError("") ;
+                    setErrorAnimate(false) ;
+                    navigate('/login') ;
+                }
+                 else {
+                     throw token.data ;
+                    //  console.log('error signing up user') ; 
+                 }
+                }
+            catch(err) {
+                // console.log(err) ; 
+                const errMsg = err
                 setError(errMsg) ; 
                 setErrorAnimate(true) ;
             }
@@ -147,7 +157,7 @@ export function Signup() {
             </div>
 
             <div className="dontHave">
-                <p>Already have an account ? <Link to="/login" style={{textDecoration : "none"}, {cursor : "pointer"}}>Log In</Link></p>
+                <p>Already have an account ? <Link to="/login" >Log In</Link></p>
             </div>
         </form>
     </div>

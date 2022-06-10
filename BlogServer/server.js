@@ -6,7 +6,17 @@ const bodyParser = require('body-parser') ;
 const mongoose = require('mongoose') ;
 const jwt = require('jsonwebtoken') ; 
 const bcrypt = require('bcrypt') ; 
+const { addChallenge } = require('./utils') ; 
+const dotenv = require('dotenv') ; 
+const { addUser }  = require("./utils") ;
+const { loginUser } = require("./utils") ; 
+const verify = require("./verifyToken") ; 
+const authRoute = require('./routes/auth') ;
+const postRoute = require("./routes/posts") ;
+const getRoute = require('./routes/gets') ; 
+const putsRoute = require('./routes/puts') ; 
 
+dotenv.config();
 const PORT = process.env.PORT || 5000 ; 
 
 const app = express()  ;
@@ -14,31 +24,39 @@ const app = express()  ;
 app.use(bodyParser.urlencoded({limit: '50mb' , extended : false }))
 
 app.use(bodyParser.json({limit: '50mb'}))
-app.use(cors()) ; 
+app.use(cors()) ;  
 
-const password = "Mongodb_02" ; 
+app.use('/api/user' , authRoute) ; 
+app.use('/api/post' , postRoute) ; 
+app.use('/api/get' , getRoute) ; 
+app.use('/api/put' , putsRoute) ; 
 
-mongoose.connect(`mongodb+srv://AHMADBMTAHIR:${password}@cluster0.vnn9t.mongodb.net/blog2?retryWrites=true&w=majority`)
+mongoose.connect(process.env.DB_CONNECT , () => {
+    console.log("Connected to database") ; 
+ 
+})
 
-// const db = mongoose.connection ; 
-// db.on("error" , console.error.bind(console , "connection error : ")) ; 
-// db.once("open" , function() {
-//     console.log("successfully connected to database") ; 
+// app.post("/register" , (req , res) => {
+//     addUser(req , res) ; 
+// })
 
-// }) 
+// app.post('/login' , (req , res) => {
+//     loginUser(req , res) ; 
+// })
 
 app.get("/data" , (req , res) => {
     getData(req , res) ;  
-})
+}) 
 
-app.post("/post" , (req , res) => {
-    addData(req , res) ; 
-})
+// app.post("/blog" , (req , res) => {
+//     addData(req , res) ; 
+// })
 
-app.post('/login' , (req , res) => {
+// app.post("/100daysofcode" , verify , (req , res) => {
+//     addChallenge(req , res) ;
+//     console.log(req.body) ; 
+// })
 
-    const username = req.body.username  ;
-})
 
 const users = [
     // {
@@ -84,6 +102,7 @@ app.post("/users/login" , async (req , res) => {
         res.status(500).send() ;
     }
 })
+
 
 app.listen(PORT , () => {
     console.log("server running" , PORT) ; 

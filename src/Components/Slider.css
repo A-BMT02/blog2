@@ -23,6 +23,9 @@
   flex-direction: column;
   /* height: 46rem; */
   border: 2px outset white;
+  border-radius: 10px;
+  border-left: 0;
+  border-right: 0;
 }
 
 .sliderImg {

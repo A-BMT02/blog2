@@ -1,5 +1,5 @@
 .wholeBlogPage {
-  margin-top: 7rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   max-width: 800px;
@@ -32,12 +32,18 @@
   font-size: 2.2rem;
   overflow: hidden;
   text-align: justify;
+  padding: 1rem ;
+  margin-bottom: 1rem ;
+}
+
+.wholeBlogPage>article .titleContainer>textarea {
+  text-align: center;
 }
 
 .postNav {
   display: flex;
   justify-content: flex-end;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 
 .postNav > button {
@@ -56,4 +62,15 @@
 
 .camera {
   font-size: 2rem;
+}
+
+.review {
+  position : absolute ;
+  width : 100vw ; 
+  height: 100vh;
+  background-color: red;
+}
+
+.hide {
+  display : none ; 
 }

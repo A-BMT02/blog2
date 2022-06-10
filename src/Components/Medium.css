@@ -3,6 +3,9 @@
   max-width: 500px;
   border: 1px solid white;
   padding: 10px;
+  border-radius: 10px;
+  border-left: 0;
+  border-right: 0;
 }
 
 .mediumCard > .imageContainer {

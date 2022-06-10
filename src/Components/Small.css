@@ -5,6 +5,9 @@
   height: 8rem;
   display: flex;
   border: 1px outset white;
+  border-radius: 10px;
+  border-left: 0;
+  border-right: 0;
 }
 
 .smallCard > .imageContainer {

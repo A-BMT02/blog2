@@ -21,7 +21,7 @@ function App() {
   return (
     <DataContextProvider>
       <UserProvider>
-      <Router basename="/Bugger">
+      <Router basename="/blog2">
         <div className="App">
           <Routes>
                 <Route exact path="/" element={<Home/>}/>

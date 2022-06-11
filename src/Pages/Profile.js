@@ -12,7 +12,7 @@ import axios from "axios" ;
 import { useAuth } from '../Components/Context/UserContext';
 import EditProfile from '../Components/EditProfile';
 
-export default function profile() {
+export default function Profile() {
 
     const { user } = useAuth() ; 
     console.log(user) ;

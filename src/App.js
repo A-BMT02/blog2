@@ -24,13 +24,14 @@ function App() {
       <Router basename="/blog2">
         <div className="App">
           <Routes>
-                <Route exact path="/" element={<Home/>}/>
+                <Route exact path="/" element={<First/>}/>
                 <Route path="/login" element={<><Login/></>} />
                 <Route path="signup" element={<><Signup/></>}/>
                 <Route path="/blog" element={<><Post/></>}/>
                 <Route path="/read" element={<p>Under Construction</p>}/>
-                <Route path="/first" element={<First/>}/>
+                {/* <Route path="/first" element={<First/>}/> */}
                 <Route path="/Home" element={<Explore/>}/>
+                <Route path="/explore" element={<Home/>}/>
                 <Route path="page/:id" element={<Page/>}/>
                 <Route path="/Challenges" element={<Challenges/>}/>
                 <Route path="/Challenges/centuryofchallenge" element={<CenturyOfCode/>}/>

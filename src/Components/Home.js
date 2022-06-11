@@ -28,20 +28,20 @@ export default function Home() {
     <div className="smallSide side">
         <p><Link to='/profile'><VscAccount/></Link></p>
         <p><Link to="/Home"><HiOutlineHome/></Link></p>
-        <p><Link to ="/"><AiOutlineSearch/></Link></p>
+        <p><Link to ="/explore"><AiOutlineSearch/></Link></p>
         <p><Link to="/Challenges"><BiTargetLock/></Link></p>
     </div>
 
     <div className="bigSide side">
         <p><Link to='/profile'><VscAccount/>Profile</Link></p>
         <p><Link to="/Home"><HiOutlineHome/>Home</Link></p>
-        <p><Link to ="/"><AiOutlineSearch/>Explore</Link></p>
+        <p><Link to ="/explore"><AiOutlineSearch/>Explore</Link></p>
         <p><Link to="/Challenges"><BiTargetLock/>Challenges</Link></p>
     </div>
 
     <div className = "bottom">
         <p><Link to="/Home"><HiOutlineHome/></Link></p>
-        <p><Link to ="/"><AiOutlineSearch/></Link></p>
+        <p><Link to ="/explore"><AiOutlineSearch/></Link></p>
         <p><Link to="/Challenges"><BiTargetLock/></Link></p>
     </div>
 

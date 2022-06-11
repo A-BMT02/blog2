@@ -58,15 +58,23 @@ export default function Login() {
         try {
             const res = await login(email , password) ;
             if(res.access) {
+                // console.log(res.data) ; 
                 setError("") ;
                 setErrorAnimate(false) ; 
-                navigate("/home") ; 
+                if(res.data.back && res.data.front && res.data.bio && res.data.name) {
+                    navigate("/home") ; 
+                } else {
+                    console.log('here') ; 
+                    navigate("/new") ; 
+                }
             } else {
+                // console.log('error' , res.data) ;
                 throw res.data
             }
             
         } catch(err) {
-            const errMsg = err
+            const errMsg = err.error ;
+            // console.log('error in catch' , errMsg) ;
             setError(errMsg) ; 
             setErrorAnimate(true) ;
         }

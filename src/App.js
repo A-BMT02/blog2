@@ -16,6 +16,7 @@ import HundredDays from './Pages/HundredDays';
 import Preview from './Pages/Preview';
 import Tweet from './Pages/Tweet';
 import EditProfile from './Components/EditProfile';
+import New from './Pages/New';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
                 <Route path="/hundredDays" element={<HundredDays/>}/>
                 <Route path="/preview" element={<Preview/>}/>
                 <Route path="/post" element={<Tweet/>}/>
+                <Route path="/new" element={<New/>}/>
                 {/* <Route path="/edit" element={<EditProfile/>}/> */}
 
           </Routes>

@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/blog2/static/css/main.e2de8be1.css",
-    "main.js": "/blog2/static/js/main.0ed48be8.js",
+    "main.js": "/blog2/static/js/main.be6da06a.js",
     "static/media/Coding-bro.svg": "/blog2/static/media/Coding-bro.3d5ebe6243b703ac7b0869d544b1533d.svg",
     "static/media/Team-goals-bro.svg": "/blog2/static/media/Team-goals-bro.12b5ec3664541010fa4b58bc61017c64.svg",
     "static/media/Problem-solving-bro.svg": "/blog2/static/media/Problem-solving-bro.527e8fee16f0fda7e0195acf0babedca.svg",
     "index.html": "/blog2/index.html",
     "main.e2de8be1.css.map": "/blog2/static/css/main.e2de8be1.css.map",
-    "main.0ed48be8.js.map": "/blog2/static/js/main.0ed48be8.js.map"
+    "main.be6da06a.js.map": "/blog2/static/js/main.be6da06a.js.map"
   },
   "entrypoints": [
     "static/css/main.e2de8be1.css",
-    "static/js/main.0ed48be8.js"
+    "static/js/main.be6da06a.js"
   ]
 }

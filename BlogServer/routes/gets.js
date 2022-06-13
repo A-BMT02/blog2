@@ -3,16 +3,34 @@ const challenge  = require('../challenges') ;
 const tweet = require("../tweet") ;
 
 
-router.get('/challenges/update' , (req , res) => {
+router.get('/challenges/update' , async (req , res) => {
     const id = req.header('auth-id') ;
-    challenge.find({_id : id} , function(err, doc){
-        if(err) {
-            console.log(err) ;
-        } else {
-            console.log(doc[0].update) ;
-            res.send(doc[0].update) ;
-        }
-    })
+    try {
+        console.log('id is ' , id) ; 
+       const a = await challenge.find({_id : id}) ; 
+       if(a.length !== 0) {
+           res.send(a[0].update) ;
+       } else {
+            res.status(400).send('Empty 100daysofcode') ;
+       }
+        //  await challenge.find({_id : id} , function(err, doc){
+        // if(err) {
+        //     console.log('err is ' , err) ;
+        // } else {
+        //     if(doc[0].update) {
+        //         console.log(doc[0].update) ;
+        //         res.send(doc[0].update) ;
+        //     } else {
+        //         console.log('no update') ; 
+        //     }
+            
+        // }
+    // })
+    } catch(error) {
+        console.log('error is ' , error) ;
+
+    }
+   
 })
 
 router.get('/challenges' , (req , res) => {

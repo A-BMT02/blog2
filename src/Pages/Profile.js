@@ -23,6 +23,7 @@ export default function Profile() {
   const [edit , setEdit ] = useState(false) ; 
   const [back ,setBack] = useState(user.back) ;
   const [front , setFront] = useState(user.front) ; 
+  const [error , setError ] = useState('') ; 
 
   const clicked = (e , col) => {
     // console.log(col) ; 
@@ -38,6 +39,9 @@ export default function Profile() {
     .then(res => {
       const challenges = res.data ; 
       setChallenges(challenges) ; 
+    }).catch(err => {
+      console.log(err.response) ; 
+      setError(err.response.data) ; 
     })
   },[])
 

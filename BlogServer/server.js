@@ -31,6 +31,7 @@ app.use('/api/post' , postRoute) ;
 app.use('/api/get' , getRoute) ; 
 app.use('/api/put' , putsRoute) ; 
 
+console.log(process.env.DB_CONNECT) ;
 mongoose.connect(process.env.DB_CONNECT , () => {
     console.log("Connected to database") ; 
  

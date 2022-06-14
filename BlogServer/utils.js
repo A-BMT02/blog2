@@ -1,14 +1,14 @@
-const { exist } = require("@hapi/joi/lib/base");
-const fs = require("fs") ;
-const { default: mongoose } = require("mongoose");
+// const { exist } = require("@hapi/joi/lib/base");
+// const fs = require("fs") ;
+// const { default: mongoose } = require("mongoose");
 const { db } = require("./model");
-const { blog } = require("./model") ;
-const user  = require("./user") ;
-const { registerValidation , loginValidation } = require('./validation') ;
-const bcrypt = require("bcryptjs") ; 
-const jwt = require('jsonwebtoken') ; 
+// const { blog } = require("./model") ;
+// const user  = require("./user") ;
+// const { registerValidation , loginValidation } = require('./validation') ;
+// const bcrypt = require("bcryptjs") ; 
+// const jwt = require('jsonwebtoken') ; 
 
-const MongoClient = mongoose.MongoClient ;
+// const MongoClient = mongoose.MongoClient ;
 
 
 const getData = async (req , res) => {

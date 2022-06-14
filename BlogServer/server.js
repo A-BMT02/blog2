@@ -44,6 +44,9 @@ mongoose.connect(process.env.DB_CONNECT , () => {
 //     loginUser(req , res) ; 
 // })
 
+app.get("/testing" , (req , res) => {
+    res.send("Hello from Express!") ;
+})
 app.get("/data" , (req , res) => {
     getData(req , res) ;  
 }) 

@@ -14,7 +14,7 @@ export default function Challenges() {
     const [challenges , setChallenges] = useState([]) ; 
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/get/challenges' , {
+        axios.get('https://bugger02.herokuapp.com/api/get/challenges' , {
             headers : {   
                 'auth-id' : user.id        
             }

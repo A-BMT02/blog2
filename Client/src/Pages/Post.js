@@ -59,21 +59,7 @@ const autoheight = (e) => {
 
     const postBlog = async () => {
         setFinal(true) ; 
-        // let today = new Date() ;
-        // axios.post("http://localhost:5000/api/post/blog" , {
-        //     img : `${preview}` ,  
-        //     title : title, 
-        //     sneak : `${blog.substring(0 , 250)}...` , 
-        //     author : "Ahamad Tahir" , 
-        //     category : "Programming"  ,
-        //     date : `${months[today.getMonth()]} ${today.getDate()}` , 
-        //     header : "EDITOR'S CHOICE" , 
-        //     wholeBlog: `${blog}` , 
-        //     id : `${data.length + 1}` , 
-        //     editorsPick : false 
-        // }).then(info => {
-        //     console.log(info.data) ; 
-        // })
+     
      }
         let today = new Date() ;
 

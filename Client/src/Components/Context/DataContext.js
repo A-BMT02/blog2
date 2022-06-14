@@ -52,7 +52,7 @@ export const DataContextProvider = (props) => {
 useEffect(() => {
   setLoading(true) ; 
   //let blogs = []  ; 
-  axios.get("http://localhost:5000/data").then(info => {
+  axios.get("https://bugger02.herokuapp.com/data").then(info => {
     setData(info.data) ;
     
      info.data.map(item => {
@@ -61,11 +61,11 @@ useEffect(() => {
       }
      })
 
-        axios.get('http://localhost:5000/api/get/tweets')
+        axios.get('https://bugger02.herokuapp.com/api/get/tweets')
         .then(result => {
           setAllTweets(result.data) ;
 
-          axios.get('http://localhost:5000/api/get/allchallenges')
+          axios.get('https://bugger02.herokuapp.com/api/get/allchallenges')
           .then(result2 => {
             setAllChallenges(result2.data) ;
             setLoading(false) ; 

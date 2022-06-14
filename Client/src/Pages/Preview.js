@@ -10,7 +10,7 @@ export default function Preview({data}) {
 
     const publish = async () => {
          let today = new Date() ;
-        axios.post("http://localhost:5000/api/post/blog" , {
+        axios.post("https://bugger02.herokuapp.com/api/post/blog" , {
            data
         }).then(info => {
             console.log(info.data) ; 

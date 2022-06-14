@@ -22,7 +22,7 @@ export default function Tweet() {
         }
 
     const sendData = async () => {
-        axios.post("http://localhost:5000/api/post/tweet" , {
+        axios.post("https://bugger02.herokuapp.com/api/post/tweet" , {
             tweet , 
             date : new Date() , 
             id : parseInt(user.id)

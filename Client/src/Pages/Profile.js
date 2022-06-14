@@ -31,7 +31,7 @@ export default function Profile() {
   }
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/get/challenges/update' , {
+    axios.get('https://bugger02.herokuapp.com/api/get/challenges/update' , {
       headers : {
         'auth-id' : user.id
       }

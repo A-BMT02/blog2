@@ -36,7 +36,7 @@ export default function HundredDays() {
             'auth-id' : user.id
         }
 
-    axios.post("http://localhost:5000/api/post/update/100daysofcode" , {
+    axios.post("https://bugger02.herokuapp.com/api/post/update/100daysofcode" , {
         goals , 
         day : available + 1 , 
         priorNote
@@ -51,7 +51,7 @@ export default function HundredDays() {
     // console.log(centuryOfCode) ;
 
    useEffect(() => {
-     axios.get('http://localhost:5000/api/get/time' , {
+     axios.get('https://bugger02.herokuapp.com/api/get/time' , {
          headers : {
              'auth-id' : user.id
          }

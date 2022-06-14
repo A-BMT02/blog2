@@ -18,7 +18,7 @@ export const UserProvider = props => {
     
   const login = async (email , password) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/user/login" , {
+      const res = await axios.post("https://bugger02.herokuapp.com/api/user/login" , {
       email , 
       password
     }) ; 
@@ -41,7 +41,7 @@ export const UserProvider = props => {
 
   const signup = async (email , password) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/user/register" , {
+      const res = await axios.post("https://bugger02.herokuapp.com/api/user/register" , {
       email , 
       password
     }) ; 
@@ -62,7 +62,7 @@ export const UserProvider = props => {
       // console.log("new user is " , user) ; 
       if(user) {
         setLoading(true) ; 
-        axios.get('http://localhost:5000/api/get/challenges' , {
+        axios.get('https://bugger02.herokuapp.com/api/get/challenges' , {
             headers : {   
                 'auth-id' : user.id        
             }

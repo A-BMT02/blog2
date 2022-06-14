@@ -57,7 +57,7 @@ export default function New() {
 
         // console.log(data) ; 
         
-        axios.put('http://localhost:5000/api/put/profile' , {
+        axios.put('https://bugger02.herokuapp.com/api/put/profile' , {
             data , 
             user
         }).then(info=> {

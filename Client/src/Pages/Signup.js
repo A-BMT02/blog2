@@ -22,47 +22,61 @@ export function Signup() {
     const navigate = useNavigate() ; 
     const emailFocus = () => {
         const email = emailRef.current ; 
-        email.style.top = "-40%" ; 
+        email.style.top = "-60%" ; 
+        email.style.color = "white" ; 
         resetError() ;
 
     }
 
     const passwordFocus = () => {
         const password = passwordRef.current ;
-        password.style.top = "-30%" ; 
+        password.style.top = "-60%" ; 
+        password.style.color = "white" ; 
         resetError()
     }
 
     const password2Focus = () => {
         const password2 = password2Ref.current ;
-        password2.style.top = "-30%" ; 
+        password2.style.top = "-60%" ; 
+        password2.style.color = "white" ; 
         resetError()
     }
 
     const emailBlur = (e) => {
         const email = emailRef.current ; 
         if(!e.target.value ) {
-        email.style.top ="30%" ;   
+        email.style.top ="20%" ;   
+        email.style.color = "grey" ; 
         } else {
-            email.style.top = "-40%" ; 
+            email.style.top = "-60%" ; 
+            email.style.color = "white" ; 
+
         }
     }
 
     const passwordBlur =(e) => {
         const password = passwordRef.current ; 
         if(!e.target.value ) {
-        password.style.top ="30%" ;   
+        password.style.top ="20%" ;   
+        password.style.color = "grey" ; 
+
         } else {
-            password.style.top = "-40%" ; 
+            password.style.top = "-60%" ; 
+            password.style.color = "white" ; 
+
         }
     }
 
     const password2Blur =(e) => {
         const password2 = password2Ref.current ; 
         if(!e.target.value ) {
-        password2.style.top ="30%" ;   
+        password2.style.top ="20%" ;   
+        password2.style.color = "grey" ; 
+
         } else {
-            password2.style.top = "-40%" ; 
+            password2.style.top = "-60%" ; 
+            password2.style.color = "white" ; 
+
         }
     }
 

@@ -95,4 +95,12 @@
   padding: 10px;
   border-radius: 40px;
   border: 4px solid rgb(100, 145, 48);
+  margin-bottom: 2rem;
+}
+
+.success2 {
+  position: fixed;
+  right: calc((100% - 296px) / 2);
+  z-index: 20;
+  top : 0 ;
 }

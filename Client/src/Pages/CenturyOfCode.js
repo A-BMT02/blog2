@@ -4,15 +4,27 @@ import { IoAddCircleOutline } from "react-icons/io5" ;
 import { FcCheckmark } from "react-icons/fc" ;
 import axios from 'axios';
 import { useAuth } from '../Components/Context/UserContext';
+import { IoMdArrowBack } from 'react-icons/io' ;
+import { VscAccount } from "react-icons/vsc" ; 
+import { Link } from "react-router-dom" ; 
+import { Alert } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function CenturyOfCode() {
     const { user } = useAuth() ; 
     // console.log(user) ; 
+
+    const navigate = useNavigate()  ;
+
     
     const ref = useRef() ;
     const [ prior , setPrior ] = useState("") ;
     const [priorList , setPriorList] = useState([])
     const [ priorNote , setPriorNote] = useState("") ;
+    const [success , setSuccess] = useState(false) ; 
+    const [finish , setFinish] = useState(false) ;
+
     const addToPrior = (e) => {
         setPriorList(oldArray => [...oldArray , prior]) ;
         setPrior("") ;
@@ -40,16 +52,37 @@ export default function CenturyOfCode() {
             headers : config
         }).then(info => {
             console.log(info.data) ; 
+            setSuccess(true) ; 
+            if(finish) {
+                navigate('/Challenges') ;
+            }
         })
     
     // console.log(centuryOfCode) ;
 
     }
     
-
+    useEffect(() => {
+                if(success) {
+                    setTimeout(() => {
+                        navigate('/Challenges')
+                    } , 3000)
+                }
+            } , [success])
 
   return (
    <div className="center centuryBox container">
+       <div className={success ? 'success2' : 'hide'}>
+                    <Alert onClose={ e => {
+                        setSuccess(false)
+                        setFinish(true) ;
+                    } } severity="success">Succesfully started Challenge!</Alert>
+            </div>
+
+       <div className='top'>
+            <p><Link to='/Home'><IoMdArrowBack/></Link></p>
+            {/* <p><Link to='/profile'><VscAccount/></Link></p> */}
+          </div>
             <div className="h2Box">
                 <h2>100 Days Of Code</h2>
             </div>
@@ -82,7 +115,7 @@ export default function CenturyOfCode() {
                         <p>Code for a 100 days. The more consistent you are , the better</p>
                     </div>
 
-                    <button onClick={ e => startDate(e)} className="startChallenge" type='submit'>Start Challenge</button>
+                    <button onClick={ e => startDate(e)} className={success ? 'hide' : 'startChallenge'} type='submit'>Start Challenge</button>
                 </form>
             </div>
         </div>

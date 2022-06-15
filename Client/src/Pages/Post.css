@@ -63,6 +63,7 @@
   border-radius: 1rem;
   padding: 1rem;
   cursor: pointer;
+  background-color: #f1f1f1;
 }
 
 .postNav > button:hover {

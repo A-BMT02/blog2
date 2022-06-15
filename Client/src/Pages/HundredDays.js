@@ -4,6 +4,8 @@ import { IoAddCircleOutline } from "react-icons/io5" ;
 import axios from 'axios';
 import { useAuth } from '../Components/Context/UserContext';
 
+
+
 export default function HundredDays() {
 
     const { user } = useAuth() ; 
@@ -13,10 +15,13 @@ export default function HundredDays() {
     const [day , setDay] = useState(null) ; 
     const [addUpdate , setUpdate] = useState(false)  ; 
     const [available , setAvailable] = useState(null) ; 
+     
+
     // const [missing , setmissing] = useState() ; 
 
     const { challenge } = useAuth() ;
     // console.log(challenge[0]) ; 
+
 
 // console.log('available is ' , available) ; 
 // console.log('day is ', day)
@@ -45,10 +50,12 @@ export default function HundredDays() {
         }).then(info => {
             console.log(info) ; 
             setAvailable(prev => prev + 1) ;  
+            
         })
     
     }
     // console.log(centuryOfCode) ;
+   
 
    useEffect(() => {
      axios.get('https://bugger02.herokuapp.com/api/get/time' , {
@@ -85,6 +92,7 @@ export default function HundredDays() {
   return ( 
     <div className="centuryBox container">
         <div className='wholeHundred'> 
+            
         <div className="h2Box"> 
                 <h2>100 Days Of Code</h2> 
             </div>

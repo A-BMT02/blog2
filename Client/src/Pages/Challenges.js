@@ -8,6 +8,8 @@ import { BiTargetLock } from "react-icons/bi" ;
 import { VscAccount } from "react-icons/vsc" ; 
 import { useAuth } from '../Components/Context/UserContext';
 import axios from 'axios';
+import { IoMdArrowBack } from 'react-icons/io' ;
+
 
 export default function Challenges() {
     const { user } = useAuth() ; 
@@ -27,6 +29,10 @@ export default function Challenges() {
 
   return (
       <div>
+          <div className='top'>
+            <p><Link to='/Home'><IoMdArrowBack/></Link></p>
+            <p><Link to='/profile'><VscAccount/></Link></p>
+          </div>
 
 <div className="smallSide side">
         <p><Link to='/profile'><VscAccount/></Link></p>

@@ -10,8 +10,8 @@ import { useData } from "../Components/Context/DataContext";
 import { findAllByDisplayValue } from "@testing-library/react";
 import { Navigate, useNavigate } from 'react-router-dom';
 import Preview from "./Preview";
-
-
+import { Link } from "react-router-dom";
+import { IoMdArrowBack } from 'react-icons/io' ;
 
 export function Post() {
     const navigate = useNavigate() ;
@@ -107,9 +107,10 @@ const autoheight = (e) => {
         <div className={final ? '' : "hide"}> 
             <Preview data={finalData}/>
         </div>
-        <div className="postNav container">
-            <button onClick={e => postBlog()}>Post</button>
+        <div className='topPost'>
+            <p><Link to='/Home'><IoMdArrowBack/></Link></p>
         </div>
+         
         
         <div className={ final ? 'hide' :  "wholeBlogPage container"} >
             <div className="addons container">
@@ -134,6 +135,10 @@ const autoheight = (e) => {
 
                     </textarea>
             </article>
+        </div>
+
+        <div className="postNav container">
+            <button onClick={e => postBlog()}>Post</button>
         </div>
 
     </div>

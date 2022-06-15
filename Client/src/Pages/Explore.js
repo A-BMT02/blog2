@@ -10,6 +10,7 @@ import {AiOutlineLike} from "react-icons/ai" ;
 import { FaRegComment } from "react-icons/fa" ;
 import { BsPencilSquare } from "react-icons/bs" ; 
 import { useData } from '../Components/Context/DataContext';
+import {AiOutlineClose} from 'react-icons/ai' ;
 
 export default function Explore() {
   const [ showOptions , setShowOptions ] = useState(false) ; 
@@ -34,7 +35,7 @@ export default function Explore() {
         <LeftSide/>
     </div>
     <div className='top'>
-        <p><VscAccount/></p>
+        <p><Link to='/profile'><VscAccount/></Link></p>
     </div>
     <div className = "bottom">
         <p><Link to="/Home"><HiOutlineHome/></Link></p>
@@ -45,6 +46,7 @@ export default function Explore() {
       <BsPencilSquare onClick={ e => setShowOptions(true)} />
     </div>
     <div className={showOptions ? 'options' : 'hide'}>
+      <AiOutlineClose className='closeIcon' onClick={ e => setShowOptions(false)}/>
         <button onClick={ e => navigate('/blog')}>Blog</button>
         <button onClick={ e => navigate('/challenges')}>Challenge</button>
         <button onClick={ e => navigate('/post')}>post</button>

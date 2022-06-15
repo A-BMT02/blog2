@@ -54,3 +54,6 @@ a:visited {
   gap : 1rem ;
 }
 
+.flex {
+  display: flex;
+}

@@ -212,3 +212,11 @@
     width: 100%;
   }
 }
+
+.closeIcon {
+  color : red ;
+  position : absolute ; 
+  top : 1rem ; 
+  right : 1rem ;
+  font-size: 1.4rem;
+}

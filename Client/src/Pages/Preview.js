@@ -1,12 +1,18 @@
-import React from 'react'
+import React , { useEffect, useState} from 'react'
 import './preview.css' ; 
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Alert } from '@mui/material';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+// import CloseIcon from '@mui/icons-material/Close';
 
 export default function Preview({data}) {
     const navigate = useNavigate()  ;
 
     // console.log(data) ; 
+    const [success , setSuccess] = useState(false) ; 
+    const [finish , setFinish] = useState(false) ; 
 
     const publish = async () => {
          let today = new Date() ;
@@ -14,12 +20,29 @@ export default function Preview({data}) {
            data
         }).then(info => {
             console.log(info.data) ; 
-            navigate('/home') ;
+            setSuccess(true) ; 
+            if(finish) {
+                navigate('/home') ;
+            }
         })
     }
 
+    useEffect(() => {
+        if(success) {
+            setTimeout(() => {
+                navigate('/home')
+            } , 2000)
+        }
+    } , [success])
+   
   return (
     <div className=' wholePreview wholePagePage'>
+        <div className={success ? 'success' : 'hide'}>
+                <Alert onClose={ e => {
+                    setSuccess(false)
+                    setFinish(true) ;
+                 } } severity="success">Succesfully saved blog!</Alert>
+        </div>
         <div className='pagePosition'>
         <div className=" hide readInfoHead container">
             <div className="profilePic">
@@ -50,8 +73,8 @@ export default function Preview({data}) {
 
         </div>
 
-        <div className='publishBtn'>
-            <button onClick={ e => publish()}>Publish</button>
+        <div className={success ? 'hide' : 'publishBtn'}>
+            <button  onClick={ e => publish()}>Publish</button>
         </div>
         </div>
     </div>

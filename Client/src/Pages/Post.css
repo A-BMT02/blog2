@@ -13,7 +13,8 @@
   justify-content: center;
   width: 280px;
   height: 200px;
-}
+  margin-top: 2rem;
+} 
 
 .addons > img {
   object-fit: contain;
@@ -25,24 +26,33 @@
 
 .wholeBlogPage > article > textarea,
 .wholeBlogPage > article .titleContainer > textarea {
-  font-family: "Shizuru", cursive;
+  /* font-family: "Shizuru", cursive; */
   width: 100%;
   border: none;
   outline: none;
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   overflow: hidden;
   text-align: justify;
   padding: 1rem ;
-  margin-bottom: 1rem ;
+  /* margin-bottom: 1rem ; */
+  background-color: #1e1c1c;
+  color : white ;
+}
+
+.wholeBlogPage>article .titleContainer {
+  font-size: 1.8rem;
 }
 
 .wholeBlogPage>article .titleContainer>textarea {
   text-align: center;
+  color: rgb(100, 145, 48);
+  background-color: #1e1c1c;
+
 }
 
 .postNav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   /* margin-top: 2rem; */
 }
 
@@ -51,7 +61,7 @@
   font-size: 1.5rem;
   /* background: none; */
   border-radius: 1rem;
-  padding: 0.5rem;
+  padding: 1rem;
   cursor: pointer;
 }
 
@@ -73,4 +83,20 @@
 
 .hide {
   display : none ; 
+}
+
+.topPost {
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: white;
+}
+
+.topPost > p {
+  font-size: 1.5rem;
+    color: black;
 }

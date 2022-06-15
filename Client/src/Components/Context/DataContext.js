@@ -2,6 +2,7 @@ import React , { useContext , useState ,  createContext, useEffect } from 'react
 import { getDocs, collection } from "firebase/firestore";
 import { db } from './Firebase';
 import axios from 'axios';
+import { Skeleton } from '@mui/material';
 
 export const dataContext = createContext() ; 
 
@@ -80,7 +81,20 @@ useEffect(() => {
   
   return (
     <dataContext.Provider value={{data , allChallenges , topbar , editorsPick , allTweets}}>
-        {!loading && props.children}
+      {loading ?  
+        <div className='loading'>
+          <Skeleton variant="text"  height={100} />
+          <div className='column'>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+          </div>
+        </div>
+      :  
+      props.children
+        }
     </dataContext.Provider>
   )
 }
+
+// props.children

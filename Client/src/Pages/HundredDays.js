@@ -3,6 +3,8 @@ import "./HundredDays.css" ;
 import { IoAddCircleOutline } from "react-icons/io5" ;
 import axios from 'axios';
 import { useAuth } from '../Components/Context/UserContext';
+import { IoMdArrowBack } from 'react-icons/io' ;
+import { Link } from "react-router-dom" ; 
 
 
 
@@ -92,6 +94,10 @@ export default function HundredDays() {
   return ( 
     <div className="centuryBox container">
         <div className='wholeHundred'> 
+            <div className='top'>
+                <p><Link to='/Challenges'><IoMdArrowBack/></Link></p>
+                {/* <p><Link to='/profile'><VscAccount/></Link></p> */}
+            </div>
             
         <div className="h2Box"> 
                 <h2>100 Days Of Code</h2> 

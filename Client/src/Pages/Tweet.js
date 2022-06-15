@@ -1,12 +1,20 @@
-import React , { useState }  from 'react'
+import React , { useState , useEffect }  from 'react'
 import './Tweet.css' ; 
 import { useAuth } from '../Components/Context/UserContext';
 import axios from 'axios';
+import { Alert } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { IoMdArrowBack } from 'react-icons/io' ;
+import { Link } from 'react-router-dom';
 
 export default function Tweet() {
     const { user } = useAuth() ; 
 
     const [ tweet , setTweet ] = useState('') ; 
+    const [success , setSuccess] = useState(false) ; 
+    const [finish , setFinish] = useState(false) ;
+
+    const navigate = useNavigate()  ;
 
     const handleBlogChange = (e) => {
         autoheight(e) ; 
@@ -30,13 +38,36 @@ export default function Tweet() {
             headers : config
         }).then(info => {
             console.log(info.data) ; 
+            setSuccess(true) ; 
+            if(finish) {
+                navigate('/Home') ;
+            }
         })
     }
 
+    useEffect(() => {
+                if(success) {
+                    setTimeout(() => {
+                        navigate('/Home')
+                    } , 2000)
+                }
+            } , [success])
+
   return (
     <div className='wholeTweet'>
+         <div className='topPost'>
+            <p><Link to='/Home'><IoMdArrowBack/></Link></p>
+        </div>
+
+        <div className={success ? 'success3' : 'hide'}>
+                    <Alert onClose={ e => {
+                        setSuccess(false)
+                        setFinish(true) ;
+                    } } severity="success">Succesfully posted</Alert>
+            </div>
+
         <div className='postTweet'>
-            <button onClick={e => {
+            <button className={success ? 'hide' : ''} onClick={e => {
                 sendData() ;
             }}>Post</button>
         </div>

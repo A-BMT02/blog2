@@ -50,11 +50,12 @@ export default function Profile() {
   }, [challenges])
 
   return (
-
-    <div className='wholeProfile'>
+    <div>
       <div className={edit ? '' : 'hide'}>
         <EditProfile back={back} setBack={setBack} front={front} setFront={setFront}/>
       </div>
+    <div className={edit ? 'hide' : 'wholeProfile'}>
+      
       <div className="smallSide side">
         <p><Link to='/profile'><VscAccount/></Link></p>
         <p><Link to="/Home"><HiOutlineHome/></Link></p>
@@ -262,6 +263,7 @@ export default function Profile() {
             <p><Link to ="/"><AiOutlineSearch/></Link></p>
             <p><Link to="/Challenges"><BiTargetLock/></Link></p>
         </div>
+    </div>
     </div>
   )
 }

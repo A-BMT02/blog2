@@ -3,12 +3,14 @@ import './EditProfile.css' ;
 import { GrImage } from 'react-icons/gr' ;
 import axios from 'axios';
 import { useAuth } from './Context/UserContext';
+import EditPicture from './EditPicture' ; 
 
 export default function EditProfile({back , setBack , front , setFront}) {
     const [ userName , setUserName] = useState('Ahmad Tahir') ; 
     const [bio , setBio ] = useState(' I am dope as fuck boi') ; 
     const [back1 , setBack1] = useState(back) ;
     const [front1 , setFront1 ] = useState(front) ; 
+    const [ trigger , setTrigger ] = useState(false) ; 
 
     const ref = useRef(null); 
     const ref2 = useRef(null) ;
@@ -32,6 +34,7 @@ export default function EditProfile({back , setBack , front , setFront}) {
 
         reader.onload = function () {
             setBack1(reader.result) ; 
+            setTrigger(true) ;
             // console.log(reader.result);
         }
     }
@@ -65,7 +68,10 @@ export default function EditProfile({back , setBack , front , setFront}) {
     }
 
   return (
-    <div className='editProfiles backProfile'>
+      <div>
+        {trigger && <EditPicture/>}
+    <div className={trigger ? 'hide' : 'editProfiles backProfile'}>
+
             <div className='edit1'>
                 <p>Edit Profile</p>
             </div>
@@ -93,6 +99,7 @@ export default function EditProfile({back , setBack , front , setFront}) {
             </div>
 
 
+        </div>
         </div>
   )
 }

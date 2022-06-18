@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "use-debounce-effect": "^1.0.0"
+  }
+}

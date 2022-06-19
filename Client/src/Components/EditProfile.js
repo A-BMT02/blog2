@@ -69,7 +69,7 @@ export default function EditProfile({back , setBack , front , setFront}) {
 
   return (
       <div>
-        {trigger && <EditPicture/>}
+        {trigger && <EditPicture back={back1}/>}
     <div className={trigger ? 'hide' : 'editProfiles backProfile'}>
 
             <div className='edit1'>

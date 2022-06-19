@@ -1,6 +1,6 @@
 .editProfiles {
   z-index : 10 ;
-  background-color: white;
+  /* background-color: white; */
   padding : 1rem ;
   /* height: 100% ; */
   min-height: 100%;
@@ -87,13 +87,37 @@
 
 /* imported */
 
-.App {
+.Apps {
   font-family: sans-serif;
   padding: 16px;
+  width : 100% ;
+  /* background-color: white; */
+  display: flex;
+  flex-direction: column;
+  margin :  auto ;
+  display: block;
+  margin-top: 2rem;
+  display: flex ;
+}
+
+.selectImage {
+  width : 100% ;
+  display: flex;
+  justify-content: center;
+}
+
+.selectImage > img {
+  width : 80% ;
+  height: auto;
 }
 
 .Crop-Controls {
   margin-bottom: 10px;
+}
+
+.Crop-Controls > input , 
+.Crop-Controls > button {
+  display : none ;
 }
 
 .Crop-Controls>* {
@@ -102,4 +126,25 @@
 
 img {
   max-width: 100%;
+}
+
+.saveSelectBox {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.saveSelect {
+    width: fit-content ;
+    font-size: 1.3rem;
+    padding: 5px;
+    border-radius: 10px;
+    color: rgb(100, 145, 48);
+    background-color: white;
+    border: 1px outset white;
+}
+
+.ReactCrop {
+  margin-top: 3rem ;
 }

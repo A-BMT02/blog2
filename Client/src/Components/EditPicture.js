@@ -1,4 +1,7 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+import { Link } from "react-router-dom" ; 
+import { IoMdArrowBack } from 'react-icons/io' ;
+
 
 import ReactCrop, {
   centerCrop,
@@ -33,7 +36,7 @@ function centerAspectCrop(
   )
 }
 
-export default function EditPicture() {
+export default function EditPicture({back}) {
   const [imgSrc, setImgSrc] = useState('')
   const previewCanvasRef = useRef(null)
   const imgRef = useRef(null)
@@ -43,16 +46,16 @@ export default function EditPicture() {
   const [rotate, setRotate] = useState(0)
   const [aspect, setAspect] = useState(3 / 1)
 
-  function onSelectFile(e) {
-    if (e.target.files && e.target.files.length > 0) {
-      setCrop(undefined) // Makes crop preview update between images.
-      const reader = new FileReader()
-      reader.addEventListener('load', () =>
-        setImgSrc(reader.result.toString() || ''),
-      )
-      reader.readAsDataURL(e.target.files[0])
-    }
-  }
+  // function onSelectFile(e) {
+  //   if (e.target.files && e.target.files.length > 0) {
+  //     setCrop(undefined) // Makes crop preview update between images.
+  //     const reader = new FileReader()
+  //     reader.addEventListener('load', () =>
+  //       setImgSrc(reader.result.toString() || ''),
+  //     )
+  //     reader.readAsDataURL(e.target.files[0])
+  //   }
+  // }
 
   function onImageLoad(e) {
     if (aspect) {
@@ -60,6 +63,27 @@ export default function EditPicture() {
       setCrop(centerAspectCrop(width, height, aspect))
     }
   }
+
+  useEffect(() => {
+      setCrop(undefined) // Makes crop preview update between images.
+      const reader = new FileReader()
+      reader.addEventListener('load', () =>
+        setImgSrc(back),
+      )
+      // reader.readAsDataURL(e.target.files[0])
+    
+  }, [])
+
+  // useEffect(() => {
+  //    if (aspect) {
+  //     setAspect(undefined)
+  //   } else if (imgRef.current) {
+  //     const { width, height } = imgRef.current
+  //     setAspect(3 / 1)
+  //     setCrop(centerAspectCrop(width, height, 3 / 1))
+  //   }
+  // } , [])
+
 
   useDebounceEffect(
     async () => {
@@ -86,9 +110,14 @@ export default function EditPicture() {
 
 
   return (
-    <div className="App">
+    <div className="Apps">
+      <div className='top'>
+            <p><Link to='/Home'><IoMdArrowBack/></Link></p>
+          </div>
+          
+
       <div className="Crop-Controls">
-        <input type="file" accept="image/*" onChange={onSelectFile} />
+        <input type="file" accept="image/*" />
         <button onClick={e => {
             const dataURL = previewCanvasRef.current.toDataURL()
             console.log(dataURL) ;
@@ -122,7 +151,6 @@ export default function EditPicture() {
           </button> */}
         </div>
       </div>
-      {Boolean(imgSrc) && (
         <ReactCrop
           crop={crop}
           onChange={(_, percentCrop) => setCrop(percentCrop)}
@@ -132,13 +160,16 @@ export default function EditPicture() {
           <img
             ref={imgRef}
             alt="Crop me"
-            src={imgSrc}
+            src={back}
             style={{ transform: `scale(${scale}) rotate(${rotate}deg)` }}
             onLoad={onImageLoad}
           />
         </ReactCrop>
-      )}
-      <div>
+     
+          <div className='saveSelectBox'>
+            <button className='saveSelect'>Save</button>
+          </div>
+      <div className='hide'>
         {Boolean(completedCrop) && (
           <canvas
             ref={previewCanvasRef}

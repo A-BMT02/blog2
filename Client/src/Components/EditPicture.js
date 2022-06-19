@@ -13,6 +13,7 @@ import { canvasPreview } from './canvasPreview'
 import { useDebounceEffect } from './useDebounceEffect'
 
 import 'react-image-crop/dist/ReactCrop.css'
+import { BiSave } from 'react-icons/bi';
 
 // This is to demonstate how to make and center a % aspect crop
 // which is a bit trickier so we use some helper functions.
@@ -36,16 +37,28 @@ function centerAspectCrop(
   )
 }
 
-export default function EditPicture({back}) {
+
+
+export default function EditPicture({back , newBack}) {
   const [imgSrc, setImgSrc] = useState('')
   const previewCanvasRef = useRef(null)
   const imgRef = useRef(null)
-  const [crop, setCrop] = useState()
+  const [crop, setCrop] = useState({
+    unit: '%', // Can be 'px' or '%'
+    x: 0,
+    y: 0,
+    width: 150,
+    height: 50
+  })
   const [completedCrop, setCompletedCrop] = useState()
   const [scale, setScale] = useState(1)
   const [rotate, setRotate] = useState(0)
   const [aspect, setAspect] = useState(3 / 1)
 
+  const saveImage = () => {
+    const url = previewCanvasRef.current.toDataURL()
+    newBack(url) ; 
+}
   // function onSelectFile(e) {
   //   if (e.target.files && e.target.files.length > 0) {
   //     setCrop(undefined) // Makes crop preview update between images.
@@ -167,7 +180,7 @@ export default function EditPicture({back}) {
         </ReactCrop>
      
           <div className='saveSelectBox'>
-            <button className='saveSelect'>Save</button>
+            <button onClick={e => saveImage()}className='saveSelect'>Save</button>
           </div>
       <div className='hide'>
         {Boolean(completedCrop) && (

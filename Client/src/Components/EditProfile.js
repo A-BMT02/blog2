@@ -11,6 +11,7 @@ export default function EditProfile({back , setBack , front , setFront}) {
     const [back1 , setBack1] = useState(back) ;
     const [front1 , setFront1 ] = useState(front) ; 
     const [ trigger , setTrigger ] = useState(false) ; 
+    const [newB , setNewB] = useState('') ; 
 
     const ref = useRef(null); 
     const ref2 = useRef(null) ;
@@ -67,9 +68,13 @@ export default function EditProfile({back , setBack , front , setFront}) {
         })
     }
 
+    const newBack = (a) => {
+        setNewB(a) ; 
+    }
+
   return (
       <div>
-        {trigger && <EditPicture back={back1}/>}
+        {trigger && <EditPicture newBack={newBack} back={ newB!='' ? newB : back1}/>}
     <div className={trigger ? 'hide' : 'editProfiles backProfile'}>
 
             <div className='edit1'>

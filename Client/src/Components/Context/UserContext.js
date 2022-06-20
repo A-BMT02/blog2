@@ -69,8 +69,9 @@ useEffect(() => {
               console.log(token) ; 
               
             findUser(token)
-            // setLoading(false) ; 
             }
+             setLoading(false) ; 
+
 } , [])
 
   useEffect(() => {

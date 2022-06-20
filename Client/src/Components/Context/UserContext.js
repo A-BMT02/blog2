@@ -96,7 +96,7 @@ useEffect(() => {
 
   const findUser = async (token) => {
     // let a = {}
-    const { data } = await axios.post('http://localhost:5000/finduser' , {token}) ;
+    const { data } = await axios.post('https://bugger02.herokuapp.com/api/post/finduser' , {token}) ;
   // axios.post('http://localhost:5000/finduser' , {
   //   token
   // })

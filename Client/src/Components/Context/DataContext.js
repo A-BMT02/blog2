@@ -69,6 +69,7 @@ useEffect(() => {
           axios.get('https://bugger02.herokuapp.com/api/get/allchallenges')
           .then(result2 => {
             setAllChallenges(result2.data) ;
+          
             setLoading(false) ; 
 
           })
@@ -76,6 +77,7 @@ useEffect(() => {
 
   })
 } , [])
+
 
 
   

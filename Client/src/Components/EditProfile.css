@@ -69,16 +69,13 @@
 
 .editProfiles >  img {
   opacity : 0.5 ;
-  height: 18%;
-  object-fit: cover;
-  width: 100%;
+  aspect-ratio: 3 / 1;
 }
 
 .editProfiles > .circleProfile > img {
   opacity: 0.8;
-  width: 20%;
-    height: 20%;
-    border-radius: 50%;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
 }
 
 @media screen and (min-width : 700px) {

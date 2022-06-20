@@ -3,6 +3,8 @@ import { auth } from "./Firebase" ;
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut  } from "firebase/auth";
 import { useData } from "./DataContext";
 import axios from "axios";
+import { Skeleton } from '@mui/material';
+
 
 export const UserContext = createContext() ; 
 
@@ -20,10 +22,12 @@ export const UserProvider = props => {
     try {
       const res = await axios.post("https://bugger02.herokuapp.com/api/user/login" , {
       email , 
-      password
+      password 
     }) ; 
     if(res.status == 200) {  
       console.log('res.data is ' , res.data) ; 
+      localStorage.setItem("token", res.data.token);
+      
       setUser(res.data) ;
       return {access : true ,  data : res.data }  ; 
     }
@@ -58,10 +62,22 @@ export const UserProvider = props => {
 
   }
 
+useEffect(() => {
+  setLoading(true) ; 
+  const token = localStorage.getItem('token') ;
+            if(token) {
+              console.log(token) ; 
+              
+            findUser(token)
+            // setLoading(false) ; 
+            }
+} , [])
+
   useEffect(() => {
-      // console.log("new user is " , user) ; 
+       console.log("new user is " , user) ; 
+        // setLoading(true) ; 
+        
       if(user) {
-        setLoading(true) ; 
         axios.get('https://bugger02.herokuapp.com/api/get/challenges' , {
             headers : {   
                 'auth-id' : user.id        
@@ -78,6 +94,21 @@ export const UserProvider = props => {
 
 
 
+  const findUser = async (token) => {
+    // let a = {}
+    const { data } = await axios.post('http://localhost:5000/finduser' , {token}) ;
+  // axios.post('http://localhost:5000/finduser' , {
+  //   token
+  // })
+  // .then(info => {
+  //    setUser(info.data) ;
+  // })
+    setUser(data) ;
+  // console.log(a)
+}
+
+
+
   const value = {
     user , 
     login , 
@@ -89,7 +120,18 @@ export const UserProvider = props => {
   }
     return (
         <UserContext.Provider value={ value }>
-            {props.children}
+            {loading ?  
+        <div className='loading'>
+          <Skeleton variant="text"  height={100} />
+          <div className='column'>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+          </div>
+        </div>
+      :  
+      props.children
+        }
         </UserContext.Provider>
     )
 } ; 

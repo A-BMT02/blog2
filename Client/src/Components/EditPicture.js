@@ -39,8 +39,9 @@ function centerAspectCrop(
 
 
 
-export default function EditPicture({back , newBack}) {
-  const [imgSrc, setImgSrc] = useState('')
+export default function EditPicture({ round  , setBack1 , close , setClose , setTrigger , back }) {
+  // console.log(close) ;
+  const [imgSrc, setImgSrc] = useState(back)
   const previewCanvasRef = useRef(null)
   const imgRef = useRef(null)
   const [crop, setCrop] = useState({
@@ -52,12 +53,15 @@ export default function EditPicture({back , newBack}) {
   })
   const [completedCrop, setCompletedCrop] = useState()
   const [scale, setScale] = useState(1)
-  const [rotate, setRotate] = useState(0)
-  const [aspect, setAspect] = useState(3 / 1)
+  const [rotate, setRotate] = useState(0); 
+  const [aspect, setAspect] = useState(round ? 1 / 1 : 3 / 1)
 
   const saveImage = () => {
     const url = previewCanvasRef.current.toDataURL()
-    newBack(url) ; 
+    // newBack(url) ; 
+    setBack1(url) ;
+    setClose(true) ;
+    setTrigger(false) ; 
 }
   // function onSelectFile(e) {
   //   if (e.target.files && e.target.files.length > 0) {
@@ -123,7 +127,7 @@ export default function EditPicture({back , newBack}) {
 
 
   return (
-    <div className="Apps">
+    <div className={close ? 'hide' : 'Apps'}>
       <div className='top'>
             <p><Link to='/Home'><IoMdArrowBack/></Link></p>
           </div>

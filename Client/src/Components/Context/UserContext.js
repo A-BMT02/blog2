@@ -63,20 +63,20 @@ export const UserProvider = props => {
   }
 
 useEffect(() => {
-  setLoading(true) ; 
+  // setLoading(true) ; 
   const token = localStorage.getItem('token') ;
             if(token) {
               console.log(token) ; 
               
             findUser(token)
             }
-             setLoading(false) ; 
+            //  setLoading(false) ; 
 
 } , [])
 
   useEffect(() => {
        console.log("new user is " , user) ; 
-        // setLoading(true) ; 
+        setLoading(true) ; 
         
       if(user) {
         axios.get('https://bugger02.herokuapp.com/api/get/challenges' , {
@@ -87,9 +87,11 @@ useEffect(() => {
         .then(doc => {
             console.log(doc.data) ; 
             setChallenge(doc.data) ; 
-            setLoading(false) ; 
+            if(user != null) {
+              setLoading(false) ; 
+            }
         })
-      }
+      } 
   
 } , [user])
 

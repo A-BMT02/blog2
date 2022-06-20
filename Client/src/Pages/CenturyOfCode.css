@@ -102,6 +102,6 @@
 .success2 {
   position: fixed;
   right: calc((100% - 296px) / 2);
-  z-index: 20;
+  z-index: 200;
   top : 0 ;
 }

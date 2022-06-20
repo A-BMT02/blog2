@@ -110,9 +110,9 @@ export default function EditProfile({back , setBack , front , setFront , setEdit
                 }
             } , [success])
 
-            useEffect(() => {
-                console.log(trigger , trigger2) ; 
-            }, [ trigger , trigger2])
+            // useEffect(() => {
+            //     console.log(trigger , trigger2) ; 
+            // }, [ trigger , trigger2])
 
   return (
       <div>
@@ -160,7 +160,7 @@ export default function EditProfile({back , setBack , front , setFront , setEdit
         
             <div className='editSave'>
                 {processing ? <CircularProgress color="success" /> : 
-                    <button onClick={ e => saveChanges()}>Save</button>
+                    <button className={success ? 'hide' : ''} onClick={ e => saveChanges()}>Save</button>
                 }
             </div>
 

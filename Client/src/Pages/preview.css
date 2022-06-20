@@ -34,6 +34,6 @@ margin-top: 3rem ;
 .success {
     position: fixed ;
     right : calc( ( 100% - 253px ) / 2 );
-    z-index: 20;
+    z-index: 1000;
 }
 

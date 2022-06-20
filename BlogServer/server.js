@@ -109,28 +109,7 @@ app.post("/users/login" , async (req , res) => {
     }
 })
 
-app.post('/finduser' , async (req , res) => {
-    const token = req.body.token ; 
-    // console.log(token) ; 
-    const verified = jwt.verify(token , process.env.TOKEN_SECRET) ;
-    // console.log(verified) ; 
 
-    const exists= await user.find({_id : verified._id});
-    // console.log(exists[0]) 
-     const User = {
-            id : exists[0]._id , 
-            email : exists[0].email , 
-            token ,
-            back : exists[0].back ,
-            bio : exists[0].bio, 
-            front : exists[0].front,
-            name : exists[0].name 
-        }
-        console.log(User) ; 
-        res.header('auth-token' , token).send(User) ; 
-
-
-})
 
 app.listen(PORT , () => {
     console.log("server running" , PORT) ; 

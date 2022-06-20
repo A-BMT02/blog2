@@ -39,7 +39,8 @@ function centerAspectCrop(
 
 
 
-export default function EditPicture({ round  , setBack1 , close , setClose , setTrigger , back }) {
+export default function EditPicture({ round  , setBack1 , close , setClose , setTrigger , back , setEdit }) {
+
   // console.log(close) ;
   const [imgSrc, setImgSrc] = useState(back)
   const previewCanvasRef = useRef(null)
@@ -129,7 +130,11 @@ export default function EditPicture({ round  , setBack1 , close , setClose , set
   return (
     <div className={close ? 'hide' : 'Apps'}>
       <div className='top'>
-            <p><Link to='/Home'><IoMdArrowBack/></Link></p>
+            <p onClick={ e => {
+              setBack1(back) ;
+              setClose(true) ;
+              setTrigger(false) ; 
+            }}><IoMdArrowBack/></p>
           </div>
           
 

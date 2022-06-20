@@ -5,12 +5,16 @@ import axios from 'axios';
 import { useAuth } from './Context/UserContext';
 import EditPicture from './EditPicture' ; 
 import { Alert } from '@mui/material';
-import { useNavigate } from "react-router-dom" ;
+import { useNavigate , Link } from "react-router-dom" ;
 import { CircularProgress } from '@mui/material';
+import { IoMdArrowBack } from 'react-icons/io' ;
 
-export default function EditProfile({back , setBack , front , setFront}) {
-    const [ userName , setUserName] = useState('Ahmad Tahir') ; 
-    const [bio , setBio ] = useState(' I am dope as fuck boi') ; 
+
+export default function EditProfile({back , setBack , front , setFront , setEdit}) {
+    const { user } = useAuth() ; 
+
+    const [ userName , setUserName] = useState(user.name) ; 
+    const [bio , setBio ] = useState(user.bio) ; 
     const [back1 , setBack1] = useState(back) ;
     const [front1 , setFront1 ] = useState(front) ; 
     const [ trigger , setTrigger ] = useState(false) ; 
@@ -23,14 +27,13 @@ export default function EditProfile({back , setBack , front , setFront}) {
     const [success , setSuccess] = useState(false) ; 
     const [finish , setFinish] = useState(false) ;
     const [processing , setProcessing] = useState(false) ;
-
+    const [ hide , setHide ] = useState(false) ;
     const navigate = useNavigate() ; 
     // console.log(back1) ;
 
     const ref = useRef(null); 
     const ref2 = useRef(null) ;
 
-    const { user } = useAuth() ; 
 
 
     const handleUpload = (e) => {
@@ -107,8 +110,19 @@ export default function EditProfile({back , setBack , front , setFront}) {
                 }
             } , [success])
 
+            useEffect(() => {
+                console.log(trigger , trigger2) ; 
+            }, [ trigger , trigger2])
+
   return (
       <div>
+        <div className='top topF'>
+            <p onClick={ e => {
+                // setHide(true) ;
+                setEdit(false); 
+            }}><IoMdArrowBack/></p>
+            {/* <p><Link to='/profile'><VscAccount/></Link></p> */}
+          </div>
         {trigger && <EditPicture round={round} setBack1={setBack1} close={close} setClose={setClose} setTrigger={setTrigger} back={back1}/>}
         {trigger2 && <EditPicture round={round} setBack1={setFront1} close={close2} setClose={setClose2} setTrigger={setTrigger2}  back={front1}/>}
 
@@ -120,7 +134,7 @@ export default function EditProfile({back , setBack , front , setFront}) {
                     } } severity="success">Succesfully updated Profile!</Alert>
             </div>
 
-    <div className={trigger || trigger2 ? 'hide' : 'editProfiles backProfile'}>
+    <div className={trigger || trigger2? 'hide' : 'editProfiles backProfile'}>
 
             <div className='edit1'>
                 <p>Edit Profile</p>

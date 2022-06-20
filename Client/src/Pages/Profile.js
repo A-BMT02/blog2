@@ -52,7 +52,7 @@ export default function Profile() {
   return (
     <div>
       <div className={edit ? '' : 'hide'}>
-        <EditProfile back={back} setBack={setBack} front={front} setFront={setFront}/>
+        <EditProfile setEdit={setEdit} back={back} setBack={setBack} front={front} setFront={setFront}/>
       </div>
     <div className={edit ? 'hide' : 'wholeProfile'}>
       

@@ -8,6 +8,7 @@
   background-color: #1e1c1c;
   flex-direction: column;
   /* gap : 3rem ; */
+  margin-top: 3rem;
 }
 
 .edit1 {

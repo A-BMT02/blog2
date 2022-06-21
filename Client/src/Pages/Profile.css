@@ -141,7 +141,7 @@
   border-left: 0;
   border-right: 0;
   margin-bottom: 1rem;
-  width : 80% ;
+  /* width : 80% ; */
   /* border-bottom: 1px solid rgb(100, 145, 48); */
 }
 
@@ -206,14 +206,15 @@
 }
 
 .userBlogTitle {
-  color: black;
+  color: white;
   font-weight: 400;
 }
 
 .userBlog {
   display: flex ;
 }
-.userBlog > div > .blogBox {
+.userBlog > div >  .blogBox , 
+.userBlog > div > a > .blogBox {
   background-color: white;
   display: flex;
   flex-direction: column;

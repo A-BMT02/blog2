@@ -78,7 +78,7 @@ export default function Explore() {
 
     <div className='posts'>
       {allTweets.map(tweets => (
-        <div className='post'>
+        <div className='post Hpost'>
           <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg"/>
           <div className='postContent'>
             <p className='postName'>@Deogee</p>
@@ -94,7 +94,7 @@ export default function Explore() {
         {allChallenges.map(challenge=> (
           <>
           {challenge.update.map(a => (
-            <div className='post'>
+            <div className='post Hpost'>
               <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg"/>
               <div className='challengeLeft'>
                 <p className='postName'>@Deogee</p>
@@ -123,17 +123,18 @@ export default function Explore() {
 
         {
           data.map(blog => (
-            <div className='post userBlog'>
+            <div className='post userBlog Hpost'>
               <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg"/>
               <div>
                 <div>
                   <p className='postName'>@Deogee</p>
                 </div>
-                <div className='blogBox'>
-                  <p className='userBlogTitle'>{blog.title}</p>
-                  <p className='blogRead'>Read...</p>
-                </div>
-                
+                <Link to={`/page/${blog.id}`}>
+                  <div className='blogBox'>
+                    <p className='userBlogTitle'>{blog.title}</p>
+                    <p className='blogRead'>Read...</p>
+                  </div>
+                </Link>
               </div>
         </div>
           ))

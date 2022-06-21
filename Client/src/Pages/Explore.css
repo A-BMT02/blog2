@@ -19,11 +19,16 @@
   flex-direction: column;
   width: 100%;
   max-width: 600px;
+  margin-bottom: 3rem;
 }
 
 .side {
   display: none;
 }
+
+.Hpost {
+  width : 80% ;
+} 
 
 .top {
   top: 0;
@@ -228,4 +233,9 @@
   top : 1rem ; 
   right : 1rem ;
   font-size: 1.4rem;
+}
+
+.userBlog > div > .blogBox > .userBlogTitle , 
+.userBlog > div > a >.blogBox > .userBlogTitle {
+  color : black ;
 }

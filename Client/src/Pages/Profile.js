@@ -129,6 +129,7 @@ export default function Profile() {
               <p onClick={e => clicked(e , 'goals')} className={active === 'goals' ? 'activeContent' : 'notActive'}>Goals</p>
             </div>
        {/* Posts */}
+       <div className='postBox'>
       <div className={ active === 'posts' ? 'post' : 'post hide'}>
         <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg"/>
         <div className='postContent'>
@@ -154,6 +155,7 @@ export default function Profile() {
         </div>
         </div>
         
+      </div>
       </div>
         {/* Challenges */}
         {challenges.map((challenge , day ) => (
@@ -286,7 +288,7 @@ export default function Profile() {
         </div>
         <div className = "bottom">
             <p><Link to="/Home"><HiOutlineHome/></Link></p>
-            <p><Link to ="/"><AiOutlineSearch/></Link></p>
+            <p><Link to ="/explore"><AiOutlineSearch/></Link></p>
             <p><Link to="/Challenges"><BiTargetLock/></Link></p>
         </div>
     </div>

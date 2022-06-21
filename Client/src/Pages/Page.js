@@ -1,7 +1,13 @@
 import React , { useEffect, useState } from 'react'
 import "./page.css"; 
-import { useParams } from "react-router-dom" ;
+import { useParams , Link } from "react-router-dom" ;
 import { useData } from '../Components/Context/DataContext';
+import { HiOutlineHome } from "react-icons/hi" ;
+import { AiOutlineSearch } from "react-icons/ai" ; 
+import { BiTargetLock } from "react-icons/bi" ; 
+import { VscAccount } from "react-icons/vsc" ; 
+import { IoMdArrowBack } from 'react-icons/io' ;
+
 
 export default function Page() {
 
@@ -24,6 +30,29 @@ export default function Page() {
 
   return (
     <div className='wholePagePage'>
+        <div className='top'>
+        <p><Link to='/Home'><IoMdArrowBack/></Link></p>
+        <p><Link to='/profile'><VscAccount/></Link></p>
+    </div>
+    <div className = "bottom">
+        <p><Link to="/Home"><HiOutlineHome/></Link></p>
+        <p><Link to ="/explore"><AiOutlineSearch/></Link></p>
+        <p><Link to="/Challenges"><BiTargetLock/></Link></p>
+    </div>
+    <div className="smallSide side">
+        <p><Link to='/profile'><VscAccount/></Link></p>
+        <p><Link to="/Home"><HiOutlineHome/></Link></p>
+        <p><Link to ="/explore"><AiOutlineSearch/></Link></p>
+        <p><Link to="/Challenges"><BiTargetLock/></Link></p>
+    </div>
+
+    <div className="bigSide side">
+        <p><Link to='/profile'><VscAccount/>Profile</Link></p>
+        <p><Link to="/Home"><HiOutlineHome/>Home</Link></p>
+        <p><Link to ="/explore"><AiOutlineSearch/>Explore</Link></p>
+        <p><Link to="/Challenges"><BiTargetLock/>Challenges</Link></p>
+    </div>
+
         <div className='pagePosition'>
         <div className="readInfoHead container">
             <div className="profilePic">
@@ -51,7 +80,6 @@ export default function Page() {
 
         <div className="blog container">
             {target.wholeBlog}
-
         </div>
         </div>
     </div>

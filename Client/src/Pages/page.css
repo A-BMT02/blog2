@@ -2,6 +2,7 @@
   display: flex;
   margin-top: 5rem;
   margin-bottom: 2rem;
+  justify-content: flex-start;
 }
 
 .wholePagePage {
@@ -69,6 +70,7 @@
   color: rgb(100, 145, 48);
   font-size: 2.1rem;
   border-bottom: 2px outset white;
+  width: fit-content;
 }
 
 .pagePic {
@@ -89,6 +91,7 @@
 .blog {
   margin-top: 2rem;
   color: rgb(255, 255, 255);
+  margin-bottom :2rem ;
 }
 
 .blog > h3 {
@@ -121,4 +124,22 @@
 
 .commentBox > .readInfoHead {
   margin-top: 2rem;
+}
+
+.pageTitle {
+  text-align: center;
+  display: flex ; 
+  justify-content: center;
+}
+
+@media screen and (min-width : 600px ) {
+ .pagePosition {
+  margin-left: 72px;
+ } 
+}
+
+@media screen and (min-width : 1200px) {
+  .pagePosition {
+    margin-left: 191.05px;
+  }
 }

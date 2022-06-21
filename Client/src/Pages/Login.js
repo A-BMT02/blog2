@@ -3,6 +3,9 @@ import Logo from '../Components/Logo';
 import "./Login.css" ; 
 import { Link , useNavigate } from "react-router-dom" ; 
 import { useAuth } from '../Components/Context/UserContext';
+import { CircularProgress } from '@mui/material';
+
+
 export default function Login() {
 
     const emailRef = useRef(null) ; 
@@ -12,6 +15,7 @@ export default function Login() {
     const [ password , setPassword ] = useState("") ;
     const [ error , setError ] = useState("") ;
     const [ errorAnimate , setErrorAnimate] = useState(false) ;  
+    const [processing , setProcessing ] = useState(false) ; 
    
     const { login }   = useAuth() ; 
 
@@ -60,6 +64,7 @@ export default function Login() {
     }
 
     const loginUser = async (e) => {
+        setProcessing(true) ; 
         e.preventDefault() ;
         if(!error) {
             setErrorAnimate(false) ;
@@ -71,6 +76,7 @@ export default function Login() {
                 setError("") ;
                 setErrorAnimate(false) ; 
                 if(res.data.back && res.data.front && res.data.bio && res.data.name) {
+                    setProcessing(false) ;
                     navigate("/home") ; 
                 } else {
                     console.log('here') ; 
@@ -133,7 +139,9 @@ export default function Login() {
             </div>
 
             <div className="loginBtnContainer">
-                <button type="submit">LOGIN</button>
+                {processing ? <CircularProgress color="success" /> : 
+                    <button type="submit">LOGIN</button>
+                }
             </div>
 
             <div className="dontHave">

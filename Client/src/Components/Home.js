@@ -48,11 +48,11 @@ export default function Home() {
     <div className='rightHome'>
         {/* <Navbar1/> */}
         <Search/>
-        <Slider/>
+        {/* <Slider/> */}
         <div className="container HomeSectionA">
             <div className='editorsPickA'>
                 <div className="editorsPickAtitle">
-                    <h3>Editor's Pick</h3>
+                    <h3>Trending</h3>
                 </div>
 
                 <div className="editorsContainer">

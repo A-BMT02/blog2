@@ -11,6 +11,8 @@ import { Search } from '../Components/Search';
 import axios from "axios" ; 
 import { useAuth } from '../Components/Context/UserContext';
 import EditProfile from '../Components/EditProfile';
+import { Skeleton } from '@mui/material';
+
 
 export default function Profile() {
 
@@ -21,17 +23,28 @@ export default function Profile() {
   const [large , setLarge ] = useState(false) ; 
   const [challenges , setChallenges] = useState([]) ;
   const [edit , setEdit ] = useState(false) ; 
-  const [back ,setBack] = useState(user.back) ;
-  const [front , setFront] = useState(user.front) ; 
+  const [back ,setBack] = useState('') ;
+  const [front , setFront] = useState('') ; 
   const [error , setError ] = useState('') ; 
+  const [loading , setLoading] = useState(true) ; 
 
   const clicked = (e , col) => {
     // console.log(col) ; 
     setActive(col) ;
   }
+    useEffect(() => {
+      if(user) {
+        setBack(user.back) ; 
+        setFront(user.front) ;
+        setLoading(false) ;
+      }else {
+        setLoading(true)
+      }
+    } , [user])
 
   useEffect(() => {
-    axios.get('https://bugger02.herokuapp.com/api/get/challenges/update' , {
+    if(user) {
+      axios.get('https://bugger02.herokuapp.com/api/get/challenges/update' , {
       headers : {
         'auth-id' : user.id
       }
@@ -43,14 +56,27 @@ export default function Profile() {
       console.log(err.response) ; 
       setError(err.response.data) ; 
     })
-  },[])
+    }
+    
+  },[user])
+
 
   useEffect(() => {
     console.log(challenges) ;
   }, [challenges])
 
   return (
-    <div>
+    <>
+    {loading ? 
+    <div className='loading'>
+          <Skeleton variant="text"  height={100} />
+          <div className='column'>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+          </div>
+        </div> :
+      <div>
       <div className={edit ? '' : 'hide'}>
         <EditProfile setEdit={setEdit} back={back} setBack={setBack} front={front} setFront={setFront}/>
       </div>
@@ -265,5 +291,7 @@ export default function Profile() {
         </div>
     </div>
     </div>
+      }
+    </>
   )
 }

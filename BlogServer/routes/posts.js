@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken") ;
 
 
 router.post('/blog' , (req ,res) => {
-    // console.log(req.body) ;
+     console.log(req.body) ;
     const newBlog =  blog(req.body.data) ;
 
     newBlog.save((err, doc) => {
@@ -21,6 +21,7 @@ router.post('/blog' , (req ,res) => {
             res.json(doc) ;
         }
     } )
+
 })
 
 

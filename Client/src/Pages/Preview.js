@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { Alert } from '@mui/material';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
+import { useAuth } from '../Components/Context/UserContext';
+
 // import CloseIcon from '@mui/icons-material/Close';
 
 export default function Preview({data}) {
@@ -13,11 +15,15 @@ export default function Preview({data}) {
     // console.log(data) ; 
     const [success , setSuccess] = useState(false) ; 
     const [finish , setFinish] = useState(false) ; 
+    
+    const { user } = useAuth() ; 
 
+    console.log(user) ; 
+// https://bugger02.herokuapp.com
     const publish = async () => {
          let today = new Date() ;
-        axios.post("https://bugger02.herokuapp.com/api/post/blog" , {
-           data
+        axios.post("http://localhost:5000/api/post/blog" , {
+           data 
         }).then(info => {
             console.log(info.data) ; 
             setSuccess(true) ; 

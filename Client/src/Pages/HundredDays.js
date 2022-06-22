@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useAuth } from '../Components/Context/UserContext';
 import { IoMdArrowBack } from 'react-icons/io' ;
 import { Link } from "react-router-dom" ; 
-
+import { Skeleton } from '@mui/material';
 
 
 export default function HundredDays() {
@@ -17,6 +17,7 @@ export default function HundredDays() {
     const [day , setDay] = useState(null) ; 
     const [addUpdate , setUpdate] = useState(false)  ; 
     const [available , setAvailable] = useState(null) ; 
+    const [loading , setLoading ] = useState(true) ; 
      
 
     // const [missing , setmissing] = useState() ; 
@@ -60,6 +61,7 @@ export default function HundredDays() {
    
 
    useEffect(() => {
+    setLoading(true) ;
      axios.get('https://bugger02.herokuapp.com/api/get/time' , {
          headers : {
              'auth-id' : user.id
@@ -72,6 +74,7 @@ export default function HundredDays() {
           const days = Math.floor(difference/ (3600*24)) ; 
         //   console.log('difference is ' , difference , ' and days is ' , days ) ;
           setDay(days) ; 
+          setLoading(false) ; 
      })
    } ,[]) 
 
@@ -80,21 +83,34 @@ export default function HundredDays() {
 //    }, [available])
 
    useEffect(() => {
-       if(challenge[0].updata) {
+    setLoading(true)
+       if(challenge[0].update) {
             const update = challenge[0].update ; 
             setAvailable(update.length) ;
        } else {
            setAvailable(0) ; 
        }
 
+       setLoading(false) ; 
     // let available = update.length ; 
     // console.log(day - available) ; 
     
    } , [day])
   return ( 
-    <div className="centuryBox container">
+    <div>
+        {loading ? 
+        <div className='loading'>
+          <Skeleton variant="text"  height={100} />
+          <div className='column'>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+          </div>
+        </div>
+        :
+<div className="centuryBox container">
         <div className='wholeHundred'> 
-            <div className='top'>
+            <div className='top topF'>
                 <p><Link to='/Challenges'><IoMdArrowBack/></Link></p>
                 {/* <p><Link to='/profile'><VscAccount/></Link></p> */}
             </div>
@@ -111,7 +127,7 @@ export default function HundredDays() {
 
             </div>
 
-            <div className='post'>
+            <div className='post dayBox'>
                 <p className='day'>Day {day}</p>
             </div>
 
@@ -155,6 +171,10 @@ export default function HundredDays() {
             </div>
 
             </div>
+    </div>
+    }
+    
+
     </div>
   )
 }

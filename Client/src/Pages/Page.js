@@ -16,10 +16,10 @@ export default function Page() {
   const { data } = useData() ;
     useEffect(() => {
         data.map(item => {
-        //console.log( id) ; 
-
-        if(item.id === parseInt(id)) {
+            // console.log(typeof item._id , typeof id)
+        if(item._id == id) {
           setTarget(item) ; 
+          console.log(item) ;
         }
     })
 
@@ -61,10 +61,10 @@ export default function Page() {
             <div className='readInfo'>
                 <div className='line1'>
                     <p>{target.author}</p>
-                    <button>Follow</button>
+                    {/* <button>Follow</button> */}
                 </div>
                 <div className='line2'>
-                <p>{target.category}</p>
+                {/* <p>{target.category}</p> */}
                 <p>{target.date}</p>
                 </div>
             </div>
@@ -74,7 +74,8 @@ export default function Page() {
             <h2>{target.title}</h2>
         </div>
 
-        <div className='pagePic container'>
+        <div className={target.img === "null" ? 'hide' : 'pagePic container'}>
+            {/* {target.img === "null" ? console.log('null') : console.log('not null')} */}
             <img src={target.img}/>
         </div>
 

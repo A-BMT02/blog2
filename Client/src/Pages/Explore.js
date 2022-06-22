@@ -129,7 +129,7 @@ export default function Explore() {
                 <div>
                   <p className='postName'>@Deogee</p>
                 </div>
-                <Link to={`/page/${blog.id}`}>
+                <Link to={`/page/${blog._id}`}>
                   <div className='blogBox'>
                     <p className='userBlogTitle'>{blog.title}</p>
                     <p className='blogRead'>Read...</p>

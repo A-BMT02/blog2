@@ -17,7 +17,8 @@ import { Skeleton } from '@mui/material';
 export default function Profile() {
 
     const { user } = useAuth() ; 
-    console.log(user) ;
+    // console.log(user) ;
+    
 
   const [active , setActive] = useState("posts") ;
   const [large , setLarge ] = useState(false) ; 
@@ -27,7 +28,9 @@ export default function Profile() {
   const [front , setFront] = useState('') ; 
   const [error , setError ] = useState('') ; 
   const [loading , setLoading] = useState(true) ; 
+  const [myBlogs , setMyBlogs ] = useState([]) ; 
 
+  // console.log(challenges) ; 
   const clicked = (e , col) => {
     // console.log(col) ; 
     setActive(col) ;
@@ -61,9 +64,25 @@ export default function Profile() {
   },[user])
 
 
+useEffect(() => {
+     axios.get('http://localhost:5000/api/get/myblogs' , {
+      headers : {
+        'auth-id' : user.id
+      }
+    })
+    .then(res => {
+      const a = res.data ;
+      //  console.log(res.data) ;
+      setMyBlogs(res.data) ;
+    }).catch(err => {
+      console.log(err.response) ; 
+    })
+  
+} , [])
+
   useEffect(() => {
-    console.log(challenges) ;
-  }, [challenges])
+    console.log(myBlogs) ;
+  }, [myBlogs])
 
   return (
     <>
@@ -113,11 +132,11 @@ export default function Profile() {
 
             <div className='stats'>
               <div className='followers'>
-                  <p className='count'>500</p>
+                  <p className='count'>0</p>
                   <p>Followers</p>
               </div>
               <div className='following'>
-                  <p className='count'>100</p>
+                  <p className='count'>0</p>
                   <p>Following</p>
               </div>
             </div>
@@ -130,18 +149,21 @@ export default function Profile() {
             </div>
        {/* Posts */}
        <div className='postBox'>
-      <div className={ active === 'posts' ? 'post' : 'post hide'}>
-        <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg"/>
-        <div className='postContent'>
-          <p className='postName'>@Deogee</p>
-          <p className='postText'>After a year of my journey into web dev , i am happy to announce that i finally got a job in the tech industry. 🎉</p>
-          <div className='postIcons'>
-            <AiOutlineLike/>
-            <FaRegComment/>
-        </div>
-        </div>
-        
-      </div>
+        {challenges.map(challenge => (
+            <div className={ active === 'posts' ? 'post' : 'post hide'}>
+              <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg"/>
+              <div className='postContent'>
+                <p className='postName'>@{user.name}</p>
+                <p className='postText'>After a year of my journey into web dev , i am happy to announce that i finally got a job in the tech industry. 🎉</p>
+                <div className='postIcons'>
+                  <AiOutlineLike/>
+                  <FaRegComment/>
+              </div>
+              </div>
+              
+            </div>
+        ))}
+      
 
       {/* test Posts   */}
        <div className={ active === 'posts' ? 'post' : 'post hide'}>
@@ -207,10 +229,13 @@ export default function Profile() {
       </div> */}
 
       {/* Blogs */}
-      <div className={ active === 'blogs' ? 'post userBlog' : 'post userBlog hide'}>
-        <p className='userBlogTitle'>How i went from HTML to fullStack developer in 6 months</p>
-        <p className='blogRead'>Read...</p>
-      </div>
+      {myBlogs.map(blog => (
+          <div className={ active === 'blogs' ? 'post userBlog' : 'post userBlog hide'}>
+            <p className='userBlogTitle'>{blog.title}</p>
+            <Link to={`/page/${blog._id}`}><p className='blogRead'>Read...</p></Link>
+        </div>
+      ))}
+      
 
       {/* Goals */}
       <div className={ active === 'goals' ? 'post userGoals' : 'post userGoals hide'}>

@@ -9,13 +9,17 @@ import { VscAccount } from "react-icons/vsc" ;
 import { useAuth } from '../Components/Context/UserContext';
 import axios from 'axios';
 import { IoMdArrowBack } from 'react-icons/io' ;
+import { Skeleton } from '@mui/material';
 
 
 export default function Challenges() {
     const { user } = useAuth() ; 
     const [challenges , setChallenges] = useState([]) ; 
+    const [member , setMember] = useState(false) ; 
+    const [loading , setLoading ] = useState(true) ; 
 
     useEffect(() => {
+        setLoading(true)
         axios.get('https://bugger02.herokuapp.com/api/get/challenges' , {
             headers : {   
                 'auth-id' : user.id        
@@ -24,10 +28,34 @@ export default function Challenges() {
         .then(doc => {
             setChallenges(doc.data) ;  
             console.log(doc) ; 
+                setLoading(false) ; 
         })
     },[])
 
+    useEffect(() => {
+        if(challenges.length != 0) {
+            const a = challenges.filter(challenge => {
+                return challenge.name == '100 Days Of Code' ;
+            })
+            if(a) {
+                // console.log('yes') ;
+                setMember(true) ; 
+            }
+        }
+    } ,[challenges])
+
   return (
+    <div>
+        {loading ?  
+        <div className='loading'>
+          <Skeleton variant="text"  height={100} />
+          <div className='column'>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+          </div>
+        </div>
+      :  
       <div>
           <div className='top'>
             <p><Link to='/Home'><IoMdArrowBack/></Link></p>
@@ -37,20 +65,20 @@ export default function Challenges() {
 <div className="smallSide side">
         <p><Link to='/profile'><VscAccount/></Link></p>
         <p><Link to="/Home"><HiOutlineHome/></Link></p>
-        <p><Link to ="/"><AiOutlineSearch/></Link></p>
+        <p><Link to ="/explore"><AiOutlineSearch/></Link></p>
         <p><Link to="/Challenges"><BiTargetLock/></Link></p>
     </div>
 
     <div className="bigSide side">
         <p><Link to='/profile'><VscAccount/>Profile</Link></p>
         <p><Link to="/Home"><HiOutlineHome/>Home</Link></p>
-        <p><Link to ="/"><AiOutlineSearch/>Explore</Link></p>
+        <p><Link to ="/explore"><AiOutlineSearch/>Explore</Link></p>
         <p><Link to="/Challenges"><BiTargetLock/>Challenges</Link></p>
     </div>
 
     <div className = "bottom">
         <p><Link to="/Home"><HiOutlineHome/></Link></p>
-        <p><Link to ="/"><AiOutlineSearch/></Link></p>
+        <p><Link to ="/explore"><AiOutlineSearch/></Link></p>
         <p><Link to="/Challenges"><BiTargetLock/></Link></p>
     </div>
     <div className='container challengesBox'>
@@ -71,7 +99,7 @@ export default function Challenges() {
         </div>
         <div className='joinChallenges'>
             <h2>Join Challenges</h2>
-            <Link to="/Challenges/centuryofchallenge">
+            <Link to={member ? "/hundredDays" : "/Challenges/centuryofchallenge"}>
             <div className='joinChallenge'>
                 <h3>100 Days Of Code</h3>
                 <p>Consistently Code for a 100 days</p>
@@ -91,5 +119,8 @@ export default function Challenges() {
     </div>
 
     </div>
+        }
+      
+</div>
   )
 }

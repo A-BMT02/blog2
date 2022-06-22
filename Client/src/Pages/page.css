@@ -71,6 +71,7 @@
   font-size: 2.1rem;
   border-bottom: 2px outset white;
   width: fit-content;
+  padding-bottom: 5px;
 }
 
 .pagePic {
@@ -92,6 +93,14 @@
   margin-top: 2rem;
   color: rgb(255, 255, 255);
   margin-bottom :2rem ;
+  font-size: 1.1rem;
+  line-height: 30px;
+}
+
+@media screen and (min-width : 600px) {
+  .blog {
+    font-size: 1.2rem;
+  }
 }
 
 .blog > h3 {

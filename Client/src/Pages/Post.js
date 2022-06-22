@@ -12,6 +12,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Preview from "./Preview";
 import { Link } from "react-router-dom";
 import { IoMdArrowBack } from 'react-icons/io' ;
+import { useAuth } from "../Components/Context/UserContext" ;
 
 export function Post() {
     const navigate = useNavigate() ;
@@ -41,6 +42,7 @@ export function Post() {
     const [ preview , setPreview] = useState();
     const [final , setFinal] = useState(false) ; 
     
+    const { user } = useAuth() ; 
 
 const autoheight = (e) => {
     e.target.style.height = `${e.target.scrollHeight}px`;
@@ -59,7 +61,6 @@ const autoheight = (e) => {
 
     const postBlog = async () => {
         setFinal(true) ; 
-     
      }
         let today = new Date() ;
 
@@ -72,8 +73,8 @@ const autoheight = (e) => {
             date : `${months[today.getMonth()]} ${today.getDate()}` , 
             header : "EDITOR'S CHOICE" , 
             wholeBlog: `${blog}` , 
-            id : `${data.length + 1}` , 
-            editorsPick : false 
+            editorsPick : false , 
+            userId : user.id
      }
 
 

@@ -57,14 +57,14 @@ export default function Home() {
 
                 <div className="editorsContainer">
                     <div className="lefteditor">
-                        <Link to={`/page/${data[0].id}`}>
+                        <Link to={`/page/${data[0]._id}`}>
                            <Medium details={data[0]}/>
                         </Link>
                     </div>
                     <div className="righteditor">
                         { data.map( (item , index) => (
                             index!==0 && 
-                        <Link to={`/page/${item.id}`}>
+                        <Link to={`/page/${item._id}`}>
                             <Small details={item}/> 
                         </Link>
 
@@ -83,7 +83,7 @@ export default function Home() {
                     { data.map( (item , index) => (
                         
                             index!==0 && 
-                        <Link to={`/page/${item.id}`}>
+                        <Link to={`/page/${item._id}`}>
                             <Small details={item}/> 
                         </Link>
 

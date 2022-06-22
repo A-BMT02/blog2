@@ -79,8 +79,8 @@ export default function CenturyOfCode() {
                     } } severity="success">Succesfully started Challenge!</Alert>
             </div>
 
-       <div className='top'>
-            <p><Link to='/Home'><IoMdArrowBack/></Link></p>
+       <div className='top topF'>
+            <p><Link to='/Challenges'><IoMdArrowBack/></Link></p>
             {/* <p><Link to='/profile'><VscAccount/></Link></p> */}
           </div>
             <div className="h2Box">

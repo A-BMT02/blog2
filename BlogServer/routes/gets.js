@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const challenge  = require('../challenges') ;
 const tweet = require("../tweet") ;
+const blog = require("../model")
 
 
 router.get('/challenges/update' , async (req , res) => {
@@ -80,6 +81,14 @@ router.get('/allchallenges' , (req ,res) => {
          res.json(result) ;
     }
     }) ;
+})
+
+router.get('/myblogs' , async (req ,res) => {
+    const id = req.header('auth-id') ;
+
+    const exists= await blog.find({userId : id});
+    // console.log(exists) ;
+    res.status(200).send(exists) ; 
 })
 
 module.exports = router ;

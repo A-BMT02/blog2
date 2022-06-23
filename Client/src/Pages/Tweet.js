@@ -28,12 +28,11 @@ export default function Tweet() {
     const config = {
             'auth-token' : user.token
         }
-
+// https://bugger02.herokuapp.com
     const sendData = async () => {
         axios.post("https://bugger02.herokuapp.com/api/post/tweet" , {
             tweet , 
             date : new Date() , 
-            id : parseInt(user.id) , 
             userId : user.id
         } , {
             headers : config

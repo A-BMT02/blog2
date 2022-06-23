@@ -29,6 +29,7 @@ export default function Profile() {
   const [error , setError ] = useState('') ; 
   const [loading , setLoading] = useState(true) ; 
   const [myBlogs , setMyBlogs ] = useState([]) ; 
+  const [myTweets , setMyTweets] = useState([]) ;
 
   // console.log(challenges) ; 
   const clicked = (e , col) => {
@@ -65,7 +66,7 @@ export default function Profile() {
 
 
 useEffect(() => {
-     axios.get('http://localhost:5000/api/get/myblogs' , {
+     axios.get('https://bugger02.herokuapp.com/api/get/myblogs' , {
       headers : {
         'auth-id' : user.id
       }
@@ -81,7 +82,7 @@ useEffect(() => {
 } , [])
 
 useEffect(() => {
-   axios.get('http://localhost:5000/api/get/mytweets' , {
+   axios.get('https://bugger02.herokuapp.com/api/get/mytweets' , {
       headers : {
         'auth-id' : user.id
       }
@@ -89,6 +90,7 @@ useEffect(() => {
     .then(res => {
       const a = res.data ;
        console.log(res.data) ;
+       setMyTweets(res.data) ; 
       // setMyBlogs(res.data) ;
     }).catch(err => {
       console.log(err.response) ; 
@@ -164,12 +166,12 @@ useEffect(() => {
             </div>
        {/* Posts */}
        <div className='postBox'>
-        {challenges.map(challenge => (
+        {myTweets.map(a => (
             <div className={ active === 'posts' ? 'post' : 'post hide'}>
               <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg"/>
               <div className='postContent'>
                 <p className='postName'>@{user.name}</p>
-                <p className='postText'>After a year of my journey into web dev , i am happy to announce that i finally got a job in the tech industry. 🎉</p>
+                <p className='postText'>{a.tweet}</p>
                 <div className='postIcons'>
                   <AiOutlineLike/>
                   <FaRegComment/>
@@ -181,18 +183,6 @@ useEffect(() => {
       
 
       {/* test Posts   */}
-       <div className={ active === 'posts' ? 'post' : 'post hide'}>
-        <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg"/>
-        <div className='postContent'>
-          <p className='postName'>@Deogee</p>
-          <p className='postText'>So happy to announce that i just completed the 100DaysOfCode Challenge.</p>
-          <div className='postIcons'>
-            <AiOutlineLike/>
-            <FaRegComment/>
-        </div>
-        </div>
-        
-      </div>
       </div>
         {/* Challenges */}
         {challenges.map((challenge , day ) => (

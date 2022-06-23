@@ -21,7 +21,7 @@ router.post('/blog' , (req ,res) => {
             res.json(doc) ;
         }
     } )
-
+    
 })
 
 

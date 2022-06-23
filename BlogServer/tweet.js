@@ -12,6 +12,9 @@ const TweetSchema = new mongoose.Schema({
     tweet : {
         type : String , 
         required : true 
+    } , 
+    userId : {
+        type : String
     }
 
 }

@@ -80,6 +80,21 @@ useEffect(() => {
   
 } , [])
 
+useEffect(() => {
+   axios.get('http://localhost:5000/api/get/mytweets' , {
+      headers : {
+        'auth-id' : user.id
+      }
+    })
+    .then(res => {
+      const a = res.data ;
+       console.log(res.data) ;
+      // setMyBlogs(res.data) ;
+    }).catch(err => {
+      console.log(err.response) ; 
+    })
+})
+
   useEffect(() => {
     console.log(myBlogs) ;
   }, [myBlogs])

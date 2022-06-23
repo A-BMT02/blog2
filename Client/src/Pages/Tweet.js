@@ -33,7 +33,8 @@ export default function Tweet() {
         axios.post("https://bugger02.herokuapp.com/api/post/tweet" , {
             tweet , 
             date : new Date() , 
-            id : parseInt(user.id)
+            id : parseInt(user.id) , 
+            userId : user.id
         } , {
             headers : config
         }).then(info => {

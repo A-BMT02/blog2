@@ -91,4 +91,12 @@ router.get('/myblogs' , async (req ,res) => {
     res.status(200).send(exists) ; 
 })
 
+router.get('/mytweets' , async (req , res) => {
+    const id = req.header('auth-id') ;
+
+    const exists = await tweet.find({userId : id}) ; 
+    console.log(exists) ; 
+    res.send(exists) ; 
+})
+
 module.exports = router ;

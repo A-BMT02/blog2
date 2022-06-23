@@ -70,7 +70,7 @@ export default function Preview({data}) {
             <h2>{data.title}</h2>
         </div>
 
-        <div className='pagePic container'>
+        <div className={data.img === "null" ? 'hide' :'pagePic container'}>
             <img src={data.img}/>
         </div>
 

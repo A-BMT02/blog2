@@ -14,9 +14,10 @@ export default function Page() {
     const [ target , setTarget] = useState({}) ; 
   const { id } = useParams() ; 
   const { data } = useData() ;
+  console.log(data) ;
     useEffect(() => {
         data.map(item => {
-            // console.log(typeof item._id , typeof id)
+            //  console.log( item._id ,  id)
         if(item._id == id) {
           setTarget(item) ; 
           console.log(item) ;
@@ -26,7 +27,9 @@ export default function Page() {
     } , [])
   
   
-  //console.log(id) ;
+  useEffect(() => {
+    console.log(target) ; 
+  }, [target])
 
   return (
     <div className='wholePagePage'>

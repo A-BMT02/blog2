@@ -11,7 +11,7 @@ export default function MediumCard({details}) {
 
   return <div className=" container mediumCard">
       
-      <div className="imageContainer">
+      <div className={details.img == 'null' ? 'hide' : "imageContainer"}>
         <img src ={details.img}></img>
       </div>
 

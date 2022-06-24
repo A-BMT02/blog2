@@ -89,7 +89,7 @@ useEffect(() => {
     })
     .then(res => {
       const a = res.data ;
-       console.log(res.data) ;
+      //  console.log(res.data) ;
        setMyTweets(res.data) ; 
       // setMyBlogs(res.data) ;
     }).catch(err => {
@@ -97,9 +97,9 @@ useEffect(() => {
     })
 })
 
-  useEffect(() => {
-    console.log(myBlogs) ;
-  }, [myBlogs])
+  // useEffect(() => {
+  //   console.log(myBlogs) ;
+  // }, [myBlogs])
 
   return (
     <>

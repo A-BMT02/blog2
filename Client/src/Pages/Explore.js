@@ -7,10 +7,11 @@ import { AiOutlineSearch } from "react-icons/ai" ;
 import { BiTargetLock } from "react-icons/bi" ; 
 import { VscAccount } from "react-icons/vsc" ; 
 import {AiOutlineLike} from "react-icons/ai" ; 
-import { FaRegComment } from "react-icons/fa" ;
 import { BsPencilSquare } from "react-icons/bs" ; 
 import { useData } from '../Components/Context/DataContext';
 import {AiOutlineClose} from 'react-icons/ai' ;
+import { FaRegComment } from "react-icons/fa" ;
+
 
 export default function Explore() {
   const [ showOptions , setShowOptions ] = useState(false) ; 

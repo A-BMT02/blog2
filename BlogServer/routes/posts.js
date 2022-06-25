@@ -43,6 +43,8 @@ router.post('/tweet' , verify , (req ,res) => {
 
 router.post('/100daysofcode' , verify,  (req , res) => {
     //find user
+    // console.log(req.body)
+    console.log(req.body.user.id) ;
     const token = req.headers['auth-token'] ; 
     const user = jwt.verify(token , process.env.TOKEN_SECRET) ;
     const userId = user._id ; 
@@ -59,12 +61,12 @@ router.post('/100daysofcode' , verify,  (req , res) => {
         } else {
             if(doc.length == 0) {
                 const newChallenge = new challenge({
-                    _id : userId , 
                     name : req.body.challengeName ,
                     priorSkills , 
                     priorNote , 
                     goals , 
-                    startDate
+                    startDate , 
+                    userId : req.body.user.id
                 })
                 newChallenge.save() ; 
                 return res.status(200).send({

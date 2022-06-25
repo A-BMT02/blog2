@@ -59,7 +59,7 @@ export default function Page() {
         <div className='pagePosition'>
         <div className="readInfoHead container">
             <div className="profilePic">
-                <img src='https://images.pexels.com/photos/1416736/pexels-photo-1416736.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'/>
+                <img src={target.front}/>
             </div>
             <div className='readInfo'>
                 <div className='line1'>

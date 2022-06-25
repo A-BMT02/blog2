@@ -20,7 +20,7 @@ export default function Challenges() {
 
     useEffect(() => {
         setLoading(true)
-        axios.get('https://bugger02.herokuapp.com/api/get/challenges' , {
+        axios.get('http://localhost:5000/api/get/challenges' , {
             headers : {   
                 'auth-id' : user.id        
             }

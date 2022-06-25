@@ -41,6 +41,7 @@ export default function Tweet() {
             setSuccess(true) ; 
             if(finish) {
                 navigate('/Home') ;
+                window.location.reload()
             }
         })
     }
@@ -49,6 +50,7 @@ export default function Tweet() {
                 if(success) {
                     setTimeout(() => {
                         navigate('/Home')
+                        window.location.reload()
                     } , 2000)
                 }
             } , [success])
@@ -72,7 +74,7 @@ export default function Tweet() {
             }}>Post</button>
         </div>
         <div className='post'>
-            <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg"/>
+            <img className="postPic" src={user.front}/>
             <div className='postContent'>
             <p className='postName'>@Deogee</p>
             <textarea value={tweet} placeholder='Write something here' onChange={ e => handleBlogChange(e)}/>

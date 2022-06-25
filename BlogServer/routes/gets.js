@@ -2,6 +2,8 @@ const router = require('express').Router();
 const challenge  = require('../challenges') ;
 const tweet = require("../tweet") ;
 const blog = require("../model")
+const user  = require('../user') ; 
+
 
 
 router.get('/challenges/update' , async (req , res) => {
@@ -36,10 +38,11 @@ router.get('/challenges/update' , async (req , res) => {
 
 router.get('/challenges' , (req , res) => {
     const id = req.header('auth-id') ;
-    challenge.find({_id : id} , function(err , doc){
+    challenge.find({userId : id} , function(err , doc){
         if(err) {
             console.log(err)
         } else {
+            // console.log(doc) ;
             res.send(doc) ;
         }
     })
@@ -56,15 +59,23 @@ router.get('/time' , (req , res) => {
     })
 })
 
-router.get('/tweets' ,  (req , res)  => {
-
-   return tweet.find({} , (err , result) => {
+router.get('/tweets' ,   (req , res)  => {
+        let allTweets = [] ;
+    tweet.find({} , async (err , result) => {
     if(err) {
         // console.log(err) ;
         res.send(err) ;
     } else {
-        // console.log(result) ;
-        res.json(result) ;
+        const b = await Promise.all(result.map( async (tweet) => {
+            const foundUser = await user.findOne({_id : tweet.userId}) ;
+            const tweetObject = tweet.toObject() ; 
+            tweetObject.front = foundUser.front ;
+            return tweetObject ; 
+        })) 
+
+        console.log(b) ; 
+
+        res.json(b) ;
     }
     }) ;
 

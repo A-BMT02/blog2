@@ -44,10 +44,10 @@ export default function HundredDays() {
             'auth-id' : user.id
         }
 
-    axios.post("https://bugger02.herokuapp.com/api/post/update/100daysofcode" , {
+    axios.post("http://localhost:5000/api/post/update/100daysofcode" , {
         goals , 
         day : available + 1 , 
-        priorNote
+        priorNote , 
         } ,  {
             headers : config
         }).then(info => {

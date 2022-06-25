@@ -20,8 +20,8 @@ export default function Explore() {
   const { data } = useData() ; 
   const { allChallenges} = useData() ; 
   // console.log(allTweets) ; 
-  console.log(allChallenges) ; 
-  // console.log(data) ; 
+  // console.log(allChallenges) ; 
+  console.log(data) ; 
 
   const changeDate = (start) => {
       const date = new Date(start) ; 
@@ -80,7 +80,7 @@ export default function Explore() {
     <div className='posts'>
       {allTweets.map(tweets => (
         <div className='post Hpost'>
-          <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg"/>
+          <img className="postPic" src={tweets.front}/>
           <div className='postContent'>
             <p className='postName'>@Deogee</p>
             <p className='postText'>{tweets.tweet}</p>

@@ -41,7 +41,7 @@ export default function CenturyOfCode() {
             'auth-token' : user.token
         }
 
-    axios.post("https://bugger02.herokuapp.com/api/post/100daysofcode" , {
+    axios.post("http://localhost:5000/api/post/100daysofcode" , {
         challengeName : "100 Days Of Code" , 
         priorSkills : priorList ,
         priorNote : priorNote ,

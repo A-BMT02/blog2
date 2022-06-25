@@ -50,7 +50,7 @@ router.get('/challenges' , (req , res) => {
 
 router.get('/time' , (req , res) => {
     const id = req.header('auth-id') ;
-    challenge.findOne({_id : id} ,function(err ,doc){
+    challenge.findOne({userId : id} ,function(err ,doc){
         if(err) {
             console.log(err) ;
         } else {

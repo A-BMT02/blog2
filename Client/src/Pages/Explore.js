@@ -17,15 +17,18 @@ import { AiTwotoneLike } from "react-icons/ai";
 import { FaComment } from "react-icons/fa";
 import axios from 'axios';
 import { useAuth } from "../Components/Context/UserContext" ;
+import { Skeleton } from '@mui/material';
+
 
 export default function Explore() {
   const [showOptions, setShowOptions] = useState(false);
   const navigate = useNavigate();
-  const { allTweets } = useData();
   const { data } = useData();
   const { allChallenges } = useData();
   const [liked, setLiked] = useState({});
+  const [allTweets , setAllTweets] = useState([]) ;
   const [allTweets2 , setAllTweets2 ] = useState(allTweets) ;
+  const [loading , setLoading] = useState(true) ; 
 
   console.log(allTweets);
   
@@ -35,7 +38,15 @@ export default function Explore() {
   const { user } = useAuth();
   console.log(user) ;
 
-  
+  useEffect(() => {
+    setLoading(true)
+     axios.get('http://localhost:5000/api/get/tweets')
+        .then(result => {
+          setAllTweets(result.data) ;
+          setLoading(false)
+        })
+  } , [])
+
   const changeDate = (start) => {
     const date = new Date(start);
     const now = new Date();
@@ -58,8 +69,8 @@ export default function Explore() {
           id , 
           by : user.id
       }).then(res => {
-        console.log(res.data) ;
-        setAllTweets2(res.data) ;
+        // console.log(res.data) ;
+        // setAllTweets2(res.data) ;
         // const target = allTweets2.find(a => {
         //   return a._id == id
         // })
@@ -92,12 +103,20 @@ export default function Explore() {
     }
   }
 
-  useEffect(() => {
-    console.log(liked) ;
-  } , [liked])
 
   return (
     <div>
+      {loading ? 
+       <div className='loading'>
+          <Skeleton variant="text"  height={100} />
+          <div className='column'>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+              <Skeleton variant="rectangular" width="100%" height={300}/>
+          </div>
+        </div> :
+
+        <div>
       <div className='leftSideContainer'>
         <LeftSide />
       </div>
@@ -144,7 +163,7 @@ export default function Explore() {
       <div className='postsAndExplore'>
 
         <div className='posts'>
-          {allTweets2.map(tweets => (
+          {allTweets.map(tweets => (
             <div className='post Hpost'>
               <img className="postPic" src={tweets.front} />
               <div className='postContent'>
@@ -345,6 +364,9 @@ export default function Explore() {
 
 
 
+    </div>
+        }
+    
     </div>
   )
 }

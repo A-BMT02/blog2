@@ -62,10 +62,6 @@ useEffect(() => {
       }
      })
 
-        axios.get('http://localhost:5000/api/get/tweets')
-        .then(result => {
-          setAllTweets(result.data) ;
-
           axios.get('https://bugger02.herokuapp.com/api/get/allchallenges')
           .then(result2 => {
             setAllChallenges(result2.data) ;
@@ -73,7 +69,6 @@ useEffect(() => {
             setLoading(false) ; 
 
           })
-        })
 
   })
 } , [])

@@ -175,10 +175,29 @@ router.post('/tweetlikedremove' , async (req ,res) => {
         }
     } , {new: true})
 
-    const tweets = await tweet.find({})
-    // console.log(tweets) ; 
+    tweet.find({} , async (err , result) => {
+    if(err) {
+        // console.log(err) ;
+        res.send(err) ;
+    } else {
+        const b = await Promise.all(result.map( async (tweet) => {
+            const foundUser = await user.findOne({_id : tweet.userId}) ;
+            const tweetObject = tweet.toObject() ; 
+            tweetObject.front = foundUser.front ;
+            return tweetObject ; 
+        })) 
 
-    res.send(tweets) ;
+        // console.log(b) ; 
+
+        res.json(b) ;
+    }
+    }) ;
+
+    // const tweets = await tweet.find({})
+    // console.log(tweets) ; 
+    
+
+    // res.send(tweets) ;
 
  
 })

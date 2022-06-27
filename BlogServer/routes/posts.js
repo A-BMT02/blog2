@@ -141,7 +141,46 @@ router.post('/finduser' , async (req , res) => {
 
 })
 
+router.post('/tweetliked' , async (req ,res) => {
+    console.log(req.body) ; 
+    const id = req.body.id ;
+    const a = await tweet.findOne({_id : id})
+
     
+    console.log(a) ; 
 
+    const allLikes = a.liked.find(user => {
+        return  user == req.body.by
+    })
+    if(allLikes) {
+        // console.log('already liked')
+        res.send('success') ;
+    } else {
+    // console.log('not liked') ; 
+        await tweet.findOneAndUpdate(
+            { _id : id } ,
+            {$push : {
+                liked : req.body.by 
+            }}
+        )
+    }
+})
 
+router.post('/tweetlikedremove' , async (req ,res) => {
+     console.log(req.body) ; 
+    const id = req.body.id ;
+    const a = await tweet.updateOne({_id : id} , {
+        $pullAll : {
+            liked : [`${req.body.by}`]
+        }
+    } , {new: true})
+
+    const tweets = await tweet.find({})
+    // console.log(tweets) ; 
+
+    res.send(tweets) ;
+
+ 
+})
+ 
 module.exports = router ; 

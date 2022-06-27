@@ -1,59 +1,125 @@
-import React , { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LeftSide from '../Components/LeftSide'
-import "./Explore.css" ; 
-import { Link, useNavigate } from "react-router-dom" ; 
-import { HiOutlineHome } from "react-icons/hi" ;
-import { AiOutlineSearch } from "react-icons/ai" ; 
-import { BiTargetLock } from "react-icons/bi" ; 
-import { VscAccount } from "react-icons/vsc" ; 
-import {AiOutlineLike} from "react-icons/ai" ; 
-import { BsPencilSquare } from "react-icons/bs" ; 
+import "./Explore.css";
+import { Link, useNavigate } from "react-router-dom";
+import { HiOutlineHome } from "react-icons/hi";
+import { AiOutlineSearch } from "react-icons/ai";
+import { BiTargetLock } from "react-icons/bi";
+import { VscAccount } from "react-icons/vsc";
+import { AiOutlineLike } from "react-icons/ai";
+import { BsPencilSquare } from "react-icons/bs";
 import { useData } from '../Components/Context/DataContext';
-import {AiOutlineClose} from 'react-icons/ai' ;
-import { FaRegComment } from "react-icons/fa" ;
-
+import { AiOutlineClose } from 'react-icons/ai';
+import { FaRegComment } from "react-icons/fa";
+import { FcLike } from "react-icons/fc";
+import { FaHeart } from "react-icons/fa";
+import { AiTwotoneLike } from "react-icons/ai";
+import { FaComment } from "react-icons/fa";
+import axios from 'axios';
+import { useAuth } from "../Components/Context/UserContext" ;
 
 export default function Explore() {
-  const [ showOptions , setShowOptions ] = useState(false) ; 
-  const navigate = useNavigate() ;
-  const { allTweets } = useData() ;
-  const { data } = useData() ; 
-  const { allChallenges} = useData() ; 
-  // console.log(allTweets) ; 
-  // console.log(allChallenges) ; 
-  console.log(data) ; 
+  const [showOptions, setShowOptions] = useState(false);
+  const navigate = useNavigate();
+  const { allTweets } = useData();
+  const { data } = useData();
+  const { allChallenges } = useData();
+  const [liked, setLiked] = useState({});
+  const [allTweets2 , setAllTweets2 ] = useState(allTweets) ;
 
+  console.log(allTweets);
+  
+
+  // console.log(allChallenges) ; 
+  console.log(data);
+  const { user } = useAuth();
+  console.log(user) ;
+
+  
   const changeDate = (start) => {
-      const date = new Date(start) ; 
-      const now = new Date() ; 
-      console.log('date is ' , date , ' and now is ' , now , ' and difference is ' , date - now) ; 
-      return '5' ; 
+    const date = new Date(start);
+    const now = new Date();
+    console.log('date is ', date, ' and now is ', now, ' and difference is ', date - now);
+    return '5';
   }
+
+  // useEffect(() => {
+  //   console.log(liked) ; 
+  // } , [liked])
+
+  const heartClicked = (e) => {
+    // e.target.parentNode.classList.toggle('liked');
+
+    if (e.target.parentNode.classList.contains('liked')) {
+      e.target.parentNode.nextElementSibling.innerHTML-- ;
+      e.target.parentNode.classList.remove('liked');
+      const id = e.target.parentNode.getAttribute('custom-attribute');
+      axios.post('http://localhost:5000/api/post/tweetlikedremove', {
+          id , 
+          by : user.id
+      }).then(res => {
+        console.log(res.data) ;
+        setAllTweets2(res.data) ;
+        // const target = allTweets2.find(a => {
+        //   return a._id == id
+        // })
+
+        // const b = target.liked.filter(a => {
+        //   return a == user.id
+        // })
+        // console.log(target) ;
+        // console.log('target is ' , b) ; 
+      })
+
+      
+
+      
+    } else {
+       e.target.parentNode.classList.add('liked');
+        e.target.parentNode.nextElementSibling.innerHTML++ ;
+      const id = e.target.parentNode.getAttribute('custom-attribute');
+            axios.post('http://localhost:5000/api/post/tweetliked', {
+              id ,
+              by: user.id
+            }).then(res => {
+              console.log(res);
+            //  setLiked(prev => {
+            //   return {...prev, id : true}
+            //  })
+            })
+            // console.log('liked' , e.target.parentNode.getAttribute('custom-attribute')) ; 
+      // console.log('not liked');
+    }
+  }
+
+  useEffect(() => {
+    console.log(liked) ;
+  } , [liked])
 
   return (
     <div>
-    <div className='leftSideContainer'>
-        <LeftSide/>
-    </div>
-    <div className='top'>
-        <p><Link to='/profile'><VscAccount/></Link></p>
-    </div>
-    <div className = "bottom">
-        <p><Link to="/Home"><HiOutlineHome/></Link></p>
-        <p><Link to ="/explore"><AiOutlineSearch/></Link></p>
-        <p><Link to="/Challenges"><BiTargetLock/></Link></p>
-    </div>
-    <div className='addIcon'>
-      <BsPencilSquare onClick={ e => setShowOptions(true)} />
-    </div>
-    <div className={showOptions ? 'options' : 'hide'}>
-      <AiOutlineClose className='closeIcon' onClick={ e => setShowOptions(false)}/>
-        <button onClick={ e => navigate('/blog')}>Blog</button>
-        <button onClick={ e => navigate('/challenges')}>Challenge</button>
-        <button onClick={ e => navigate('/post')}>post</button>
-    </div>
+      <div className='leftSideContainer'>
+        <LeftSide />
+      </div>
+      <div className='top'>
+        <p><Link to='/profile'><VscAccount /></Link></p>
+      </div>
+      <div className="bottom">
+        <p><Link to="/Home"><HiOutlineHome /></Link></p>
+        <p><Link to="/explore"><AiOutlineSearch /></Link></p>
+        <p><Link to="/Challenges"><BiTargetLock /></Link></p>
+      </div>
+      <div className='addIcon'>
+        <BsPencilSquare onClick={e => setShowOptions(true)} />
+      </div>
+      <div className={showOptions ? 'options' : 'hide'}>
+        <AiOutlineClose className='closeIcon' onClick={e => setShowOptions(false)} />
+        <button onClick={e => navigate('/blog')}>Blog</button>
+        <button onClick={e => navigate('/challenges')}>Challenge</button>
+        <button onClick={e => navigate('/post')}>post</button>
+      </div>
 
-    {/* <div className="side">
+      {/* <div className="side">
         <p><VscAccount/></p>
 
         <p><Link to="/Home"><HiOutlineHome/></Link></p>
@@ -61,90 +127,98 @@ export default function Explore() {
         <p><Link to="/Challenges"><BiTargetLock/></Link></p>
     </div> */}
 
-    <div className="smallSide side">
-        <p><Link to='/profile'><VscAccount/></Link></p>
-        <p><Link to="/Home"><HiOutlineHome/></Link></p>
-        <p><Link to ="/explore"><AiOutlineSearch/></Link></p>
-        <p><Link to="/Challenges"><BiTargetLock/></Link></p>
-    </div>
-
-    <div className="bigSide side">
-        <p><Link to='/profile'><VscAccount/>Profile</Link></p>
-        <p><Link to="/Home"><HiOutlineHome/>Home</Link></p>
-        <p><Link to ="/explore"><AiOutlineSearch/>Explore</Link></p>
-        <p><Link to="/Challenges"><BiTargetLock/>Challenges</Link></p>
-    </div>
-
-    <div className='postsAndExplore'>
-
-    <div className='posts'>
-      {allTweets.map(tweets => (
-        <div className='post Hpost'>
-          <img className="postPic" src={tweets.front}/>
-          <div className='postContent'>
-            <p className='postName'>@Deogee</p>
-            <p className='postText'>{tweets.tweet}</p>
-            <div className='postIcons'>
-              <AiOutlineLike/>
-              <FaRegComment/>
-            </div>
-        </div>
+      <div className="smallSide side">
+        <p><Link to='/profile'><VscAccount /></Link></p>
+        <p><Link to="/Home"><HiOutlineHome /></Link></p>
+        <p><Link to="/explore"><AiOutlineSearch /></Link></p>
+        <p><Link to="/Challenges"><BiTargetLock /></Link></p>
       </div>
-      ))}
 
-        {allChallenges.map(challenge=> (
-          <>
-          {challenge.update.map(a => (
+      <div className="bigSide side">
+        <p><Link to='/profile'><VscAccount />Profile</Link></p>
+        <p><Link to="/Home"><HiOutlineHome />Home</Link></p>
+        <p><Link to="/explore"><AiOutlineSearch />Explore</Link></p>
+        <p><Link to="/Challenges"><BiTargetLock />Challenges</Link></p>
+      </div>
+
+      <div className='postsAndExplore'>
+
+        <div className='posts'>
+          {allTweets2.map(tweets => (
             <div className='post Hpost'>
-              <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg"/>
-              <div className='challengeLeft'>
+              <img className="postPic" src={tweets.front} />
+              <div className='postContent'>
                 <p className='postName'>@Deogee</p>
-                <p className='challengeHeader'>{challenge.name}</p>
-                <p>Day {a.day}</p>
-                <ul>
-                  {
-                    a.goals.map(goal => (
-                      <>
-                      <li>{goal}</li>
-                      </>
-                    ))
-                  }
-                </ul>
-                <q>{a.note}</q>
+                <p className='postText'>{tweets.tweet}</p>
                 <div className='postIcons'>
-                    <AiOutlineLike/>
-                    <FaRegComment/>
+                  <div className='likeBox'>
+                     {/* <AiOutlineLike className='like'/> */}
+                  <FaHeart custom-attribute={tweets._id} onClick={e => {
+                    heartClicked(e)
+                  }}  className={tweets.liked.includes(`${user.id}`) ? 'like liked' : 'like'} />
+                  <p>{tweets.liked.length}</p>
+                    </div>
+                 
+                  {/* <FaRegComment className='comment'/> */}
+                  <FaComment className='comment' />
                 </div>
               </div>
-          </div>
+            </div>
           ))}
-          </>
-            
-        ))}
 
-        {
-          data.map(blog => (
-            <div className='post userBlog Hpost'>
-              <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg"/>
-              <div>
-                <div>
-                  <p className='postName'>@Deogee</p>
-                </div>
-                <Link to={`/page/${blog._id}`}>
-                  <div className='blogBox'>
-                    <p className='userBlogTitle'>{blog.title}</p>
-                    <p className='blogRead'>Read...</p>
+          {allChallenges.map(challenge => (
+            <>
+              {challenge.update.map(a => (
+                <div className='post Hpost'>
+                  <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg" />
+                  <div className='challengeLeft'>
+                    <p className='postName'>@Deogee</p>
+                    <p className='challengeHeader'>{challenge.name}</p>
+                    <p>Day {a.day}</p>
+                    <ul>
+                      {
+                        a.goals.map(goal => (
+                          <>
+                            <li>{goal}</li>
+                          </>
+                        ))
+                      }
+                    </ul>
+                    <q>{a.note}</q>
+                    <div className='postIcons'>
+                      <AiOutlineLike className='like' />
+                      <FaRegComment className='comment' />
+                    </div>
                   </div>
-                </Link>
-              </div>
-        </div>
-          ))
-        }
-      
+                </div>
+              ))}
+            </>
 
-      
-        
-        {/* <div className="MilestoneBox" >
+          ))}
+
+          {
+            data.map(blog => (
+              <div className='post userBlog Hpost'>
+                <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg" />
+                <div>
+                  <div>
+                    <p className='postName'>@Deogee</p>
+                  </div>
+                  <Link to={`/page/${blog._id}`}>
+                    <div className='blogBox'>
+                      <p className='userBlogTitle'>{blog.title}</p>
+                      <p className='blogRead'>Read...</p>
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            ))
+          }
+
+
+
+
+          {/* <div className="MilestoneBox" >
             <div className='profileBox'>
                 <img src ="https://images.pexels.com/photos/672444/pexels-photo-672444.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
                 <p>@Deogee</p>
@@ -179,7 +253,7 @@ export default function Explore() {
         </div>
 
         {/* testing */}
-        {/* <div className="MilestoneBox" >
+          {/* <div className="MilestoneBox" >
             <div className='profileBox'>
                 <img src ="https://images.pexels.com/photos/672444/pexels-photo-672444.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
                 <p>@Deogee</p>
@@ -211,66 +285,66 @@ export default function Explore() {
             <p>Trying to get the button to be fixed at the bottom of the page</p>
             <p>Link to repo www.google.com</p>
             <p className='extraNotes'>"Include Notes here"</p>
-        </div> */} 
+        </div> */}
 
 
-    </div>
+        </div>
 
-    {/* explore */}
-    <div className='userExplore'>
+        {/* explore */}
+        <div className='userExplore'>
           {/* <Search/> */}
           <div className="searchContainer">
             <div className="searchBox ">
-                <input className="searchTxt" type="text" placeholder="Search..."/>
+              <input className="searchTxt" type="text" placeholder="Search..." />
             </div>
 
             {/* <div className="searchIcon">
                 <AiOutlineSearch className="icon" />
             </div> */}
-        </div>
+          </div>
 
-        <div className='userTrending'>
+          <div className='userTrending'>
             <p>Trending</p>
             <div className='post'>
-              <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg"/>
+              <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg" />
               <div className='postContent'>
                 <p className='postName'>@Deogee</p>
                 <p className='postText'>After a year of my journey into web dev , i am happy to announce that i finally got a job in the tech industry. 🎉</p>
                 <div className='postIcons'>
-                  <AiOutlineLike/>
-                  <FaRegComment/>
+                  <AiOutlineLike />
+                  <FaRegComment />
+                </div>
+              </div>
+
+            </div>
+
+            <div className='userChallenges post'>
+              <p className='challengeHeader'>100DaysOfCode</p>
+              <p>Day 50</p>
+              <ul>
+                <li>Watched a tutorial on CSS animation ✔️</li>
+                <li>Changed the primary color on my website ✔️</li>
+                <li>Started exploring Javascript ✔️</li>
+              </ul>
+              <q>Today was a productive day. I was able to complete all my goals. So exited and pumped.</q>
+              <div className='postIcons'>
+                <AiOutlineLike />
+                <FaRegComment />
               </div>
             </div>
-        
-          </div>
-
-          <div className='userChallenges post'>
-        <p className='challengeHeader'>100DaysOfCode</p>
-        <p>Day 50</p>
-        <ul>
-          <li>Watched a tutorial on CSS animation ✔️</li>
-          <li>Changed the primary color on my website ✔️</li>
-          <li>Started exploring Javascript ✔️</li>
-        </ul>
-        <q>Today was a productive day. I was able to complete all my goals. So exited and pumped.</q>
-        <div className='postIcons'>
-            <AiOutlineLike/>
-            <FaRegComment/>
-        </div>
-      </div>
 
             <div className='post userBlog'>
-        <p className='userBlogTitle'>How i went from HTML to fullStack developer in 6 months</p>
-        <p className='blogRead'>Read...</p>
+              <p className='userBlogTitle'>How i went from HTML to fullStack developer in 6 months</p>
+              <p className='blogRead'>Read...</p>
+            </div>
+          </div>
+        </div>
+
       </div>
-        </div>
-        </div>
-
-        </div>
 
 
-    
-    
+
+
     </div>
   )
 }

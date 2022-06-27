@@ -81,6 +81,7 @@ useEffect(() => {
         setLoading(true) ; 
         
       if(user) {
+        console.log(user.id) ;
         axios.get('https://bugger02.herokuapp.com/api/get/challenges' , {
             headers : {   
                 'auth-id' : user.id        
@@ -95,7 +96,7 @@ useEffect(() => {
         })
       } else {
         // setUser({})
-        setLoading(false)
+        // setLoading(true)
       }
   
 } , [user])

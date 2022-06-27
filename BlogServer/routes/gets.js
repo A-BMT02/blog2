@@ -38,11 +38,12 @@ router.get('/challenges/update' , async (req , res) => {
 
 router.get('/challenges' , (req , res) => {
     const id = req.header('auth-id') ;
+    console.log(id) ;
     challenge.find({userId : id} , function(err , doc){
         if(err) {
             console.log(err)
         } else {
-            // console.log(doc) ;
+            console.log(doc) ;
             res.send(doc) ;
         }
     })
@@ -73,7 +74,7 @@ router.get('/tweets' ,   (req , res)  => {
             return tweetObject ; 
         })) 
 
-        console.log(b) ; 
+        // console.log(b) ; 
 
         res.json(b) ;
     }

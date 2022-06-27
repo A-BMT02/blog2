@@ -62,7 +62,7 @@ export default function HundredDays() {
 
    useEffect(() => {
     setLoading(true) ;
-     axios.get('https://bugger02.herokuapp.com/api/get/time' , {
+     axios.get('http://localhost:5000/api/get/time' , {
          headers : {
              'auth-id' : user.id
          }

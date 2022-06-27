@@ -239,3 +239,27 @@
 .userBlog > div > a >.blogBox > .userBlogTitle {
   color : black ;
 }
+
+.like , 
+.comment {
+ fill : #1e1c1c ;
+ stroke: white ; 
+ stroke-width : 20px ; 
+ /* stroke : green ; */
+}
+
+.liked {
+  fill : red ; 
+  stroke : black ; 
+}
+
+.postIcons > p {
+  color : rgb(179, 179, 179);
+  font-size: 1rem ;;
+}
+
+.likeBox {
+  display : flex ;
+  align-items: center;
+  gap:5px ;
+}

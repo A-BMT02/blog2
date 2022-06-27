@@ -168,7 +168,7 @@ useEffect(() => {
        <div className='postBox'>
         {myTweets.map(a => (
             <div className={ active === 'posts' ? 'post' : 'post hide'}>
-              <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg"/>
+              <img className="postPic" src={front}/>
               <div className='postContent'>
                 <p className='postName'>@{user.name}</p>
                 <p className='postText'>{a.tweet}</p>
@@ -283,7 +283,7 @@ useEffect(() => {
         <div className='userTrending'>
             <p>Trending</p>
             <div className='post'>
-              <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg"/>
+              <img className="postPic" src={front}/>
               <div className='postContent'>
                 <p className='postName'>@Deogee</p>
                 <p className='postText'>After a year of my journey into web dev , i am happy to announce that i finally got a job in the tech industry. 🎉</p>

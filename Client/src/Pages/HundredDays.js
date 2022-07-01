@@ -6,6 +6,9 @@ import { useAuth } from '../Components/Context/UserContext';
 import { IoMdArrowBack } from 'react-icons/io' ;
 import { Link } from "react-router-dom" ; 
 import { Skeleton } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Alert } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 
 
 export default function HundredDays() {
@@ -18,10 +21,13 @@ export default function HundredDays() {
     const [addUpdate , setUpdate] = useState(false)  ; 
     const [available , setAvailable] = useState(null) ; 
     const [loading , setLoading ] = useState(true) ; 
-     
+     const [ success , setSuccess ] = useState(false) ; 
+     const [ finish , setFinish ] = useState(false) ; 
+     const [processing, setProcessing ] = useState(false) ; 
 
     // const [missing , setmissing] = useState() ; 
 
+    const navigate = useNavigate() ; 
     const { challenge } = useAuth() ;
     // console.log(challenge[0]) ; 
 
@@ -39,6 +45,7 @@ export default function HundredDays() {
    }
 
     const postUpdate = () => {
+        setProcessing(true) ; 
 
         const config = {
             'auth-id' : user.id
@@ -53,12 +60,28 @@ export default function HundredDays() {
         }).then(info => {
             console.log(info) ; 
             setAvailable(prev => prev + 1) ;  
+             setSuccess(true) ; 
+            if(finish) {
+                setProcessing(false) ; 
+                navigate('/challenges') ;
+                window.location.reload()
+            }
             
         })
     
     }
     // console.log(centuryOfCode) ;
    
+
+     useEffect(() => {
+                if(success) {
+                    setProcessing(false) ; 
+                    setTimeout(() => {
+                        navigate('/challenges')
+                        window.location.reload()
+                    } , 2000)
+                }
+            } , [success])
 
    useEffect(() => {
     setLoading(true) ;
@@ -98,6 +121,13 @@ export default function HundredDays() {
    } , [day])
   return ( 
     <div>
+        <div className={success ? 'success3' : 'hide'}>
+                    <Alert onClose={ e => {
+                        setSuccess(false)
+                        setFinish(true) ;
+                    } } severity="success">Succesfully posted</Alert>
+            </div>
+
         {loading ? 
         <div className='loading'>
           <Skeleton variant="text"  height={100} />
@@ -167,7 +197,9 @@ export default function HundredDays() {
             </div>
             
             <div className='update'>
-                <button onClick={e => postUpdate()}>Post Update</button>
+                { processing ? <CircularProgress color="success" /> :
+                <button className={success ? 'hide' : ''} onClick={e => postUpdate()}>Post Update</button>
+                }
             </div>
 
             </div>

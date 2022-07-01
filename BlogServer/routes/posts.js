@@ -89,22 +89,24 @@ router.post('/update/100daysofcode' , async (req , res) => {
     console.log(req.body) ; 
     
     //find user
-    challenge.findOne({_id : id} , function(err ,data) {
+    challenge.findOne({userId : id} , function(err ,data) {
         if(err) {
             console.log('error is ' ,err) ; 
         } else {
             const update = data.update ;
             update.push({goals , note , day}) ;
+            console.log('update is ' , update) ; 
 
-            challenge.findOneAndUpdate({_id : id} , { update } , { new : true} , function(err) {
+            challenge.findOneAndUpdate({userId : id} , { update } , { new : true} , function(err) {
                 if(err) {
                     console.log(err) ;
                 } else {
                     console.log('done') ;
+                    res.send(req.body) ;
+
                 }
             }) ;
-            // console.log(newChallenge) ; 
-            // console.log(update) ; 
+           
         }
     }) 
     
@@ -114,7 +116,6 @@ router.post('/update/100daysofcode' , async (req , res) => {
     // console.log(doc) ; 
   
 
-    res.send(req.body) ;
 })
     
 

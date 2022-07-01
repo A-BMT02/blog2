@@ -31,6 +31,10 @@ export default function Profile() {
   const [myBlogs , setMyBlogs ] = useState([]) ; 
   const [myTweets , setMyTweets] = useState([]) ;
 
+
+  useEffect(() => {
+
+  } , [])
   // console.log(challenges) ; 
   const clicked = (e , col) => {
     // console.log(col) ; 

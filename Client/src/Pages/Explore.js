@@ -31,6 +31,7 @@ export default function Explore() {
   const [allTweets , setAllTweets] = useState([]) ;
   const [allTweets2 , setAllTweets2 ] = useState(allTweets) ;
   const [loading , setLoading] = useState(true) ; 
+  const [maxTweet , setMaxTweet ] = useState({}) ;
 
   console.log(allTweets);
   
@@ -53,6 +54,15 @@ export default function Explore() {
 
   useEffect(() => {
     console.log(allTweets) ; 
+    let max = -1 ; 
+    allTweets.map(tweet => {
+        if((tweet.liked.length + tweet.reply.length ) > max)  {
+            setMaxTweet(tweet)
+            max = tweet.liked.length + tweet.reply.length ;
+        }
+    })
+
+    console.log(maxTweet)
   } , [allTweets])
 
   const changeDate = (start) => {
@@ -362,13 +372,24 @@ export default function Explore() {
           <div className='userTrending'>
             <p>Trending</p>
             <div className='post'>
-              <img className="postPic" src="https://pbs.twimg.com/profile_images/1495351928800354309/o21vulIP_400x400.jpg" />
+              <img className="postPic" src={maxTweet.front} />
               <div className='postContent'>
-                <p className='postName'>@Deogee</p>
-                <p className='postText'>After a year of my journey into web dev , i am happy to announce that i finally got a job in the tech industry. 🎉</p>
+                <p className='postName'>{maxTweet.name}</p>
+                <p className='postText'>{maxTweet.tweet}</p>
                 <div className='postIcons'>
-                  <AiOutlineLike />
-                  <FaRegComment />
+                   <div className='likeBox'>
+                     {/* <AiOutlineLike className='like'/> */}
+                  <FaHeart custom-attribute={maxTweet._id} onClick={e => {
+                    heartClicked(e)
+                  }}  className={maxTweet.liked.includes(`${user.id}`) ? 'like liked' : 'like'} />
+                  <p>{maxTweet.liked.length}</p>
+                    </div>
+                    
+                     <div className='likeBox'>
+                    <FaComment onClick={ e => commentClicked(maxTweet)} className='comment' />
+                    <p>{maxTweet.reply.length}</p>
+                  </div>
+                
                 </div>
               </div>
 

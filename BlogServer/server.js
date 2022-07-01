@@ -5,7 +5,7 @@ const { addData } = require("./utils") ;
 const bodyParser = require('body-parser') ; 
 const mongoose = require('mongoose') ;
 const jwt = require('jsonwebtoken') ; 
-const bcrypt = require('bcrypt') ; 
+const bcrypt = require('bcryptjs') ; 
 const { addChallenge } = require('./utils') ; 
 const dotenv = require('dotenv') ; 
 const { addUser }  = require("./utils") ;
@@ -15,6 +15,8 @@ const authRoute = require('./routes/auth') ;
 const postRoute = require("./routes/posts") ;
 const getRoute = require('./routes/gets') ; 
 const putsRoute = require('./routes/puts') ; 
+const user  = require("./user") ;
+
 
 dotenv.config();
 const PORT = process.env.PORT || 5000 ; 
@@ -31,6 +33,7 @@ app.use('/api/post' , postRoute) ;
 app.use('/api/get' , getRoute) ; 
 app.use('/api/put' , putsRoute) ; 
 
+console.log(process.env.DB_CONNECT) ;
 mongoose.connect(process.env.DB_CONNECT , () => {
     console.log("Connected to database") ; 
  
@@ -44,6 +47,9 @@ mongoose.connect(process.env.DB_CONNECT , () => {
 //     loginUser(req , res) ; 
 // })
 
+app.get("/testing" , (req , res) => {
+    res.send("Hello from Express!") ;
+})
 app.get("/data" , (req , res) => {
     getData(req , res) ;  
 }) 
@@ -102,6 +108,7 @@ app.post("/users/login" , async (req , res) => {
         res.status(500).send() ;
     }
 })
+
 
 
 app.listen(PORT , () => {

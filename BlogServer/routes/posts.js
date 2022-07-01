@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken") ;
 
 
 router.post('/blog' , (req ,res) => {
-    // console.log(req.body) ;
+     console.log(req.body) ;
     const newBlog =  blog(req.body.data) ;
 
     newBlog.save((err, doc) => {
@@ -21,6 +21,7 @@ router.post('/blog' , (req ,res) => {
             res.json(doc) ;
         }
     } )
+    
 })
 
 
@@ -42,6 +43,8 @@ router.post('/tweet' , verify , (req ,res) => {
 
 router.post('/100daysofcode' , verify,  (req , res) => {
     //find user
+    // console.log(req.body)
+    console.log(req.body.user.id) ;
     const token = req.headers['auth-token'] ; 
     const user = jwt.verify(token , process.env.TOKEN_SECRET) ;
     const userId = user._id ; 
@@ -58,12 +61,12 @@ router.post('/100daysofcode' , verify,  (req , res) => {
         } else {
             if(doc.length == 0) {
                 const newChallenge = new challenge({
-                    _id : userId , 
                     name : req.body.challengeName ,
                     priorSkills , 
                     priorNote , 
                     goals , 
-                    startDate
+                    startDate , 
+                    userId : req.body.user.id
                 })
                 newChallenge.save() ; 
                 return res.status(200).send({
@@ -86,22 +89,24 @@ router.post('/update/100daysofcode' , async (req , res) => {
     console.log(req.body) ; 
     
     //find user
-    challenge.findOne({_id : id} , function(err ,data) {
+    challenge.findOne({userId : id} , function(err ,data) {
         if(err) {
             console.log('error is ' ,err) ; 
         } else {
             const update = data.update ;
             update.push({goals , note , day}) ;
+            console.log('update is ' , update) ; 
 
-            challenge.findOneAndUpdate({_id : id} , { update } , { new : true} , function(err) {
+            challenge.findOneAndUpdate({userId : id} , { update } , { new : true} , function(err) {
                 if(err) {
                     console.log(err) ;
                 } else {
                     console.log('done') ;
+                    res.send(req.body) ;
+
                 }
             }) ;
-            // console.log(newChallenge) ; 
-            // console.log(update) ; 
+           
         }
     }) 
     
@@ -111,11 +116,109 @@ router.post('/update/100daysofcode' , async (req , res) => {
     // console.log(doc) ; 
   
 
-    res.send(req.body) ;
 })
     
 
+router.post('/finduser' , async (req , res) => {
+    const token = req.body.token ; 
+    // console.log(token) ; 
+    const verified = jwt.verify(token , process.env.TOKEN_SECRET) ;
+    // console.log(verified) ; 
+
+    const exists= await user.find({_id : verified._id});
+    // console.log(exists[0]) 
+     const User = {
+            id : exists[0]._id , 
+            email : exists[0].email , 
+            token ,
+            back : exists[0].back ,
+            bio : exists[0].bio, 
+            front : exists[0].front,
+            name : exists[0].name 
+        }
+        // console.log(User) ; 
+        res.header('auth-token' , token).send(User) ; 
+
+
+})
+
+router.post('/tweetliked' , async (req ,res) => {
+    console.log(req.body) ; 
+    const id = req.body.id ;
+    const a = await tweet.findOne({_id : id})
+
+    
+    console.log(a) ; 
+
+    const allLikes = a.liked.find(user => {
+        return  user == req.body.by
+    })
+    if(allLikes) {
+        // console.log('already liked')
+        res.send('success') ;
+    } else {
+    // console.log('not liked') ; 
+        await tweet.findOneAndUpdate(
+            { _id : id } ,
+            {$push : {
+                liked : req.body.by 
+            }}
+        )
+    }
+})
+
+router.post('/tweetlikedremove' , async (req ,res) => {
+     console.log(req.body) ; 
+    const id = req.body.id ;
+    const a = await tweet.updateOne({_id : id} , {
+        $pullAll : {
+            liked : [`${req.body.by}`]
+        }
+    } , {new: true})
+
+    tweet.find({} , async (err , result) => {
+    if(err) {
+        // console.log(err) ;
+        res.send(err) ;
+    } else {
+        const b = await Promise.all(result.map( async (tweet) => {
+            const foundUser = await user.findOne({_id : tweet.userId}) ;
+            const tweetObject = tweet.toObject() ; 
+            tweetObject.front = foundUser.front ;
+            return tweetObject ; 
+        })) 
+
+        // console.log(b) ; 
+
+        res.json(b) ;
+    }
+    }) ;
+
+    // const tweets = await tweet.find({})
+    // console.log(tweets) ; 
     
 
+    // res.send(tweets) ;
 
+ 
+})
+
+router.post('/reply/post' , async (req , res ) => {
+    const tweetsId = req.body.tweetId ;
+    const id = req.body.user.id ; 
+    const comment = req.body.reply ; 
+    console.log(id ,comment) ; 
+
+     const a = await tweet.updateOne({_id : tweetsId} , {
+        $push : {
+            reply : {
+                'comment' : comment ,
+                'userId' : id
+            }
+        }
+    } , {new: true})
+
+    res.send('success') ; 
+})
+ 
 module.exports = router ; 

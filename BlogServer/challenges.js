@@ -1,10 +1,6 @@
 const mongoose = require('mongoose') ; 
 
 const ChallengeSchema = new mongoose.Schema({
-    _id : {
-        type : mongoose.Schema.Types.ObjectId,
-        required : true 
-    } ,
     name : {
         type : String ,
         required : true 
@@ -27,6 +23,9 @@ const ChallengeSchema = new mongoose.Schema({
     startDate : {
         type : Date
     } , 
+    userId : {
+        type : String
+    }
 
 })
 

@@ -1,0 +1,132 @@
+.wholeLogin {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(242, 242, 242);
+  font-family: "Cabin, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji";
+}
+
+.loginContainer {
+  width: 25rem;
+  background-color: #1e1c1c;
+
+  padding: 2rem;
+  height: fit-content;
+  text-align: center;
+  border-radius: 1rem;
+}
+
+.loginLogo .logoContainer {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.loginLogo > .logoContainer > a {
+  font-size: 2.5rem;
+  font-family: "Festive", cursive;
+}
+
+.inputContainer {
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.emailContainer,
+.passwordContainer {
+  position: relative;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.emailText,
+.passwordText {
+  position: absolute;
+  top: 20%;
+  left: 0.5rem;
+  transition: top 0.5s;
+  font-size: 1.3rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.password > input,
+.email > input {
+  width: 100%;
+  height: 2.8rem;
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.password > input:focus,
+.email > input:focus {
+  outline: none;
+}
+.email,
+.password {
+  border: none;
+}
+
+.dontHave {
+  margin-bottom: 4rem;
+}
+
+.dontHave > p > a {
+  color: rgb(100, 145, 48);
+}
+
+.loginBtnContainer > button {
+  width: 100%;
+  padding: 1rem 0;
+  border-radius: 3rem;
+  font-size: 1.2rem;
+  border: none;
+  background-color: #f2f2f2;
+}
+
+.loginBtnContainer {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.loginBtnContainer > button:hover {
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(100, 145, 48, 0.8),
+    rgba(100, 145, 48, 0.2)
+  );
+  color: white;
+}
+
+.removeErrorAnimate {
+  display: block;
+  position: absolute;
+  top: 0;
+  /* left: 50%; */
+  background-color: rgb(255, 0, 0, 0.7);
+  text-align: center;
+  padding: 1rem 2rem;
+  /* visibility: hidden; */
+  opacity: 0;
+  transition: opacity 0.5s;
+  border-radius: 1rem;
+}
+
+.errorAnimate {
+  border-radius: 1rem;
+  transition: opacity 0.5s;
+  display: block;
+  position: absolute;
+  top: 0;
+  /* left: 50%; */
+  background-color: rgb(255, 0, 0, 0.7);
+  text-align: center;
+  padding: 1rem 2rem;
+  opacity: 1;
+  width: 25rem;
+  /* animation: visible 2s linear 0.1s; */
+  /* visibility: visible; */
+}

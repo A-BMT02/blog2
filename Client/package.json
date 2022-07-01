@@ -1,0 +1,60 @@
+{
+  "homepage": "https://buggery.netlify.app/",
+  "name": "blog2",
+  "version": "0.1.0",
+  "private": false,
+  "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@hapi/joi": "^17.1.1",
+    "@mui/material": "^5.8.4",
+    "@mui/styled-engine-sc": "^5.8.0",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.3",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "firebase": "^9.6.7",
+    "gh-pages": "^3.2.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.10",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-image-crop": "^10.0.4",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "5.0.0",
+    "styled-components": "^5.3.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "eslint-config-react-app": "^7.0.1"
+  }
+}

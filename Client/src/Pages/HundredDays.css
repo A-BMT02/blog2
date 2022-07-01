@@ -1,0 +1,72 @@
+.status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.wholeHundred {
+  /* max-width: 600px; */
+}
+
+.wholeHundred > p {
+  color: rgba(255, 0, 0, 0.877);
+  font-size: 1.3rem;
+}
+
+.upToDate {
+  margin: 1rem 0;
+  font-size: 1.4rem;
+}
+.status > p {
+  font-size: 1.6rem;
+  margin: 5 0;
+}
+
+.day,
+.countdown > p {
+  font-size: 2.2rem;
+  padding:10px ;
+  width: fit-content ;
+}
+
+.status1 {
+  font-size: 0.5rem;
+}
+
+.update > button {
+  font-size: 1.5rem;
+  background-color: rgba(100, 145, 48, 0.6);
+  padding: 5px;
+  color: white;
+  border-radius: 10px;
+  margin-top: 10px;
+  border: 1px solid white;
+}
+
+.update {
+  margin-bottom: 2rem;
+}
+
+.achieved {
+  margin-left: 10px;
+  margin-bottom: 1rem;
+}
+
+.countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width : fit-content ;
+}
+/* 
+@media screen and (min-width: 871px) {
+  .centuryBox {
+    display: flex;
+    gap: 5rem;
+    justify-content: space-between;
+  }
+} */
+
+.dayBox {
+  width: 50%;
+  max-width: 200px;
+}

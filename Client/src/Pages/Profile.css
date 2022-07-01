@@ -1,0 +1,359 @@
+.backProfile > img {
+  height: 18%;
+  object-fit: cover;
+  /* max-width: 100%; */
+  width: 100%;
+  /* z-index: -10; */
+}
+
+.userExplore {
+  display: none;
+}
+
+.wholeProfile {
+  height: 200rem;
+}
+
+.circleProfile > img {
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+}
+
+.backProfile {
+  top: 0;
+  position: absolute;
+  width: 100%;
+  max-width: 600px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.circleProfile {
+  position: relative;
+  bottom: 10%;
+  /* left: 10px; */
+  margin-top: -10%;
+  margin-left: 10px;
+}
+
+.bioBox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.bio {
+  /* top: 25%; */
+  /* margin-top: 1.5rem; */
+  margin-left: 10px;
+  width: 90%;
+  max-width: 35rem;
+}
+
+.status {
+  margin-bottom: 1rem;
+  font-size: 14px;
+  /* letter-spacing: 0.5px; */
+}
+
+.username {
+  margin-bottom: 1rem;
+  color: rgb(100, 145, 48);
+  font-size: 1.5rem;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* margin-left: 10px; */
+}
+
+.followers {
+  /* margin-right: 4rem; */
+}
+
+.followers,
+.following {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.count {
+  margin-bottom: 0.2rem;
+  color: rgb(100, 145, 48);
+  font-size: 1.3rem;
+}
+
+.editProfile {
+  border-radius: 30px;
+  padding: 6px;
+  font-size: 0.9rem;
+  border: 1px solid rgb(100, 145, 48);
+  background-color: #f2f2f2;
+}
+
+.editProfileBox {
+  /* width: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.contents {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 10px;
+}
+
+.contents > p {
+  padding-bottom: 3px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.contents:nth-child(2) {
+  color: red;
+}
+
+.activeContent {
+  width: fit-content;
+  border-bottom: 1px solid rgb(100, 145, 48);
+}
+
+.postPic {
+  width: 54x;
+  height: 54px;
+  border-radius: 50%;
+  /* object-fit: cover; */
+}
+
+.post {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 5px;
+  border-left: 0;
+  border-right: 0;
+  margin-bottom: 1rem;
+  line-height: 25px;
+  /* width : 80% ; */
+  /* border-bottom: 1px solid rgb(100, 145, 48); */
+}
+
+.postContent {
+  margin-left: 7px;
+}
+
+.postName {
+  margin-bottom: 5px;
+  color: rgb(100, 145, 48);
+}
+
+.postText {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 4px;
+  /* color: rgba(255, 255, 255, 0.5); */
+}
+/* .notActive {
+} */
+
+.postIcons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.userChallenges {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.userChallenges > div {
+  margin-left : 7px ;
+}
+.challengeHeader {
+  color: rgb(100, 145, 48);
+  font-size: 1.1rem;
+  width: fit-content;
+  border-bottom: 1px outset white;
+  padding-bottom: 2px;
+  margin-bottom: 4px;
+}
+
+.userChallenges > div >  ul,
+.userChallenges > div >  q {
+  margin-left: 10px;
+}
+
+.userChallenges > div > ul > li {
+  list-style-type: none;
+}
+
+.userChallenges > div >  q {
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 4px;
+}
+
+.userBlogTitle {
+  color: white;
+  font-weight: 400;
+}
+
+.userBlog {
+  display: flex ;
+}
+.userBlog > div >  .blogBox , 
+.userBlog > div > a > .blogBox {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-end; */
+  padding: 5px;
+  margin-left: 7px;
+  border-radius : 5px ;
+}
+
+/* .userBlog > div > .postName {
+  background-color: #1e1c1c;
+} */
+
+.blogRead {
+  color: rgb(100, 145, 48);
+}
+
+.hide {
+  display: none;
+}
+
+.userTrending {
+  display: none;
+}
+
+@media screen and (min-width: 600px) {
+  .backProfile {
+    margin-left: 4.5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .wholeProfile {
+    display: flex;
+  }
+  .userExplore {
+    overflow: hidden;
+
+    position: relative;
+    left: 672px;
+    width: calc(100% - 672px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .userExplore > .searchContainer {
+    margin-top: 0;
+  }
+
+  .userTrending {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .userExplore > .searchContainer > .searchBox {
+    margin-right: 0;
+    width: 16rem;
+  }
+
+  .userTrending > .post {
+    width: 80%;
+  }
+
+  .userTrending > p {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    display: block;
+    width: 80%;
+    /* margin-left: 1rem; */
+  }
+}
+
+.bigSide {
+  display: none;
+}
+
+@media screen and (min-width: 1200px) {
+  .smallSide {
+    display: none;
+  }
+  .bigSide,
+  .bigSide > p > a {
+    display: flex;
+    font-size: 1.5rem;
+  }
+
+  .bigSide {
+    border-radius: 10px;
+    background-color: white;
+  }
+  .bigSide > p > a {
+    gap: 10px;
+    color: black;
+  }
+
+  .backProfile {
+    margin-left: 180.64px;
+  }
+
+  .userExplore {
+    left: 780.64px;
+    width: calc(100% - 780.64px);
+  }
+}
+/* .bigSide > p > a {
+    display: flex;
+    font-size: 2rem;
+  }
+
+/* @media screen and (min-width: 600px) {
+  .side {
+    display: inline;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+  }
+
+  .side > p,
+  .side > p > a {
+    font-size: 2rem;
+  }
+  .top,
+  .bottom {
+    display: none;
+  }
+} */
+
+.backProfile > .userBlog {
+  justify-content: space-between;
+}

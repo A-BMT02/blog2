@@ -1,10 +1,6 @@
 const mongoose = require("mongoose") ; 
 
-const BlogSchema = new mongoose.Schema({
-    id : {
-        type : Number , 
-        required : true
-    } , 
+const BlogSchema = new mongoose.Schema({ 
     author : {
         type : String , 
         required : true
@@ -41,6 +37,9 @@ const BlogSchema = new mongoose.Schema({
         type : String , 
         required : true
     } , 
+    userId : {
+        type : String
+    }
 
 }
 )

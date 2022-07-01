@@ -1,0 +1,271 @@
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  /* border-top: 1px solid rgb(100, 145, 48); */
+  /* background-color: rgb(100, 145, 48); */
+  background-color: white;
+
+  padding: 5px;
+}
+
+.posts {
+  align-items: center;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 3rem;
+}
+
+.side {
+  display: none;
+}
+
+.Hpost {
+  width : 80% ;
+} 
+
+.top {
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: white;
+  z-index: 100;
+}
+
+
+
+.bottom > p,
+.bottom > p > a,
+.top > p,
+.side > p,
+.side > p > a {
+  font-size: 1.5rem;
+  color: black;
+}
+
+@media screen and (min-width: 600px) {
+  .side {
+    display: inline;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+  }
+
+  .side > p,
+  .side > p > a {
+    font-size: 2rem;
+  }
+  .top,
+  .bottom {
+    display: none;
+  }
+
+  .posts {
+    /* width: 80%; */
+    margin-left: 72px;
+  }
+
+  .postsAndExplore {
+    display: flex;
+  }
+
+  .postsAndExplore > .userExplore {
+    position: static;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .bottom {
+    display: none;
+  }
+}
+
+@media screen and (min-width : 600px) {
+  .topF {
+    display: flex;
+  }
+}
+
+.MilestoneBox,
+.ChallengeBox,
+.buggedBox {
+  margin-bottom: 2rem;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 2rem;
+  border-right: 0;
+  border-left: 0;
+}
+
+/* .post {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 5px;
+  border-left: 0;
+  border-right: 0;
+  margin-bottom: 1rem;
+  /* border-bottom: 1px solid rgb(100, 145, 48); */
+
+.boxTitle {
+  color: rgb(100, 145, 48);
+  margin-bottom: 0.5rem;
+}
+
+.buggedBox > .boxTitle {
+  color: rgb(173, 40, 49);
+}
+
+.MilestoneBox > .profileBox {
+  /* border-radius: 50%; */
+  /* width: 50px;
+  height: 50px; */
+}
+
+.MilestoneBox > .profileBox > img,
+.buggedBox > .profileBox > img,
+.ChallengeBox > .profileBox > img {
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  max-width: 90px;
+  max-height: 50px;
+  border-radius: 50%;
+}
+
+.profileBox {
+  display: flex;
+  align-items: center;
+}
+
+.profileBox > p {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+}
+
+.addIcon {
+  position: fixed;
+  bottom : 4em ;
+  right : 2rem ;
+  color : rgb(100, 145, 48) ; 
+  background-color: white ;
+}
+
+.addIcon > svg {
+  font-size : 2rem ;
+}
+
+.options {
+  position: fixed ;
+  width : 80% ; 
+  max-width: 400px;
+  left : 10% ; 
+  height: 50%;
+  top : 25% ;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding : 1rem 2rem ;
+  justify-content: center;
+  gap: 10px ;
+  border-radius: 1rem;
+  max-width: 400px ;
+}
+
+.challengeLeft {
+  margin-left: 7px ;
+}
+
+@media screen and ( min-width : 400px) {
+  .options {
+    left : calc(( 100% - 400px ) / 2)
+  }
+}
+
+.options > button {
+  font-size : 2rem ;
+  color: rgb(100, 145, 48);
+  background-color: white;
+  border-radius: 1rem ;
+  border : 1px outset white ;
+}
+
+.options > button:hover {
+  background-color:rgb(100, 145, 48) ;
+  color : white; 
+}
+
+@media screen and (min-width: 1200px) {
+  .postsAndExplore {
+    margin-left: 180.64px;
+  }
+
+  .postsAndExplore > .posts {
+    margin-left: 0;
+  }
+
+  .postsAndExplore > .userExplore {
+    width: 100%;
+  }
+}
+
+.closeIcon {
+  color : red ;
+  position : absolute ; 
+  top : 1rem ; 
+  right : 1rem ;
+  font-size: 1.4rem;
+}
+
+.userBlog > div > .blogBox > .userBlogTitle , 
+.userBlog > div > a >.blogBox > .userBlogTitle {
+  color : black ;
+}
+
+.like , 
+.comment {
+ fill : #1e1c1c ;
+ stroke: white ; 
+ stroke-width : 20px ; 
+ /* stroke : green ; */
+}
+
+.liked {
+  fill : red ; 
+  stroke : black ; 
+}
+
+.postIcons > p {
+  color : rgb(179, 179, 179);
+  font-size: 1rem ;;
+}
+
+.likeBox {
+  display : flex ;
+  align-items: center;
+  gap:5px ;
+}
+
+.loadingCenter {
+  position: absolute ; 
+  top:50% ; 
+  left: 50%;
+}

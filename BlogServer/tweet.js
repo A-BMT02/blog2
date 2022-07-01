@@ -1,10 +1,6 @@
 const mongoose = require("mongoose") ; 
 
 const TweetSchema = new mongoose.Schema({
-    id : {
-        type : Number , 
-        required : true
-    } ,  
     date : {
         type : String , 
         required : true
@@ -12,8 +8,15 @@ const TweetSchema = new mongoose.Schema({
     tweet : {
         type : String , 
         required : true 
-    }
-
+    } , 
+    userId : {
+        type : String
+    } ,
+    liked : [String]  , 
+    reply : [ {
+        comment : String , 
+        userId : String
+    }]
 }
 )
 

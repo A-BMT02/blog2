@@ -1,0 +1,12 @@
+.reply {
+    margin-left :4rem;
+    /* background-color: red ; */
+    /* border-top : 0 ; */
+    border : 1px groove white ;
+    border-left: 0 ; 
+    border-right: 0 ;
+}
+
+.mainPost {
+    border-bottom: 0 ;
+}

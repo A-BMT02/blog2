@@ -1,0 +1,61 @@
+.myChallenges,
+.joinChallenges,
+.customChallenges {
+  margin-bottom: 4rem;
+}
+
+.myChallenges > h2,
+.joinChallenges > h2,
+.customChallenges > h2 {
+  border-bottom: 1px solid rgb(100, 145, 48);
+  color: white;
+  padding-bottom: 0.5rem;
+  font-size: 2rem;
+  width : fit-content ;
+}
+
+.challengesBox {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.myChallenge,
+.joinChallenge,
+.customChallenge,
+.joinCustomChallenge {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px outset white;
+  padding: 1rem;
+  /* border-radius: 20px; */
+  border-radius: 10px;
+  border-left: 0;
+  border-right: 0;
+}
+
+.myChallenge > h3,
+.joinChallenge > h3,
+.customChallenge > h3,
+.joinCustomChallenge > h3 {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.myChallenge > p {
+  text-align: right;
+}
+
+@media screen and (min-width: 600px) {
+  .challengesBox {
+    margin-left: 82px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .challengesBox {
+    margin-left: 194px;
+  }
+}

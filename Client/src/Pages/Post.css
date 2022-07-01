@@ -1,0 +1,103 @@
+.wholeBlogPage {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+}
+
+.addons {
+  margin-bottom: 1rem;
+  border: 2px dotted gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+  height: 200px;
+  margin-top: 2rem;
+} 
+
+.addons > img {
+  object-fit: contain;
+}
+
+.none {
+  display: none;
+}
+
+.wholeBlogPage > article > textarea,
+.wholeBlogPage > article .titleContainer > textarea {
+  /* font-family: "Shizuru", cursive; */
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 1.6rem;
+  overflow: hidden;
+  text-align: justify;
+  padding: 1rem ;
+  /* margin-bottom: 1rem ; */
+  background-color: #1e1c1c;
+  color : white ;
+}
+
+.wholeBlogPage>article .titleContainer {
+  font-size: 1.8rem;
+}
+
+.wholeBlogPage>article .titleContainer>textarea {
+  text-align: center;
+  color: rgb(100, 145, 48);
+  background-color: #1e1c1c;
+
+}
+
+.postNav {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 2rem; */
+}
+
+.postNav > button {
+  border: none;
+  font-size: 1.5rem;
+  /* background: none; */
+  border-radius: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+  background-color: #f1f1f1;
+}
+
+.postNav > button:hover {
+  background-color: rgb(100, 145, 48);
+  color: white;
+}
+
+.camera {
+  font-size: 2rem;
+}
+
+.review {
+  position : absolute ;
+  width : 100vw ; 
+  height: 100vh;
+  background-color: red;
+}
+
+.hide {
+  display : none ; 
+}
+
+.topPost {
+    top: 0;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: white;
+}
+
+.topPost > p {
+  font-size: 1.5rem;
+    color: black;
+}

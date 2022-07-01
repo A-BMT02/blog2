@@ -1,0 +1,107 @@
+.centuryBox {
+  margin-top: 2rem;
+}
+
+.form100 > label {
+  display: block;
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.form100 {
+  max-width: 600px;
+}
+
+.h4Box > h4,
+.prior,
+.goalsHeader {
+  font-weight: 400;
+}
+
+.form100 > .addPrior {
+  border: 3px solid white;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1rem;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.form100 input {
+  width: 85%;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.plusIcon {
+  font-size: 2rem;
+  color: rgb(100, 145, 48);
+}
+
+.priorSkills {
+  /* border: 1px solid red; */
+  display: flex;
+  max-width: 300px;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.priorSkills > p {
+  margin-right: 2rem;
+  background-color: rgb(100, 145, 48);
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 6px;
+}
+
+.priorTextarea > textarea {
+  width: 100%;
+  font-size: 1rem;
+  background: transparent;
+  outline: none;
+  color: white;
+  border: 3px solid white;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.goalsHeader {
+  margin-bottom: 1rem;
+}
+
+.goals {
+  display: flex;
+}
+
+.goals > p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+}
+
+.check {
+  margin-right: 1rem;
+}
+
+.startChallenge {
+  margin-top: 2rem;
+  font-size: 2rem;
+  padding: 10px;
+  border-radius: 40px;
+  border: 4px solid rgb(100, 145, 48);
+  margin-bottom: 2rem;
+  background-color: #f1f1f1;
+}
+
+.success2 {
+  position: fixed;
+  right: calc((100% - 296px) / 2);
+  z-index: 200;
+  top : 0 ;
+}

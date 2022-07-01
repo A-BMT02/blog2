@@ -1,0 +1,31 @@
+.postReply {
+    background-color: #1e1c1c;
+    width : 80% ;
+    border : none ;
+    color : white ;
+    outline: none ;
+    margin-left : 2rem ;
+    font-size: 1.2rem;
+}
+
+.postReplyBtn {
+    font-size: 1.3rem;
+        padding: 5px;
+        border-radius: 10px;
+        color: white;
+        background-color: #1e1c1c;
+        border: 1px outset white;
+}
+
+.postReplyBtn:hover {
+    background-color: white ;
+    color : #1e1c1c ;
+}
+
+.postrep {
+    /* margin-top: 10rem; */
+}
+
+.replyAlert {
+  right: calc((100% - 227.63px) / 2);
+}

@@ -263,3 +263,9 @@
   align-items: center;
   gap:5px ;
 }
+
+.loadingCenter {
+  position: absolute ; 
+  top:50% ; 
+  left: 50%;
+}

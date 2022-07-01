@@ -71,12 +71,38 @@ router.get('/tweets' ,   (req , res)  => {
             const foundUser = await user.findOne({_id : tweet.userId}) ;
             const tweetObject = tweet.toObject() ; 
             tweetObject.front = foundUser.front ;
+            tweetObject.name = foundUser.name ;
+           
+            const reply = await Promise.all(tweetObject.reply.map(async (r) => {
+                const foundUser = await user.findOne({_id : r.userId}) ;
+                // console.log('found user is ' , foundUser) ; 
+                let a = r ; 
+                a.front = foundUser.front ; 
+                a.name = foundUser.name ;
+                // console.log('a is ' , a ) ; 
+                return a ;
+            }))
+            tweetObject.reply = reply ; 
+            // console.log(tweetObject) ; 
             return tweetObject ; 
         })) 
 
+        //  const c = await Promise.all(b.map( async (tweet) => {
+        //          return await Promise.all(tweet.reply.map( async (r) => {
+        //             const foundUser = await user.findOne({_id : r.userId}) ;
+        //             r.front = foundUser.front ; 
+        //             r.name = foundUser.name ;
+        //             //  console.log(tweet) ; 
+        //             return tweet ;
+        //         }))
+        //     }))
+
+            // console.log(b) ; 
+
         // console.log(b) ; 
 
-        res.json(b) ;
+        // res.json(b) ;
+        res.json(b) ; 
     }
     }) ;
 

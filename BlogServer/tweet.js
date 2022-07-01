@@ -12,7 +12,11 @@ const TweetSchema = new mongoose.Schema({
     userId : {
         type : String
     } ,
-    liked : [String] 
+    liked : [String]  , 
+    reply : [ {
+        comment : String , 
+        userId : String
+    }]
 }
 )
 

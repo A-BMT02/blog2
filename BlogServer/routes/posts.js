@@ -201,5 +201,23 @@ router.post('/tweetlikedremove' , async (req ,res) => {
 
  
 })
+
+router.post('/reply/post' , async (req , res ) => {
+    const tweetsId = req.body.tweetId ;
+    const id = req.body.user.id ; 
+    const comment = req.body.reply ; 
+    console.log(id ,comment) ; 
+
+     const a = await tweet.updateOne({_id : tweetsId} , {
+        $push : {
+            reply : {
+                'comment' : comment ,
+                'userId' : id
+            }
+        }
+    } , {new: true})
+
+    res.send('success') ; 
+})
  
 module.exports = router ; 

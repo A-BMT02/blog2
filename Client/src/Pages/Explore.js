@@ -18,6 +18,8 @@ import { FaComment } from "react-icons/fa";
 import axios from 'axios';
 import { useAuth } from "../Components/Context/UserContext" ;
 import { Skeleton } from '@mui/material';
+import { CircularProgress } from '@mui/material';
+
 
 
 export default function Explore() {
@@ -42,10 +44,16 @@ export default function Explore() {
     setLoading(true)
      axios.get('http://localhost:5000/api/get/tweets')
         .then(result => {
+          console.log(result)
           setAllTweets(result.data) ;
           setLoading(false)
+
         })
   } , [])
+
+  useEffect(() => {
+    console.log(allTweets) ; 
+  } , [allTweets])
 
   const changeDate = (start) => {
     const date = new Date(start);
@@ -104,17 +112,43 @@ export default function Explore() {
   }
 
 
+  const commentClicked = (post) => {
+    navigate('/write/post' , { state : post} )
+    // console.log(id) ;
+  }
+
+  const viewComments = (tweetId , username , tweet) => {
+      navigate(`/${username}/posts/${tweetId}` , { state : tweet} )
+  }
   return (
     <div>
       {loading ? 
-       <div className='loading'>
-          <Skeleton variant="text"  height={100} />
-          <div className='column'>
-              <Skeleton variant="rectangular" width="100%" height={300}/>
-              <Skeleton variant="rectangular" width="100%" height={300}/>
-              <Skeleton variant="rectangular" width="100%" height={300}/>
+      //  <div className='loading'>
+      //     <Skeleton variant="text"  height={100} />
+      //     <div className='column'>
+      //         <Skeleton variant="rectangular" width="100%" height={300}/>
+      //         <Skeleton variant="rectangular" width="100%" height={300}/>
+      //         <Skeleton variant="rectangular" width="100%" height={300}/>
+      //     </div>
+      //   </div>
+      <div>
+           <div className='leftSideContainer'>
+            <LeftSide />
           </div>
-        </div> :
+          <div className='top'>
+            <p><Link to='/profile'><VscAccount /></Link></p>
+          </div>
+          <div className="bottom">
+            <p><Link to="/Home"><HiOutlineHome /></Link></p>
+            <p><Link to="/explore"><AiOutlineSearch /></Link></p>
+            <p><Link to="/Challenges"><BiTargetLock /></Link></p>
+          </div>
+          <div>
+              <CircularProgress class='loadingCenter' color="success" /> 
+            </div>
+
+      </div>
+         :
 
         <div>
       <div className='leftSideContainer'>
@@ -164,10 +198,10 @@ export default function Explore() {
 
         <div className='posts'>
           {allTweets.map(tweets => (
-            <div className='post Hpost'>
+            <div onClick={e => viewComments(tweets._id , tweets.name , tweets)} className='post Hpost'>
               <img className="postPic" src={tweets.front} />
               <div className='postContent'>
-                <p className='postName'>@Deogee</p>
+                <p className='postName'>@{tweets.name}</p>
                 <p className='postText'>{tweets.tweet}</p>
                 <div className='postIcons'>
                   <div className='likeBox'>
@@ -177,9 +211,12 @@ export default function Explore() {
                   }}  className={tweets.liked.includes(`${user.id}`) ? 'like liked' : 'like'} />
                   <p>{tweets.liked.length}</p>
                     </div>
-                 
+                 <div className='likeBox'>
+                    <FaComment onClick={ e => commentClicked(tweets)} className='comment' />
+                    <p>{tweets.reply.length}</p>
+                  </div>
                   {/* <FaRegComment className='comment'/> */}
-                  <FaComment className='comment' />
+                  
                 </div>
               </div>
             </div>

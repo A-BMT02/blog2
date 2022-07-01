@@ -17,6 +17,8 @@ import Preview from './Pages/Preview';
 import Tweet from './Pages/Tweet';
 import EditProfile from './Components/EditProfile';
 import New from './Pages/New';
+import NewPost from './Pages/NewPost';
+import PostClicked from './Pages/PostClicked';
 
 function App() {
   return (
@@ -41,6 +43,9 @@ function App() {
                 <Route path="/preview" element={<Preview/>}/>
                 <Route path="/post" element={<Tweet/>}/>
                 <Route path="/new" element={<New/>}/>
+                <Route path="/write/post" element={<NewPost/>}/>
+                <Route path="/:name/posts/:id" element={<PostClicked/>}/>
+                
                 {/* <Route path="/edit" element={<EditProfile/>}/> */}
 
           </Routes>

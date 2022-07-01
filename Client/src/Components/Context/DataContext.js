@@ -56,11 +56,7 @@ useEffect(() => {
   axios.get("http://localhost:5000/data").then(info => {
     setData(info.data) ;
     
-     info.data.map(item => {
-       if(item.editorsPick) {
-        setEditorsPick ( prev => [item , ...prev ] );
-      }
-     })
+   
 
           axios.get('https://bugger02.herokuapp.com/api/get/allchallenges')
           .then(result2 => {
